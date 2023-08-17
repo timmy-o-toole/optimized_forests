@@ -1,0 +1,128 @@
+﻿ID;VAR;Group
+1;RPI;Output and income
+2;W875RX1;Output and income
+3;DPCERA3M086SBEA;Consumption, orders, and inventories
+4;CMRMTSPLx;Consumption, orders, and inventories
+5;RETAILx;Consumption, orders, and inventories
+6;INDPRO;Output and income
+7;IPFPNSS;Output and income
+8;IPFINAL;Output and income
+9;IPCONGD;Output and income
+10;IPDCONGD;Output and income
+11;IPNCONGD;Output and income
+12;IPBUSEQ;Output and income
+13;IPMAT;Output and income
+14;IPDMAT;Output and income
+15;IPNMAT;Output and income
+16;IPMANSICS;Output and income
+17;IPB51222S;Output and income
+18;IPFUELS;Output and income
+19;CUMFNS;Output and income
+20;HWI;Output and income
+21;HWIURATIO;Labor market
+22;CLF16OV;Labor market
+23;CE16OV;Labor market
+24;UNRATE;Labor market
+25;UEMPMEAN;Labor market
+26;UEMPLT5;Labor market
+27;UEMP5TO14;Labor market
+28;UEMP15OV;Labor market
+29;UEMP15T26;Labor market
+30;UEMP27OV;Labor market
+31;CLAIMSx;Labor market
+32;PAYEMS;Labor market
+33;USGOOD;Labor market
+34;CES1021000001;Labor market
+35;USCONS;Labor market
+36;MANEMP;Labor market
+37;DMANEMP;Labor market
+38;NDMANEMP;Labor market
+39;SRVPRD;Labor market
+40;USTPU;Labor market
+41;USWTRADE;Labor market
+42;USTRADE;Labor market
+43;USFIRE;Labor market
+44;USGOVT;Labor market
+45;CES0600000007;Labor market
+46;AWOTMAN;Labor market
+47;AWHMAN;Labor market
+50;HOUST;Housing
+51;HOUSTNE;Housing
+52;HOUSTMW;Housing
+53;HOUSTS;Housing
+54;HOUSTW;Housing
+55;PERMIT;Housing
+56;PERMITNE;Housing
+57;PERMITMW;Housing
+58;PERMITS;Housing
+59;PERMITW;Housing
+64;ACOGNO;Consumption, orders, and inventories
+65;AMDMNOx;Consumption, orders, and inventories
+66;ANDENOx;Consumption, orders, and inventories
+67;AMDMUOx;Consumption, orders, and inventories
+68;BUSINVx;Consumption, orders, and inventories
+69;ISRATIOx;Consumption, orders, and inventories
+70;M1SL;Money and credit
+71;M2SL;Money and credit
+72;M2REAL;Money and credit
+73;BOGMBASE;Money and credit
+74;TOTRESNS;Money and credit
+75;NONBORRES;Money and credit
+76;BUSLOANS;Money and credit
+77;REALLN;Money and credit
+78;NONREVSL;Money and credit
+79;CONSPI;Money and credit
+80;SP500;Stock market
+81;SPindust;Stock market
+82;SPdivyield;Stock market
+83;SPPEratio;Stock market
+84;FEDFUNDS;Interest and exchange rates
+85;CP3Mx;Interest and exchange rates
+86;TB3MS;Interest and exchange rates
+87;TB6MS;Interest and exchange rates
+88;GS1;Interest and exchange rates
+89;GS5;Interest and exchange rates
+90;GS10;Interest and exchange rates
+91;AAA;Interest and exchange rates
+92;BAA;Interest and exchange rates
+93;COMPAPFFx;Interest and exchange rates
+94;TB3SMFFM;Interest and exchange rates
+95;TB6SMFFM;Interest and exchange rates
+96;T1YFFM;Interest and exchange rates
+97;T5YFFM;Interest and exchange rates
+98;T10YFFM;Interest and exchange rates
+99;AAAFFM;Interest and exchange rates
+100;BAAFFM;Interest and exchange rates
+101;TWEXAFEGSMTHx;Interest and exchange rates
+102;EXSZUSx;Interest and exchange rates
+103;EXJPUSx;Interest and exchange rates
+104;EXUSUKx;Interest and exchange rates
+105;EXCAUSx;Interest and exchange rates
+106;WPSFD49207;Prices
+107;WPSFD49502;Prices
+108;WPSID61;Prices
+109;WPSID62;Prices
+110;OILPRICEx;Prices
+111;PPICMM;Prices
+112;CPIAUCSL;Prices
+113;CPIAPPSL;Prices
+114;CPITRNSL;Prices
+115;CPIMEDSL;Prices
+116;CUSR0000SAC;Prices
+117;CUSR0000SAD;Prices
+118;CUSR0000SAS;Prices
+119;CPIULFSL;Prices
+120;CUSR0000SA0L2;Prices
+121;CUSR0000SA0L5;Prices
+122;PCEPI;Prices
+123;DDURRG3M086SBEA;Prices
+124;DNDGRG3M086SBEA;Prices
+125;DSERRG3M086SBEA;Prices
+127;CES0600000008;Labor market
+128;CES2000000008;Labor market
+129;CES3000000008;Labor market
+129;UMCSENTx;Consumption, orders, and inventories
+130;DTCOLNVHFNM;Money and credit
+131;DTCTHFNM;Money and credit
+132;INVEST;Money and credit
+133;VIXCLSx;Stock market

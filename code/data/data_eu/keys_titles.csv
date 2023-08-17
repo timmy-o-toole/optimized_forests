@@ -1,0 +1,1228 @@
+ts_key;title;country;category
+buil_ea_tot_1_bs_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Building Activity Development Over the Past 3 Months, Balance, SA;ea;Business Surveys
+buil_ea_tot_3_bs_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Evolution of Your Current Overall Order Books, Balance, SA;ea;Business Surveys
+buil_ea_tot_4_bs_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Employment Expectations Over the Next 3 Months, Balance, SA;ea;Business Surveys
+buil_ea_tot_5_bs_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Prices Expectations Over the Next 3 Months, Balance, SA;ea;Business Surveys
+buil_ea_tot_cof_bs_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Balance, SA;ea;Business Surveys
+indu_ea_tot_cof_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance, SA;ea;Business Surveys
+euecfin0121;Euro Area, Business Surveys, DG ECFIN, Financial Confidence Indicator, Business Situation Development over the past 3 Months, Balance;ea;Business Surveys
+euecfin0120;Euro Area, Business Surveys, DG ECFIN, Financial Confidence Indicator, Balance;ea;Business Surveys
+euecfin0122;Euro Area, Business Surveys, DG ECFIN, Financial Confidence Indicator, Evolution of the Demand over the past 3 Months, Balance;ea;Business Surveys
+euecfin0123;Euro Area, Business Surveys, DG ECFIN, Financial Confidence Indicator, Expectation of the Demand over the Next 3 Months, Balance;ea;Business Surveys
+euecfin0124;Euro Area, Business Surveys, DG ECFIN, Financial Confidence Indicator, Evolution of the Employment over the past 3 Months, Balance;ea;Business Surveys
+indu_ea_tot_1_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Production Trend Observed in Recent Months, Balance, SA;ea;Business Surveys
+indu_ea_tot_2_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Assessment of Order-Book Levels, Balance, SA;ea;Business Surveys
+indu_ea_tot_3_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Assessment of Export Order-Book Levels, Balance, SA;ea;Business Surveys
+indu_ea_tot_4_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Assessment of Stocks of Finished Products, Balance, SA;ea;Business Surveys
+indu_ea_tot_5_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Production Expectations for the Months Ahead, Balance, SA;ea;Business Surveys
+indu_ea_tot_6_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Selling Price Expectations for the Months Ahead, Balance, SA;ea;Business Surveys
+indu_ea_tot_7_bs_m;Euro Area, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Employment Expectations for the Months Ahead, Balance, SA;ea;Business Surveys
+buil_ea_tot_2_f3s_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Weather Conditions, SA;ea;Business Surveys
+buil_ea_tot_2_f2s_m;Euro Area, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Insufficient Demand, SA;ea;Business Surveys
+euecfin1110;Euro Area, Economic Surveys, DG ECFIN, Economic Sentiment Indicator, Balance, SA, Index;ea;Business Surveys
+serv_ea_tot_1_bs_m;Euro Area, Business Surveys, DG ECFIN, Services Confidence Indicator, Total Service Sector, Business Situation Development Over the Past 3 Months, Balance, SA;ea;Business Surveys
+serv_ea_tot_cof_bs_m;Euro Area, Business Surveys, DG ECFIN, Services Confidence Indicator, Total Service Sector, Balance, SA;ea;Business Surveys
+serv_ea_tot_2_bs_m;Euro Area, Business Surveys, DG ECFIN, Services Confidence Indicator, Total Service Sector, Evolution of the Demand Over the Past 3 Months, Balance, SA;ea;Business Surveys
+serv_ea_tot_3_bs_m;Euro Area, Business Surveys, DG ECFIN, Services Confidence Indicator, Total Service Sector, Expectation of the Demand Over the Next 3 Months, Balance, SA;ea;Business Surveys
+serv_ea_tot_5_bs_m;Euro Area, Business Surveys, DG ECFIN, Services Confidence Indicator, Total Service Sector, Expectations of the Employment Over the Next 3 Months, Balance, SA;ea;Business Surveys
+reta_ea_tot_6_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Prices Expectations Over the Next 3 Months, Balance, SA;ea;Business Surveys
+serv_ea_tot_6_bs_m;Euro Area, Business Surveys, DG ECFIN, Services Confidence Indicator, Total Service Sector, Expectations of the Prices Over the Next 3 Months, Balance, SA;ea;Business Surveys
+reta_ea_tot_1_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Business Activity (Sales) Development Over the Past 3 Months, Balance, SA;ea;Business Surveys
+reta_ea_tot_2_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Volume of Stock Currently Hold, Balance, SA;ea;Business Surveys
+reta_ea_tot_3_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Orders Expectations Over the Next 3 Months, Balance, SA;ea;Business Surveys
+reta_ea_tot_4_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Business Activity Expectations Over the Next 3 Months, Balance, SA;ea;Business Surveys
+reta_ea_tot_5_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Employment Expectations Over the Next 3 Months, Balance, SA;ea;Business Surveys
+reta_ea_tot_cof_bs_m;Euro Area, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Balance, SA;ea;Business Surveys
+prodfcc1scai15ea19co;Euro Area 19, Eurostat, Production in Construction, Volume Index of Production, Buildings (F_CC1), 2015=100, Calendar Adjusted, SA, Index;ea;Construction 
+eucons0001;Euro Area 19, Construction Production Index, Construction, Calendar Adjusted, SA, Index;ea;Construction 
+psqmfcc122scai15ea19cb;Euro Area 19, Eurostat, Building Permits, Building Permits - M2 of Useful Floor Area, Office Buildings (F_CC122), 2015=100, Calendar Adjusted, SA, Index;ea;Construction 
+psqmfcc11scai15ea19cb;Euro Area 19, Eurostat, Building Permits, Building Permits - M2 of Useful Floor Area, Residential Buildings (F_CC11), 2015=100, Calendar Adjusted, SA, Index;ea;Construction 
+psqmfcc12xcc122scai15ea19cb;Euro Area 19, Eurostat, Building Permits, Building Permits - M2 of Useful Floor Area, Non-Residential Buildings, Except Office Buildings (F_CC12_X_CC122), 2015=100, Calendar Adjusted, SA, Index;ea;Construction 
+prodfcc2scai15ea19co;Euro Area 19, Eurostat, Production in Construction, Volume Index of Production, Civil Engineering Works (F_CC2), 2015=100, Calendar Adjusted, SA, Index;ea;Construction 
+cons2_ea_tot_cof_bs_m;Euro Area, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance, SA;ea;Consumer Surveys
+cons2_ea_tot_4_bs_m;Euro Area, Consumer Surveys, DG ECFIN, Consumer Confidence, General Economic Situation Over Next 12 Months, Balance, SA;ea;Consumer Surveys
+cons2_ea_re2_2_bs_m;Euro Area, Consumer Surveys, DG ECFIN, Subcategories - by Household Income, 2nd Quartile, Financial Situation over Next 12 Months, SA;ea;Consumer Surveys
+cons2_ea_tot_11_bs_m;Euro Area, Consumer Surveys, DG ECFIN, Consumer Confidence, Savings Over Next 12 Months, Balance, SA;ea;Consumer Surveys
+cons2_ea_tot_7_bs_m;Euro Area, Consumer Surveys, DG ECFIN, Consumer Confidence, Unemployment Expectations Over Next 12 Months, Balance, SA;ea;Consumer Surveys
+ecb_00139115;Euro Area, ECB, ECB Reference Exchange Rate, USD, EUR, Average or Standardised Measure;ea;Financial Variables
+ecb_00170141;Euro Area, ECB, Real Effective Exchange Rate CPI Deflated, EA19 vis-a-vis EER-42, EUR, Average or Standardised Measure, Index;ea;Financial Variables
+sxbsce;Euro Area, Equity Indices, STOXX, Basic Materials, Index, Price Return, Close, EUR;ea;Financial Variables
+scost;Europe, Equity Indices, STOXX, Consumer Staples, 600, Optimized Index, Price Return, EUR;ea;Financial Variables
+ftseftp_3ec5000_eur;Euro Area, Equity Indices, FTSEurofirst, Consumer Services, Consumer Discretionary, 300 Index, Price Return, Close, EUR;ea;Financial Variables
+sxfine;Euro Area, Equity Indices, STOXX, Financials, Index, Price Return, Close, EUR;ea;Financial Variables
+sx8e;Euro Area, Equity Indices, STOXX, Technology, Index, Price Return, Close, EUR;ea;Financial Variables
+sxde;Euro Area, Equity Indices, STOXX, Health Care, Index, Price Return, Close, EUR;ea;Financial Variables
+sxidue;Euro Area, Equity Indices, STOXX, Industrials, Index, Price Return, Close, EUR;ea;Financial Variables
+sxee;Euro Area, Equity Indices, STOXX, Oil & Gas, Index, Price Return, Close, EUR;ea;Financial Variables
+sxke;Euro Area, Equity Indices, STOXX, Telecommunications, Index, Price Return, Close, EUR;ea;Financial Variables
+sx6e;Euro Area, Equity Indices, STOXX, Utilities, Index, Price Return, Close, EUR;ea;Financial Variables
+sxae;Euro Area, Equity Indices, STOXX, Automobiles & Parts, Index, Price Return, Close, EUR;ea;Financial Variables
+sx7e;Euro Area, Equity Indices, STOXX, Banks, Index, Price Return, Close, EUR;ea;Financial Variables
+sxfe;Euro Area, Equity Indices, STOXX, Financial Services, Index, Price Return, Close, EUR;ea;Financial Variables
+sxne;Euro Area, Equity Indices, STOXX, Industrial Goods & Services, Index, Price Return, Close, EUR;ea;Financial Variables
+sxie;Euro Area, Equity Indices, STOXX, Insurance, Index, Price Return, Close, EUR;ea;Financial Variables
+sxte;Euro Area, Equity Indices, STOXX, Travel & Leisure, Index, Price Return, Close, EUR;ea;Financial Variables
+sxre;Euro Area, Equity Indices, STOXX, Retail, Index, Price Return, Close, EUR;ea;Financial Variables
+sxoe;Euro Area, Equity Indices, STOXX, Construction & Materials, Index, Price Return, Close, EUR;ea;Financial Variables
+eubopa0117;Euro Area 19, Current Account, Net Transactions, Total, Calendar Adjusted, SA, EUR;ea;International Trade
+impivolnsaextea19capea199b;Euro Area 19, Eurostat, International Trade in Goods, Imports, Extra-Euro Area-19, Capital Goods, Volume, Index;ea;International Trade
+impivolnsaextea19intea199b;Euro Area 19, Eurostat, International Trade in Goods, Imports, Extra-Euro Area-19, Intermediate Goods, Volume, Index;ea;International Trade
+impivolnsaextea19totalea199b;Euro Area 19, Eurostat, International Trade in Goods, Imports, Extra-Euro Area-19, Total, Volume, Index;ea;International Trade
+impivolnsaextea19consea199b;Euro Area 19, Eurostat, International Trade in Goods, Imports, Extra-Euro Area-19, Consumption Goods, Volume, Index;ea;International Trade
+expivolnsaextea19capea199b;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Capital Goods, Volume, Index;ea;International Trade
+expivolnsaextea19intea199b;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Intermediate Goods, Volume, Index;ea;International Trade
+expivolnsaextea19totalea199b;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Total, Volume, Index;ea;International Trade
+eupric2362;Euro Area 19, Import Prices, Mining & Quarrying, Manufacturing (Except MIG Energy), Index, EUR;ea;International Trade
+expivolscaextea19sitc1ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Beverages & Tobacco, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc3ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Mineral Fuels, Lubricants & Related Materials, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc24ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Raw Materials, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc01ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Food, Drinks & Tobacco, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc68ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Other Manufactured Goods, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc7ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Machinery & Transport Equipment, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc5_8ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Manufactured Goods, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc5ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Chemicals & Related Products, N.E.S., Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc33ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Petroleum, Petroleum Products & Related Materials, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc8ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Miscellaneous Manufactured Articles, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc0ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Food & Live Animals, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19totalea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Total, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc6ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Manufactured Goods Classified Chiefly by Material, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc4ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Animal & Vegetable Oils, Fats & Waxes, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+expivolscaextea19sitc2ea199s;Euro Area 19, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Crude Materials, Inedible, Except Fuels, Volume, Calendar Adjusted, SA, Index;ea;International Trade
+satotalthspertea19tm;Euro Area 19, Eurostat, Employment & Unemployment, Unemployment, LFS Adjusted Series, Unemployment by Sex & Age - Monthly Average, Males & Females, All Ages, Total, Persons, SA;ea;Labor Market
+ecb_stsmi7yordensc0023000;Euro Area 19, New Orders, Non-Domestic Market, Manufacturing, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yorddnsc0023000;Euro Area 19, New Orders, Domestic Market, Manufacturing, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordtns00423000;Euro Area 19, New Orders, Total, Intermediate Goods Working on Orders, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordtns00523000;Euro Area 19, New Orders, Total, Capital Goods, for New Orders, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordtns00723000;Euro Area 19, New Orders, Total, Non-Durable Consumer Goods Working on Orders, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordtns00623000;Euro Area 19, New Orders, Total, Durable Consumer Goods Working on Orders, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordxnsc0023000;Euro Area 19, New Orders, Non-Domestic Market (Non-Euro Area), Manufacturing, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordtns00823000;Euro Area 19, New Orders, Total, Consumer Goods Working on Orders, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordtnsc0033000;Euro Area 19, New Orders, Total, Manufacturing (Except Heavy Transport Equipment), Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_stsmi7yordznsc0023000;Euro Area 19, New Orders, Non-Domestic Market (Euro Area), Manufacturing, Calendar Adjusted, Constant Prices, SA, Index;ea;Manufacturing 
+ecb_00209356;Euro Area 19, ECB, Turnover Index, Manufacturing (NACE Rev. 2), Institution Originating the Data Flow: Eurostat, Calendar Adjusted, SA;ea;Manufacturing 
+prodmigcagscai15ea19pm;Euro Area 19, Eurostat, Production in Industry, MIG - Capital Goods, 2015=100, Calendar Adjusted, SA, Index;ea;Manufacturing 
+prodmigcogscai15ea19pm;Euro Area 19, Eurostat, Production in Industry, MIG - Consumer Goods, 2015=100, Calendar Adjusted, SA, Index;ea;Manufacturing 
+prodmigdcogscai15ea19pm;Euro Area 19, Eurostat, Production in Industry, MIG - Durable Consumer Goods, 2015=100, Calendar Adjusted, SA, Index;ea;Manufacturing 
+prodmignrgxescai15ea19pm;Euro Area 19, Eurostat, Production in Industry, MIG - Energy (Except Section E), 2015=100, Calendar Adjusted, SA, Index;ea;Manufacturing 
+prodmigingscai15ea19pm;Euro Area 19, Eurostat, Production in Industry, MIG - Intermediate Goods, 2015=100, Calendar Adjusted, SA, Index;ea;Manufacturing 
+euprod0032;Euro Area 19, Manufacturing, Total, Calendar Adjusted, SA, Index;ea;Manufacturing 
+euprod0001;Euro Area 19, Industrial Production, Total Excluding Construction, Calendar Adjusted, SA, Index;ea;Manufacturing 
+prinb_e36nsai15ea19pd;Euro Area 19, Eurostat, Producer Prices in Industry, Domestic Market, Industry (Except Construction, Sewerage, Waste Management & Remediation Activities) (B-E36), 2015=100, Index;ea;Prices and Monetary Variables
+eupric0001;Euro Area, HICP, All-Items, Index;ea;Prices and Monetary Variables
+ecb_00899822;Euro Area, ECB, Consumer Price Index (HICP), Institution Originating the Data: Eurostat, Special Series, All-Items Excluding Energy & Unprocessed Food, Change Y/Y;ea;Prices and Monetary Variables
+eu10ygovecb_m;Euro Area, Government Benchmarks, ECB, 10 Year, Yield, End of Period;ea;Prices and Monetary Variables
+ecb_00858138;Euro Area, ECB, Financial Market Provider: Reuters, Money Market, EURIBOR 3-Month, Historical Close, Average of Period;ea;Prices and Monetary Variables
+ecb_00213031;Euro Area 19, ECB, Vehicle Registrations, New Passenger Cars, Institution Originating the Data Flow: ECB, Calendar Adjusted, SA;ea;Retail and Consumption
+ecb_00244925;Euro Area 19, ECB, Turnover Index (Deflated), Retail Trade Including Fuel, Except of Motor Vehicles & Motorcycles (NACE Rev. 2), Institution Originating the Data Flow: Eurostat, Calendar Adjusted, SA;ea;Retail and Consumption
+eutrad0031;Euro Area 19, Domestic Trade, Retail Trade, Total, Turnover, Deflated, Calendar Adjusted, Constant Prices, SA, Index;ea;Retail and Consumption
+oecd_mei_00383784;Belgium, OECD MEI, Leading Indicators OECD, Leading Indicators, Composite Leading Indicators, Trend Restored, SA, Index;be;Business Surveys
+besurv0522;Belgium, Business Surveys, Bank of Belgium, Total, Manufacturing Industry, SA;be;Business Surveys
+besurv0523;Belgium, Business Surveys, Bank of Belgium, Total, Building Industry, Structural Building Work, SA;be;Business Surveys
+besurv0524;Belgium, Business Surveys, Bank of Belgium, Total, Trade, SA;be;Business Surveys
+besurv0521;Belgium, Business Surveys, Bank of Belgium, Total, Overall Synthetic Curve, SA;be;Business Surveys
+beecfin0010;Belgium, Economic Surveys, DG ECFIN, Economic Sentiment Indicator, Balance, SA, Index;be;Business Surveys
+reta_be_tot_cof_b_m;Belgium, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Balance;be;Business Surveys
+besurv0905;Belgium, Business Surveys, Bank of Belgium, Building Industry, Order Book Appraisal, Total, SA;be;Business Surveys
+besurv0844;Belgium, Business Surveys, Bank of Belgium, Building Industry, Trend in Employment, Carcases of Buildings (Synthetic Curve), SA;be;Business Surveys
+besurv0903;Belgium, Business Surveys, Bank of Belgium, Building Industry, Trend in Equipment, Total, SA;be;Business Surveys
+besurv0901;Belgium, Business Surveys, Bank of Belgium, Building Industry, Trend in Order Book, Total, SA;be;Business Surveys
+besurv0842;Belgium, Business Surveys, Bank of Belgium, Building Industry, Movement of Activity, Carcases of Buildings (Synthetic Curve), SA;be;Business Surveys
+besurv0848;Belgium, Business Surveys, Bank of Belgium, Building Industry, Trend in Selling Prices, Carcases of Buildings (Synthetic Curve), SA;be;Business Surveys
+besurv0907;Belgium, Business Surveys, Bank of Belgium, Building Industry, Expected Trend of Demand, Total, SA;be;Business Surveys
+besurv0846;Belgium, Business Surveys, Bank of Belgium, Building Industry, Employment  Next 3 Months, Carcases of Buildings (Synthetic Curve), SA;be;Business Surveys
+besurv0850;Belgium, Business Surveys, Bank of Belgium, Building Industry, Selling Price Next 3 Months, Carcases of Buildings (Synthetic Curve), SA;be;Business Surveys
+besurv0602;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Overall Order-Books, Synthetic Curve, SA;be;Business Surveys
+besurv0836;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Export Order-Books, Synthetic Curve, SA;be;Business Surveys
+besurv0832;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Trend in Domestic Orders, Synthetic Curve, SA;be;Business Surveys
+besurv0834;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Trend in Export Orders, Synthetic Curve, SA;be;Business Surveys
+besurv0830;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Production Rate Trend, Synthetic Curve, SA;be;Business Surveys
+besurv0838;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Trend in Selling Prices, Synthetic Curve, SA;be;Business Surveys
+besurv0608;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Demand Next 3 Months, Synthetic Curve, SA;be;Business Surveys
+besurv0606;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Employment  Next 3 Months, Synthetic Curve, SA;be;Business Surveys
+besurv0840;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Selling Price Next 3 Months, Synthetic Curve, SA;be;Business Surveys
+besurv0604;Belgium, Business Surveys, Bank of Belgium, Manufacturing Industry, Stock of Finished Products, Synthetic Curve, SA;be;Business Surveys
+besurv0865;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Sectoral Curves, Appraisal of Activity Development, SA;be;Business Surveys
+besurv0854;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Trend in Employment, Synthetic Curve, SA;be;Business Surveys
+besurv0852;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Movement of Activity, Synthetic Curve, SA;be;Business Surveys
+besurv0858;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Trend in Selling Prices, Synthetic Curve, SA;be;Business Surveys
+besurv0869;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Sectoral Curves, General Market Demand, SA;be;Business Surveys
+besurv0856;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Employment  Next 3 Months, Synthetic Curve, SA;be;Business Surveys
+besurv0867;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Sectoral Curves, Expected Activity for the Company, SA;be;Business Surveys
+besurv0860;Belgium, Business Surveys, Bank of Belgium, Business-Related Services, Selling Price Next 3 Months, Synthetic Curve, SA;be;Business Surveys
+besurv0525;Belgium, Business Surveys, Bank of Belgium, Total, Business-Related Services, SA;be;Business Surveys
+besurv0873;Belgium, Business Surveys, Bank of Belgium, Trade, Sectoral Curves, Appraisal of Sales, SA;be;Business Surveys
+besurv0875;Belgium, Business Surveys, Bank of Belgium, Trade, Sectoral Curves, Appraisal of Stocks, SA;be;Business Surveys
+besurv0871;Belgium, Business Surveys, Bank of Belgium, Trade, Sectoral Curves, Sales Trend, SA;be;Business Surveys
+besurv0877;Belgium, Business Surveys, Bank of Belgium, Trade, Sectoral Curves, Movement of Selling Prices, SA;be;Business Surveys
+besurv0895;Belgium, Business Surveys, Bank of Belgium, Trade, Demand Next 3 Months, Total, SA;be;Business Surveys
+besurv0879;Belgium, Business Surveys, Bank of Belgium, Trade, Sectoral Curves, Selling Prices Expectations, SA;be;Business Surveys
+prodfscai15beco;Belgium, Eurostat, Production in Construction, Volume Index of Production, Construction (F), 2015=100, Calendar Adjusted, SA, Index;be;Construction
+besurv0005;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Consumer Confidence Indicator, SA;be;Consumer Surveys
+besurv0006;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Appraisal Economic Situation in Belgium (Last 12 Months), SA;be;Consumer Surveys
+besurv0013;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Trend in Financial Situation of Households (Last 12 Months), SA;be;Consumer Surveys
+besurv0008;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Trend in Consumer Prices in Belgium (Last 12 Months), SA;be;Consumer Surveys
+besurv0011;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Appraisal of Actual Moment Whether or Not It Is Favorable to Make Major Purchases, SA;be;Consumer Surveys
+besurv0014;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Appraisal of Actual Financial Situation of Households, SA;be;Consumer Surveys
+besurv0001;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Forecasts Economic Situation in Belgium (Next 12 Months), SA;be;Consumer Surveys
+besurv0003;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Forecasts Financial Situation of Households (Next 12 Months), SA;be;Consumer Surveys
+besurv0009;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Forecasts Consumer Prices in Belgium (Next 12 Months), SA;be;Consumer Surveys
+besurv0012;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Forecasts for Major Purchase of Households (Next 12 Months), SA;be;Consumer Surveys
+besurv0004;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Forecasts of Savings of Households (Next 12 Months), SA;be;Consumer Surveys
+besurv0002;Belgium, Consumer Surveys, Bank of Belgium, Consumer Confidence Indicator, Forecasts Unemployment in Belgium (Next 12 Months), SA;be;Consumer Surveys
+beeqin0002;Belgium, Equity Indices, Euronext Brussels, All Share Index, Price Return, Close, EUR;be;Financial Variables
+bebank0079;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Type, Lending & Deposits, Loans, Belgium, Total, EUR;be;Financial Variables
+bebank0080;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Type, Lending & Deposits, Loans, Belgium, MFIs, EUR;be;Financial Variables
+bebank0081;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Type, Lending & Deposits, Loans, Belgium, Institutional Units Other than MFIs, EUR;be;Financial Variables
+bebank0101;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Type, Remaining, Total, EUR;be;Financial Variables
+bebank0102;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, Total, Total, EUR;be;Financial Variables
+bebank0099;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Type, Shares & Other Equity, Issued by Residents, EUR;be;Financial Variables
+bebank0084;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Type, Securities, Other than Shares Issued by Residents, Total, EUR;be;Financial Variables
+beeqin0001;Belgium, Equity Indices, Euronext Brussels, BEL 20 Index, Price Return, Close, EUR;be;Financial Variables
+bebank0126;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Capital & Reserves, Total, EUR;be;Financial Variables
+bebank0105;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Lending & Deposits, Deposits, Belgium, Total, EUR;be;Financial Variables
+bebank0108;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Lending & Deposits, Deposits, Belgium, Euro, Institutional Units Other than MFIs, EUR;be;Financial Variables
+bebank0117;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Securities, Debt Securities Issued, Total, EUR;be;Financial Variables
+bebank0109;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Lending & Deposits, Deposits, Belgium, Euro, General Government, EUR;be;Financial Variables
+bebank0104;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Lending & Deposits, Deposits, Total, EUR;be;Financial Variables
+bebank0128;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, Total, Total, EUR;be;Financial Variables
+befofi0044;Belgium, International Reserves, Official Reserve Assets, Total, EUR;be;Financial Variables
+bel0005;Belgium, Equity Indices, Euronext Brussels, Basic Materials, Index, Price Return, Close, EUR;be;Financial Variables
+bel0011;Belgium, Equity Indices, Euronext Brussels, Consumer Goods, Index, Price Return, Close, EUR;be;Financial Variables
+bel0017;Belgium, Equity Indices, Euronext Brussels, Consumer Services, Index, Price Return, Close, EUR;be;Financial Variables
+bel0004;Belgium, Equity Indices, Euronext Brussels, Financials, Index, Price Return, Close, EUR;be;Financial Variables
+bel0001;Belgium, Equity Indices, Euronext Brussels, Technology, Index, Price Return, Close, EUR;be;Financial Variables
+bel0020;Belgium, Equity Indices, Euronext Brussels, Health Care, Index, Price Return, Close, EUR;be;Financial Variables
+bel0013;Belgium, Equity Indices, Euronext Brussels, Industrials, Index, Price Return, Close, EUR;be;Financial Variables
+bel0006;Belgium, Equity Indices, Euronext Brussels, Telecommunications, Index, Price Return, Close, EUR;be;Financial Variables
+bel0014;Belgium, Equity Indices, Euronext Brussels, Utilities, Index, Price Return, Close, EUR;be;Financial Variables
+betrad0412;Belgium, Foreign Trade, Export, Intra-EU, EUR;be;International Trade
+betrad0411;Belgium, Foreign Trade, Export, EUR;be;International Trade
+expivuextea19totalbeb9;Belgium, Eurostat, International Trade in Goods, Exports, Extra-Euro Area-19, Total, Unit Value, Index;be;International Trade
+betrad0415;Belgium, Foreign Trade, Import, Intra-EU, EUR;be;International Trade
+betrad0414;Belgium, Foreign Trade, Import, EUR;be;International Trade
+impivuworldconsbeb9;Belgium, Eurostat, International Trade in Goods, Imports, All Countries of the World, Consumption Goods, Unit Value, Index;be;International Trade
+betrad0473;Belgium, Export/Import Prices, Terms of Trade, According to the National Concept, Index;be;International Trade
+belama0576;Belgium, Unemployment, Job Seekers, Women & Men, By Age, Aged under 25 Years;be;Labor Market
+belama0368;Belgium, Unemployment, Rate, Women & Men (Harmonized), SA;be;Labor Market
+belama1044;Belgium, Unemployment, Unemployed Recipients of Unemployment Benefits, Total;be;Labor Market
+beprod0291;Belgium, Mining & Quarrying, Total, SA, Index;be;Manufacturing
+beprod0280;Belgium, Manufacturing, Food Industries, SA, Index;be;Manufacturing
+beprod0278;Belgium, Manufacturing, Paper & Cardboard, SA, Index;be;Manufacturing
+beprod0250;Belgium, Mining & Quarrying, Coke & Refined Petroleum, SA, Index;be;Manufacturing
+beprod0275;Belgium, Manufacturing, Chemical & Pharmaceutical Industry, SA, Index;be;Manufacturing
+beprod0263;Belgium, Manufacturing, Rubber & Plastic, SA, Index;be;Manufacturing
+beprod0289;Belgium, Manufacturing, Basic Metals & Fabricated Metal Products, Except Machinery & Equipment, SA, Index;be;Manufacturing
+beprod0264;Belgium, Manufacturing, Computer, Electronic & Optical Equipment, SA, Index;be;Manufacturing
+beprod0269;Belgium, Manufacturing, Electrical Engineering, SA, Index;be;Manufacturing
+beprod0259;Belgium, Manufacturing, Machinery & Equipment N.E.C., SA, Index;be;Manufacturing
+beprod0252;Belgium, Manufacturing, Motor Vehicles, Trailers & Semi-Trailers, SA, Index;be;Manufacturing
+beprod0242;Belgium, Manufacturing, Other, SA, Index;be;Manufacturing
+beprod0293;Belgium, Manufacturing, Production & Distribution of Electricity, Gas, Steam & Air Conditioning, SA, Index;be;Manufacturing
+beprod0246;Belgium, Industrial Production, Capital Goods, SA, Index;be;Manufacturing
+beprod0243;Belgium, Industrial Production, Consumer Goods, SA, Index;be;Manufacturing
+beprod0244;Belgium, Industrial Production, Consumer Durables, SA, Index;be;Manufacturing
+beprod0247;Belgium, Industrial Production, Intermediate Goods, SA, Index;be;Manufacturing
+beprod0248;Belgium, Industrial Production, Intermediate Goods & Investment, SA, Index;be;Manufacturing
+beprod0245;Belgium, Industrial Production, Consumer Non-Durables, SA, Index;be;Manufacturing
+beprod0292;Belgium, Manufacturing, Total, SA, Index;be;Manufacturing
+beprod0284;Belgium, Mining & Quarrying, Industry (Except Construction), Except Sewerage, Waste Management & Remediation Activities & Water Collection, Treatment & Supply, SA, Index;be;Manufacturing
+tovtc20nsai15bevm;Belgium, Eurostat, Turnover in Industry, Total Market, Manufacture of Chemicals & Chemical Products (C20), 2015=100, Index;be;Manufacturing
+tovtc19nsai15bevm;Belgium, Eurostat, Turnover in Industry, Total Market, Manufacture of Coke & Refined Petroleum Products (C19), 2015=100, Index;be;Manufacturing
+tovtmigndcogcai15bevm;Belgium, Eurostat, Turnover in Industry, Total Market, MIG - Non-Durable Consumer Goods, 2015=100, Calendar Adjusted, Index;be;Manufacturing
+tovtmigingscai15bevm;Belgium, Eurostat, Turnover in Industry, Total Market, MIG - Intermediate Goods, 2015=100, Calendar Adjusted, SA, Index;be;Manufacturing
+tovtcnsai15bevm;Belgium, Eurostat, Turnover in Industry, Total Market, Manufacturing (C), 2015=100, Index;be;Manufacturing
+tovtmigndcognsai15bevm;Belgium, Eurostat, Turnover in Industry, Total Market, MIG - Non-Durable Consumer Goods, 2015=100, Index;be;Manufacturing
+bepric1061;Belgium, Consumer Price Index, Total, Index;be;Prices and Monetary Variables
+bepric0595;Belgium, Consumer Price Index, Housing, Water, Electricity, Gas & Other Fuels, Index;be;Prices and Monetary Variables
+bepric0834;Belgium, Consumer Price Index, Communication, Index;be;Prices and Monetary Variables
+bepric1361;Belgium, Consumer Price Index, Foodstuffs, Index;be;Prices and Monetary Variables
+bepric1353;Belgium, Consumer Price Index, Total, Health Index, Index;be;Prices and Monetary Variables
+bepric0974;Belgium, Consumer Price Index, Restaurants & Hotels, Restaurants & Cafes, Index;be;Prices and Monetary Variables
+bepric0967;Belgium, Consumer Price Index, Education, Index;be;Prices and Monetary Variables
+bepric0743;Belgium, Consumer Price Index, Health Expenditure, Index;be;Prices and Monetary Variables
+bepric0779;Belgium, Consumer Price Index, Transport, Index;be;Prices and Monetary Variables
+bepric0844;Belgium, Consumer Price Index, Leisure & Culture, Index;be;Prices and Monetary Variables
+bepric1362;Belgium, Consumer Price Index, Non-Foodstuffs, Index;be;Prices and Monetary Variables
+bepric1005;Belgium, Consumer Price Index, Other Goods & Services, Index;be;Prices and Monetary Variables
+bepric1364;Belgium, Consumer Price Index, Rent, Index;be;Prices and Monetary Variables
+bepric1363;Belgium, Consumer Price Index, Services, Index;be;Prices and Monetary Variables
+bepric1354;Belgium, Harmonized CPI, Total, Total, Index;be;Prices and Monetary Variables
+bebank0103;Belgium, Balance Sheet & Flows of MFI Sector, MFIs, Liabilities, By Type, Currency In Circulation, Total, EUR;be;Prices and Monetary Variables
+bemost0001;Belgium, Monetary Statistics, Monetary Aggregates, M1, Overnight Deposits, EUR;be;Prices and Monetary Variables
+bemost0007;Belgium, Monetary Statistics, Monetary Aggregates, M3, Excluding The Currency in Circulation, Total, EUR;be;Prices and Monetary Variables
+bepric1248;Belgium, Producer Price Index, Manufacturing, Basic Metals, Index;be;Prices and Monetary Variables
+bepric1102;Belgium, Producer Price Index, Manufacturing, Beverages, Detail, Index;be;Prices and Monetary Variables
+bepric1244;Belgium, Producer Price Index, Manufacturing, Chemicals & Chemical Products, Index;be;Prices and Monetary Variables
+bepric1250;Belgium, Producer Price Index, Manufacturing, Computer, Electronic & Optical Products, Index;be;Prices and Monetary Variables
+bepric1233;Belgium, Producer Price Index, Consumer Goods, Index;be;Prices and Monetary Variables
+bepric1231;Belgium, Producer Price Index, Durable Consumer Goods, Index;be;Prices and Monetary Variables
+bepric1251;Belgium, Producer Price Index, Manufacturing, Electrical Equipment, Index;be;Prices and Monetary Variables
+bepric1234;Belgium, Producer Price Index, Energy, Index;be;Prices and Monetary Variables
+bepric1256;Belgium, Producer Price Index, Electricity, Gas, Steam & Hot Water Supply, Electricity, Gas, Steam & Air Conditioning Supply, Index;be;Prices and Monetary Variables
+bepric1237;Belgium, Producer Price Index, Manufacturing, Food Products & Beverages, Index;be;Prices and Monetary Variables
+bepric1259;Belgium, Producer Price Index, Industry, Index;be;Prices and Monetary Variables
+bepric1229;Belgium, Producer Price Index, Intermediate Goods, Index;be;Prices and Monetary Variables
+bepric1230;Belgium, Producer Price Index, Capital Goods, Index;be;Prices and Monetary Variables
+bepric1235;Belgium, Producer Price Index, Manufacturing, Metal Products, Machinery & Equipment, Index;be;Prices and Monetary Variables
+bepric1252;Belgium, Producer Price Index, Manufacturing, Machinery & Equipment N.E.C., Index;be;Prices and Monetary Variables
+bepric1249;Belgium, Producer Price Index, Manufacturing, Fabricated Metal Products, Except Machinery & Equipment, Index;be;Prices and Monetary Variables
+bepric1232;Belgium, Producer Price Index, Non Durable Consumer Goods, Index;be;Prices and Monetary Variables
+bepric1255;Belgium, Producer Price Index, Manufacturing, Other Manufacturing, Index;be;Prices and Monetary Variables
+bepric1245;Belgium, Producer Price Index, Manufacturing, Basic Pharmaceutical Products & Pharmaceutical Preparations, Index;be;Prices and Monetary Variables
+bepric1243;Belgium, Producer Price Index, Manufacturing, Refined Petroleum Products, Index;be;Prices and Monetary Variables
+bepric1246;Belgium, Producer Price Index, Manufacturing, Rubber & Plastic Products, Index;be;Prices and Monetary Variables
+bepric1228;Belgium, Producer Price Index, Total Industry, Except Energy, Index;be;Prices and Monetary Variables
+bepric1106;Belgium, Producer Price Index, Manufacturing, Tobacco Products, Index;be;Prices and Monetary Variables
+bepric1239;Belgium, Producer Price Index, Manufacturing, Textiles, Index;be;Prices and Monetary Variables
+bepric1253;Belgium, Producer Price Index, Manufacturing, Construction & Assembly of Motor Vehicles, Trailers & Semi-Trailers, Index;be;Prices and Monetary Variables
+bepric1227;Belgium, Producer Price Index, Total Industry, Excluding Construction, Index;be;Prices and Monetary Variables
+be12mgov;Belgium, Government Benchmarks, 12 Month, Yield;be;Prices and Monetary Variables
+be5ygov;Belgium, Government Benchmarks, Macrobond, 5 Year, Yield;be;Prices and Monetary Variables
+be6mgov;Belgium, Government Benchmarks, 6 Month, Yield;be;Prices and Monetary Variables
+beaceapc;Belgium, Domestic Trade, Vehicle Registrations (ACEA), New, Passenger Cars;be;Retail and Consumption
+desurv01046;Germany, Business Surveys, Ifo, Business Survey, Total, Business Climate, Average, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv01048;Germany, Business Surveys, Ifo, Business Survey, Total, Expectations with Regard to Business Development in the Next 6 Months, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv7681;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Expectations with Regard to Employees Altogether in the Next 3 to 4 Months, Balance (Employment Barometer), SA (X-13 ARIMA);de;Business Surveys
+deifo_f4000000_kkd_bds;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Capacity Utilization, Average, SA;de;Business Surveys
+desurv7675;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Construction Prices Compared to Previous Month, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv7679;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Expectations with Regard to Construction Prices in the Next 3 Months, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv7667;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Expectations with Regard to Construction Activity in the Next 3 Months, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv7651;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Construction Activity Compared to the Average of the Last 3 Months, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv01044;Germany, Business Surveys, Ifo, Dispersion, Total, Including Services, SA (X-13 ARIMA), 3 Month Moving Average;de;Business Surveys
+desurv1126;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Production Activity Compared to the Previous Month, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1128;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Finished Goods Inventory, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1130;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Demand Situation Compared to the Previous Month, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1132;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Orders on Hand Compared to the Previous Month, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1134;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Orders on Hand, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1136;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Domestic Sales Prices Compared to the Previous Month, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1138;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Expectations with Regard to Production Activity in the Next 3 Months, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1140;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Expectations with Regard to Domestic Sales Prices in the Next 3 Months, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1142;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Expectations with Regard to Export Business in the Next 3 Months, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1144;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Foreign Orders on Hand, Balance, SA (X-13 ARIMA);de;Business Surveys
+desurv1148;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Expectations with Regard to Employees in the Next 3 Months, Balance (Employment Barometer), SA (X-13 ARIMA);de;Business Surveys
+desurv1030;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Assessment of the Business Situation, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv1034;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Expectations with Regard to the Business Development in the Next 6 Months, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv01047;Germany, Business Surveys, Ifo, Business Survey, Total, Assessment of the Business Situation, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv7673;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Range of Orders on Hand, SA (X-13 ARIMA);de;Business Surveys
+desurv1009;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Assessment of the Business Situation, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv1011;Germany, Business Surveys, Ifo, Business Survey, Manufacturing Industry, Total, Expectations with Regard to Business Development in the Next 6 Months, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv1052;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Assessment of the Business Situation, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv1056;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Expectations with Regard to the Business Development in the Next 6 Months, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv1041;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Assessment of the Business Situation, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv1045;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Expectations with Regard to the Business Development in the Next 6 Months, SA (X-13 ARIMA), Index;de;Business Surveys
+desurv7659;Germany, Business Surveys, Ifo, Business Survey, Construction, Total, Unfavorable Weather Situation, Yes-Answers, SA (X-13 ARIMA);de;Business Surveys
+deifo_g4700010_lus_bds;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Assessment of Inventories, Balance, SA;de;Business Surveys
+deifo_g4700010_pvs_bds;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Selling Prices Compared to the Previous Month, Balance, SA;de;Business Surveys
+deifo_g4700010_oes_bds;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Expectations with Regard to Order Activity in the Next 3 Months, Balance, SA;de;Business Surveys
+deifo_g4700010_bes_bds;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Expectations with Regard to Number of Employees, Balance, SA;de;Business Surveys
+deifo_g4700010_pws_bds;Germany, Business Surveys, Ifo, Business Survey, Retail Trade, Total, Including Motor Vehicles, Expectations with Regard to Selling Prices in the Next 3 Months, Balance, SA;de;Business Surveys
+deifo_g4600010_lus_bds;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Assessment of Inventories, Balance, SA;de;Business Surveys
+deifo_g4600010_pvs_bds;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Selling Prices Compared to the Previous Month, Balance, SA;de;Business Surveys
+deifo_g4600010_oes_bds;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Expectations with Regard to Order Activity in the Next 3 Months, Balance, SA;de;Business Surveys
+deifo_g4600010_bes_bds;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Expectations with Regard to Number of Employees, Balance, SA;de;Business Surveys
+deifo_g4600010_pws_bds;Germany, Business Surveys, Ifo, Business Survey, Wholesale Trade, Total, Including Motor Vehicles, Expectations with Regard to Selling Prices in the Next 3 Months, Balance, SA;de;Business Surveys
+indu_de_tot_cof_bs_m;Germany, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance, SA;de;Business Surveys
+desurv0017;Germany, Economic Surveys, ZEW, Financial Market Report, Economic Expectations, Balance;de;Business Surveys
+buba_mb_122274;Germany, Bundesbank, Orders Received, Germany, Residential Construction, Calendar Adjusted, Constant Prices, SA, Index;de;Construction 
+deprod1380;Germany, Construction, Main Construction Industry, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Construction 
+deprod1994;Germany, Construction, Building Completion Work, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Construction 
+buba_mb_122273;Germany, Bundesbank, Orders Received, Germany, Structural Engineering, Excluding Residential Construction, Calendar Adjusted, Constant Prices, SA, Index;de;Construction 
+buba_mb_60158;Germany, Bundesbank, Construction Permits - Estimated Construction Cost, Flows, Germany, Total (Including Construction Work on Existing Buildings) - Residential Buildings, Total, Calendar Adjusted, Current Prices, SA, EUR;de;Construction 
+buba_mb_60157;Germany, Bundesbank, Construction Permits - Estimated Construction Cost, Flows, Germany, Total (Including Construction Work on Existing Buildings) - Non-Residential Buildings, Total, Calendar Adjusted, Current Prices, SA, EUR;de;Construction 
+desurv0338;Germany, Consumer Surveys, Ifo, Consumer Climate, Consumer Climate, SA, Index;de;Consumer Surveys
+cons2_de_tot_cof_bs_m;Germany, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance, SA;de;Consumer Surveys
+cons2_de_tot_4_bs_m;Germany, Consumer Surveys, DG ECFIN, Consumer Confidence, General Economic Situation Over Next 12 Months, Balance, SA;de;Consumer Surveys
+cons2_de_tot_2_bs_m;Germany, Consumer Surveys, DG ECFIN, Consumer Confidence, Financial Situation Over Next 12 Months, Balance, SA;de;Consumer Surveys
+cons2_de_tot_11_bs_m;Germany, Consumer Surveys, DG ECFIN, Consumer Confidence, Savings Over Next 12 Months, Balance, SA;de;Consumer Surveys
+cons2_de_tot_7_bs_m;Germany, Consumer Surveys, DG ECFIN, Consumer Confidence, Unemployment Expectations Over Next 12 Months, Balance, SA;de;Consumer Surveys
+desurv0028;Germany, Consumer Surveys, GfK, Consumer Climate, Willingness to Buy;de;Consumer Surveys
+desurv0029;Germany, Consumer Surveys, GfK, Consumer Climate, Consumer Climate Indicator;de;Consumer Surveys
+desurv0026;Germany, Consumer Surveys, GfK, Consumer Climate, Economic Expectations;de;Consumer Surveys
+desurv0027;Germany, Consumer Surveys, GfK, Consumer Climate, Income Expectations;de;Consumer Surveys
+buba_mb_00113;Germany, Bundesbank, Principal Assets & Liabilities of Banks (MFIs) in Germany by Category of Banks, Lendings to Non-Banks (Non-MFIs), of Which Loans, for More than 1 Year, All Categories of Banks, EUR;de;Financial Variables
+buba_mb_00099;Germany, Bundesbank, Principal Assets & Liabilities of Banks (MFIs) in Germany by Category of Banks, Lendings to Non-Banks (Non-MFIs), of Which Loans, for up to & Including 1 Year, All Categories of Banks, EUR;de;Financial Variables
+buba_mb_34057;Germany, Bundesbank, Deposits of Domestic Households & Non-Profit Institutions at Banks (MFIs) in Germany, Total, All Categories of Banks, EUR;de;Financial Variables
+buba_mb_30379;Germany, Bundesbank, Deposits of Domestic Non-Banks (Non-MFIs) at Banks (MFIs) in Germany, Savings Deposits, Domestic Enterprises & Households, All Categories of Banks, EUR;de;Financial Variables
+buba_mb_05453;Germany, Bundesbank, Monetary Capital Formation, All Maturities, German Contribution, Outstanding Amounts at the End of the Month (Stocks), SA, EUR;de;Financial Variables
+dbbv36;Germany, Equity Indices, Deutsche Boerse, DAX, Automobile All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbbv38;Germany, Equity Indices, Deutsche Boerse, DAX, Banks All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbbwc3;Germany, Equity Indices, Deutsche Boerse, DAX, Chemicals All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbnw47;Germany, Equity Indices, Deutsche Boerse, DAX, Consumer All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbbtu3;Germany, Equity Indices, Deutsche Boerse, DAX, General All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbnz47;Germany, Equity Indices, Deutsche Boerse, DAX, Industrial All-Share Index, Total Return, Close, EUR;de;Financial Variables
+cxpl;Germany, Equity Indices, Deutsche Boerse, DAX, Prime All-Share Transportation & Logistics Index, Total Return, Close, EUR;de;Financial Variables
+dbnm48;Germany, Equity Indices, Deutsche Boerse, DAX, All-Share Construction & Engineering Index, Total Return, Close, EUR;de;Financial Variables
+dbnm49;Germany, Equity Indices, Deutsche Boerse, DAX, All-Share Real Estate Index, Total Return, Close, EUR;de;Financial Variables
+dbn483;Germany, Equity Indices, Deutsche Boerse, DAX, Retail All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbnaf4;Germany, Equity Indices, Deutsche Boerse, DAX, Basic Materials Index, Total Return, Close, EUR;de;Financial Variables
+dbnag4;Germany, Equity Indices, Deutsche Boerse, DAX, Consumer Goods Index, Total Return, Close, EUR;de;Financial Variables
+dbnah4;Germany, Equity Indices, Deutsche Boerse, DAX, Consumer Services Index, Total Return, Close, EUR;de;Financial Variables
+dbnx7;Germany, Equity Indices, Deutsche Boerse, DAX, Financial Services All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dbnaj4;Germany, Equity Indices, Deutsche Boerse, DAX, Industrials Index, Total Return, Close, EUR;de;Financial Variables
+dbnak4;Germany, Equity Indices, Deutsche Boerse, DAX, Information Technology Index, Total Return, Close, EUR;de;Financial Variables
+dbnal4;Germany, Equity Indices, Deutsche Boerse, DAX, Pharmaceuticals & Health Care Index, Total Return, Close, EUR;de;Financial Variables
+dbn486;Germany, Equity Indices, Deutsche Boerse, DAX, Telecommunication All-Share Index, Total Return, Close, EUR;de;Financial Variables
+dban04;Germany, Equity Indices, Deutsche Boerse, DAX, Utilities Index, Total Return, Close, EUR;de;Financial Variables
+debopa0231;Germany, Current Account, Goods, Exports, Calendar Adjusted, Current Prices, SA, EUR;de;International Trade
+buba_mb_122013;Germany, Bundesbank, Indices of Foreign Trade Prices - Exports, Total, Germany, Total, Calendar Adjusted, SA, Index;de;International Trade
+debopa0233;Germany, Current Account, Goods, Imports, Calendar Adjusted, Current Prices, SA, EUR;de;International Trade
+buba_mb_122014;Germany, Bundesbank, Indices of Foreign Trade Prices - Imports, Total, Germany, Total, Calendar Adjusted, SA, Index;de;International Trade
+detran0221;Germany, Truck Toll Mileage Index, Total, Calendar Adjusted (X13 JDemetra+), SA (X13 JDemetra+), Index;de;International Trade
+delama1314;Germany, Employment, Total, Resident Concept, SA (X13 JDemetra+);de;Labor Market
+delama1001;Germany, Productivity, Costs & Hours Worked, Labor Productivity, Productivity per Man-Hour Worked, Industry, Calendar Adjusted, SA, Index;de;Labor Market
+buba_mb_66277;Germany, Bundesbank, Reported Vacancies, Total, Germany, Total, Absolute Value, Calendar Adjusted, SA;de;Labor Market
+deprod2119;Germany, New Orders, Manufacturing, By Goods, Intermediate Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod2124;Germany, New Orders, Manufacturing, By Goods, Capital Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod2129;Germany, New Orders, Manufacturing, By Goods, Consumer Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod2113;Germany, New Orders, Manufacturing, Domestic, Total, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1350;Germany, Industrial Production, By Goods, Capital Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1355;Germany, Industrial Production, By Goods, Durable Consumer Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1559;Germany, Industrial Production, By Goods, Energy, Excluding Water Supply, Sewerage, Waste Management & Remediation Activities, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1345;Germany, Industrial Production, By Goods, Intermediate Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1414;Germany, Manufacturing, Total, All Sectors, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1360;Germany, Industrial Production, By Goods, Non-Durable Consumer Goods, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod1404;Germany, Industrial Production, Total, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod2112;Germany, New Orders, Manufacturing, Total, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+deprod2114;Germany, New Orders, Manufacturing, Foreign, Total, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Manufacturing 
+depric2458;Germany, Consumer Price Index, Total, Excluding Food & Energy, Index;de;Prices and Monetary Variables
+depric0001;Germany, Consumer Price Index, Total, Index;de;Prices and Monetary Variables
+oecd_mei_00397555;Germany, OECD MEI, Interest Rates, Long-Term Government Bond Yields, Combined Terms, Total;de;Prices and Monetary Variables
+decons0909;Germany, Real Estate Prices, EPX Hedonic, Total, Index, Deutsche Hypothekenbank, Residential, Price Index;de;Prices and Monetary Variables
+oecd_mei_00397589;Germany, OECD MEI, Interest Rates, 3-Month or 90-Day Rates & Yields, Interbank Rates, Total;de;Prices and Monetary Variables
+buba_mb_05410;Germany, Bundesbank, Base Money, Eurosystem, EUR;de;Prices and Monetary Variables
+demost0008;Germany, Monetary Statistics, Monetary Aggregates, M1, Total, EUR;de;Prices and Monetary Variables
+demost0002;Germany, Monetary Statistics, Monetary Aggregates, M3, Total, SA, EUR;de;Prices and Monetary Variables
+depric2203;Germany, Producer Price Index, Industrial Products, Total, Calendar Adjusted, SA, Index;de;Prices and Monetary Variables
+ecb_stsmdeycregpc00003abs;Germany, Domestic Trade, ECB Passenger Car Registrations, New Passenger Car, Calendar Adjusted, SA;de;Retail and Consumption
+detrad1360;Germany, Domestic Trade, Retail Trade, Turnover, Total, Excluding Vehicle Trade, Calendar Adjusted (X13 JDemetra+), Constant Prices, SA (X13 JDemetra+), Index;de;Retail and Consumption
+detrad1045;Germany, Domestic Trade, Wholesale Trade, Turnover, Total, Excluding Vehicle Trade, Calendar Adjusted (BV4.1), Constant Prices, SA (BV4.1), Index;de;Retail and Consumption
+buil_fr_tot_cof_bs_m;France, Business Surveys, DG ECFIN, Construction Confidence Indicator, Balance, SA;fra;Business Surveys
+frsurv1329;France, Business Surveys, INSEE, Building Industry, Global, Business Climate Synthetic Indicator, SA, Index;fra;Business Surveys
+frsurv2107;France, Business Surveys, INSEE, Service Climate Indicator, Business Climate Summary Indicator, Index;fra;Business Surveys
+frsurv1346;France, Business Surveys, INSEE, Building Industry, Global, Past Workforce Size, SA;fra;Business Surveys
+frsurv2844;France, Business Surveys, INSEE, Services, General Business Outlook, All Services Activities, SA;fra;Business Surveys
+frsurv1101;France, Business Surveys, INSEE, Trade, Retail Trade & Automotive, Business Climate Summary Indicator, SA, Index;fra;Business Surveys
+frsurv0333;France, Business Surveys, INSEE, Business Climate, All Sectors, Metropolitan France, Index;fra;Business Surveys
+frsurv2856;France, Business Surveys, AFTE/Coe-Rexecode, Corporate Cash, Cash Evolution, Balance, SA;fra;Business Surveys
+frsurv2853;France, Business Surveys, AFTE/Coe-Rexecode, Corporate Cash, Situation of Operating Cash, Balance, SA;fra;Business Surveys
+frsurv0845;France, Business Surveys, INSEE, Industry, Manufacturing, General Production Expectations, Balance of Replies, SA;fra;Business Surveys
+frecfin0010;France, Economic Surveys, DG ECFIN, Economic Sentiment Indicator, Balance, SA, Index;fra;Business Surveys
+indu_fr_tot_cof_b_m;France, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance;fra;Business Surveys
+frsurv0815;France, Business Surveys, INSEE, Industry, Manufacturing, Synthetic Index, SA, Index;fra;Business Surveys
+frsurv1340;France, Business Surveys, INSEE, Building Industry, Global, Productive Capacity Utilisation Rate, SA;fra;Business Surveys
+frsurv0745;France, Business Surveys, Bank of France, Services, Expected Overall Activity for the Coming Month, Market Services, SA;fra;Business Surveys
+frsurv0660;France, Business Surveys, Bank of France, Services, Total, Business Sentiment Indicator, SA, Index;fra;Business Surveys
+frsurv1338;France, Business Surveys, INSEE, Building Industry, Global, Opinion on Order Books, SA;fra;Business Surveys
+frsurv1343;France, Business Surveys, INSEE, Building Industry, Global, Obstacles to Production Increase Because of: Workforce Shortage;fra;Business Surveys
+frsurv0824;France, Business Surveys, INSEE, Industry, Manufacturing, Selling Price Expectations, Balance of Replies, SA;fra;Business Surveys
+frprod0248;France, Capacity Utilization, Total Industry, SA;fra;Business Surveys
+frsurv0840;France, Business Surveys, INSEE, Industry, Manufacturing, Mining & Quarrying, Selling Price Expectations, Balance of Replies, SA;fra;Business Surveys
+frsurv0547;France, Business Surveys, Bank of France, Industry, Change in Foreign Orders, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0530;France, Business Surveys, Bank of France, Industry, Change in Overall Level of New Orders, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0579;France, Business Surveys, Bank of France, Industry, Change in Employment, Manufacturing Industry, SA;fra;Business Surveys
+frsurv1334;France, Business Surveys, INSEE, Building Industry, Global, Expected Activity, SA;fra;Business Surveys
+frsurv1347;France, Business Surveys, INSEE, Building Industry, Global, Expected Workforce Size, SA;fra;Business Surveys
+frsurv0822;France, Business Surveys, INSEE, Industry, Manufacturing, Demand & Export Order Books, Balance of Replies, SA;fra;Business Surveys
+frsurv0628;France, Business Surveys, Bank of France, Industry, Expected Production for The Coming Month, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0833;France, Business Surveys, INSEE, Industry, Manufacturing, Demand & Total Order Books, Balance of Replies, SA;fra;Business Surveys
+frsurv0564;France, Business Surveys, Bank of France, Industry, Change in Inventories of Final Goods, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0836;France, Business Surveys, INSEE, Industry, Manufacturing, Mining & Quarrying, Demand & Total Order Books, Balance of Replies, SA;fra;Business Surveys
+frsurv0574;France, Business Surveys, Bank of France, Industry, Change in Industrial Producer Prices, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0645;France, Business Surveys, Bank of France, Industry, Expected Inventories of Final Goods for The Coming Month, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0650;France, Business Surveys, Bank of France, Industry, Expected Industrial Producer Prices for The Coming Month, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0569;France, Business Surveys, Bank of France, Industry, Change in Commodity Prices, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0655;France, Business Surveys, Bank of France, Industry, Expected Employment for The Coming Month, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0606;France, Business Surveys, Bank of France, Industry, Current Order Books, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0787;France, Business Surveys, Bank of France, Services, Expected Prices for The Coming Month, Market Services, SA;fra;Business Surveys
+frsurv0826;France, Business Surveys, INSEE, Industry, Manufacturing, Recent Changes in Output, Balance of Replies, SA;fra;Business Surveys
+frsurv1348;France, Business Surveys, INSEE, Building Industry, Global, Expected Prices;fra;Business Surveys
+frsurv0508;France, Business Surveys, Bank of France, Industry, Change in Output, Total, SA;fra;Business Surveys
+frsurv0601;France, Business Surveys, Bank of France, Industry, Inventories of Commodities, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0717;France, Business Surveys, Bank of France, Services, Expected Employment for The Coming Month, Market Services, SA;fra;Business Surveys
+frsurv0835;France, Business Surveys, INSEE, Industry, Manufacturing, Finished Goods Inventory Level, Balance of Replies, SA;fra;Business Surveys
+frsurv0584;France, Business Surveys, Bank of France, Industry, Inventories of Final Goods, Manufacturing Industry, SA;fra;Business Surveys
+frsurv0838;France, Business Surveys, INSEE, Industry, Manufacturing, Mining & Quarrying, Finished Goods Inventory Level, Balance of Replies, SA;fra;Business Surveys
+frsurv0818;France, Business Surveys, INSEE, Industry, Manufacturing, Personal Production Expectations, Balance of Replies, SA;fra;Business Surveys
+frsurv0816;France, Business Surveys, INSEE, Industry, Manufacturing, Turning Point Indicator, SA;fra;Business Surveys
+frsurv0661;France, Business Surveys, Bank of France, Services, Change in Activity, Market Services, SA;fra;Business Surveys
+frsurv0675;France, Business Surveys, Bank of France, Services, Change in Aggregate Demand, Market Services, SA;fra;Business Surveys
+frsurv0801;France, Business Surveys, Bank of France, Services, Change in Employment, Market Services, SA;fra;Business Surveys
+frsurv0759;France, Business Surveys, Bank of France, Services, Expected Aggregate Demand for The Coming Month, Market Services, SA;fra;Business Surveys
+frsurv0703;France, Business Surveys, Bank of France, Services, Change in Prices, Market Services, SA;fra;Business Surveys
+frsurv0731;France, Business Surveys, Bank of France, Services, Cash Position, Total, SA;fra;Business Surveys
+frsurv0525;France, Business Surveys, Bank of France, Industry, Change in Deliveries, Manufacturing Industry, SA;fra;Business Surveys
+indu_fr_tot_cof_bs_m;France, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance, SA;fra;Business Surveys
+frsurv0332;France, Business Surveys, INSEE, Business Climate, Turning Point Indicator, All Sectors, Metropolitan France;fra;Business Surveys
+frsurv2108;France, Business Surveys, INSEE, Service Climate Indicator, Summary Indicator of Overall Economic Situation Reversal;fra;Business Surveys
+frcons1674;France, Construction Status, Number, Residential, Total (Excluding Mayotte), 3 Months Cumulative, Aggregate, French Ministry of Ecology, Sustainable Development & Energy (SOeS), Permits;fra;Construction
+frprod0286;France, Industrial Production, Construction, Calendar Adjusted, SA, Index;fra;Construction
+frsurv0014;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, General Economic Situation, Next 12 Months, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0015;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Unemployment, Next 12 Months, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0017;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Consumer Prices, Next 12 Months, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0018;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Major Purchases Intentions, Next 12 Months, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0019;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Saving Intentions, Next 12 Months, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0020;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Current Saving Capacity, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0010;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Financial Situation, Next 12 Months, Balance of Replies;fra;Consumer Surveys
+frsurv0023;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Expected Saving Capacity, Balance of Replies, SA;fra;Consumer Surveys
+frsurv0024;France, Consumer Surveys, INSEE, Consumer Confidence Indicator, Synthetic Index, SA, Index;fra;Consumer Surveys
+cons2_fr_tot_cof_bs_m;France, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance, SA;fra;Consumer Surveys
+ftseftp_wifra2710_mceur;France, Equity Indices, FTSE, All World, Aerospace & Defense, Aerospace & Defense, Index, Market Cap, EUR;fra;Financial Variables
+ftseftp_wifra3350_eur;France, Equity Indices, FTSE, All World, Automobiles & Parts, Automobiles & Parts, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra1000_eur;France, Equity Indices, FTSE, All World, Basic Materials, Basic Materials, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra1350_mceur;France, Equity Indices, FTSE, All World, Chemicals, Chemicals, Index, Market Cap, EUR;fra;Financial Variables
+ftseftp_wifra7530_eur;France, Equity Indices, FTSE, All World, Electricity, Electricity, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra2730_treur;France, Equity Indices, FTSE, All World, Electronic & Electrical Equipment, Electronic & Electrical Equipment, Index, Gross Total Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra3530_eur;France, Equity Indices, FTSE, All World, Beverages, Beverages, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra8000_eur;France, Equity Indices, FTSE, All World, Financials, Financials, Index, Price Return, Close, EUR;fra;Financial Variables
+frbank1372;France, Deposits & Loans, MFIs Excluding MMFs & Central Banks, Loans, By Entity, to Domestic Households & NPISH, Monthly Flows Cumulated over One Year, All Maturities, All Amounts, New Business, EUR;fra;Financial Variables
+frbank1376;France, Deposits & Loans, MFIs Excluding MMFs & Central Banks, Loans, By Entity, to Domestic Non-Financial Corporations, Monthly Flows Cumulated over One Year, All Maturities, All Amounts, New Business, EUR;fra;Financial Variables
+frbank1374;France, Deposits & Loans, MFIs Excluding MMFs & Central Banks, Loans, By Entity, to Domestic Households & NPISH, Lending for House Purchase, up to 1 Year, Monthly Flows Cumulated over One Year, All Amounts, New Business, EUR;fra;Financial Variables
+frbank1366;France, Deposits & Loans, MFIs Excluding MMFs & Central Banks, Interest Rates on Loans, By Entity, to Domestic Households & NPISH, New Loans for House Purchase, Up to 1 Year, Annualised Agreed Rate, All Amounts, New Business;fra;Financial Variables
+frbank1373;France, Deposits & Loans, MFIs Excluding MMFs & Central Banks, Loans, By Entity, to Domestic Households & NPISH, Loans for Consumption Excluding Revolving Loans & Overdrafts, Convenience & Extended Credit Card Debt, All Maturities, All Amounts, New Business, EUR;fra;Financial Variables
+frbank0036;France, Balance Sheet & Flows of MFI Sector, MFIs Excluding Central Bank, Assets, Domestic Loans, Private Sector, EUR;fra;Financial Variables
+ecb_00004426;France, ECB, MFI Interest Rates, Households & NPISH, Loans for Consumption Excluding Revolving Loans & Overdrafts, Convenience & Extended Credit Card Debt [A21-A2Z], Annualised Agreed Rate (AAR) / Narrowly Defined Effective Rate (NDER), All Maturities, Total, New Business, Currency Denominator: Euro;fra;Financial Variables
+frbank0076;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Households & NPISH, Loans for Other Purposes Adjusted for Sales & Securitisation, Total, Stocks, EUR;fra;Financial Variables
+frbank0074;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Households & NPISH, Loans for House Purchasing Adjusted for Sales & Securitisation, Total, Stocks, EUR;fra;Financial Variables
+frbank0075;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Households & NPISH, Consumer Credit Adjusted for Sales & Securitisation, Total, Stocks, EUR;fra;Financial Variables
+frbank0077;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Households & NPISH, Loans Adjusted for Sales & Securitisation, Total, Stocks, EUR;fra;Financial Variables
+frbank0035;France, Balance Sheet & Flows of MFI Sector, MFIs Excluding Central Bank, Assets, Domestic Loans, General Government, EUR;fra;Financial Variables
+frbank0457;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Domestic Non-Financial Corporations, Other Loans Adjusted for Sales & Securitisation, Total, EUR;fra;Financial Variables
+frbank0453;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Domestic Non-Financial Corporations, Investment Loans Adjusted for Sales & Securitisation, Total, EUR;fra;Financial Variables
+frbank2022;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Households & Non-Financial Corporations, Loans Adjusted for Sales & Securitisation, All Maturities, Outstanding Amounts at the End of the Period (Stocks), EUR;fra;Financial Variables
+frbank0455;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Domestic Non-Financial Corporations, Short-Term Loans Adjusted for Sales & Securitisation, Total, EUR;fra;Financial Variables
+frbank0451;France, Deposits & Loans, Credit Institutions, Loans, By Entity, to Domestic Non-Financial Corporations, Loans Adjusted for Sales & Securitisation, Total, EUR;fra;Financial Variables
+frbank0919;France, Deposits & Loans, MFIs, Deposits, By Entity, Total, Time Deposits for More than 2 Years, Stocks, EUR;fra;Financial Variables
+frbank0087;France, Deposits & Loans, MFIs, Sight Deposits, Non-Financial Corporations, Stocks, EUR;fra;Financial Variables
+ftseftp_wifra2720_eur;France, Equity Indices, FTSE, All World, General Industrials, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra7570_eur;France, Equity Indices, FTSE, All World, Gas, Water & Multi-Utilities, Gas, Water & Multi-utilities, Index, Price Return, Close, EUR;fra;Financial Variables
+cac4000;France, Equity Indices, Euronext Paris, Health Care, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra2750_eur;France, Equity Indices, FTSE, All World, Industrial Engineering, Industrial Engineering, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra2770_eur;France, Equity Indices, FTSE, All World, Industrial Transportation, Industrial Transportation, Index, Price Return, Close, EUR;fra;Financial Variables
+cac2000;France, Equity Indices, Euronext Paris, Industrials, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra5550_eur;France, Equity Indices, FTSE, All World, Media, Media, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra9530_eur;France, Equity Indices, FTSE, All World, Software & Computer Services, Software & Computer Services, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra2790_eur;France, Equity Indices, FTSE, All World, Industrial Support Services, Support Services, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra9570_eur;France, Equity Indices, FTSE, All World, Technology Hardware & Equipment, Technology Hardware & Equipment, Index, Price Return, Close, EUR;fra;Financial Variables
+ftseftp_wifra6000_mceur;France, Equity Indices, FTSE, All World, Telecommunications, Telecommunications, Index, Market Cap, EUR;fra;Financial Variables
+ftseftp_wifra5750_eur;France, Equity Indices, FTSE, All World, Travel & Leisure, Travel & Leisure, Index, Price Return, Close, EUR;fra;Financial Variables
+frtrad0749;France, Foreign Trade, Countries, Export, Africa, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0748;France, Foreign Trade, Countries, Export, America, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0763;France, Foreign Trade, Countries, Export, ASEAN, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0776;France, Foreign Trade, Countries, Export, Asia, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0267;France, Foreign Trade, Countries, Export, Euro Area 15, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0777;France, Foreign Trade, Countries, Export, Europe, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0764;France, Foreign Trade, Countries, Export, Southern Common Market (Mercosur), Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0775;France, Foreign Trade, Countries, Export, Middle East, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0787;France, Foreign Trade, Countries, Export, Various, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0041;France, Foreign Trade, Commodity, Export, Products of Agriculture, Forestry, Aquaculture & Fishing, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0051;France, Foreign Trade, Commodity, Export, Computer, Electronic & Optical Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0047;France, Foreign Trade, Commodity, Export, Chemicals, Perfumes & Cosmetics, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0052;France, Foreign Trade, Commodity, Export, Electrical & Household Equipment, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0056;France, Foreign Trade, Commodity, Export, Electricity & Gas Manufactured, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0043;France, Foreign Trade, Commodity, Export, Products of Agro-Food Industry, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0057;France, Foreign Trade, Commodity, Export, Industrial & Household Waste, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0053;France, Foreign Trade, Commodity, Export, Industrial & Agricultural Machinery, Various Machines, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0797;France, Foreign Trade, Commodity, Export, Mechanical, Electrical, Electronic & Computer Equipments, SA, EUR;fra;International Trade
+frtrad0050;France, Foreign Trade, Commodity, Export, Metal Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0803;France, Foreign Trade, Commodity, Export, Natural Hydrocarbons, Other Mining Products, Electricity, Waste, SA, EUR;fra;International Trade
+frtrad0054;France, Foreign Trade, Commodity, Export, Various Manufactured Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0801;France, Foreign Trade, Commodity, Export, Other Industrial Products, SA, EUR;fra;International Trade
+frtrad0042;France, Foreign Trade, Commodity, Export, Natural Hydrocarbons & Other Products of Extractive Industries, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0046;France, Foreign Trade, Commodity, Export, Refined Petroleum Products & Coke, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0048;France, Foreign Trade, Commodity, Export, Pharmaceutical Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0049;France, Foreign Trade, Commodity, Export, Rubber & Plastic & Various Mineral Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0044;France, Foreign Trade, Commodity, Export, Textiles, Clothing, Leather & Footwear, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0055;France, Foreign Trade, Commodity, Export, Transport Equipment, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0507;France, Foreign Trade, Export, Overall CIF/FOB Excluding Military Equipment, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0045;France, Foreign Trade, Commodity, Export, Wood, Paper & Cardboard, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0752;France, Foreign Trade, Countries, Import, Africa, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0753;France, Foreign Trade, Countries, Import, America, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0767;France, Foreign Trade, Countries, Import, ASEAN, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0783;France, Foreign Trade, Countries, Import, Asia, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0268;France, Foreign Trade, Countries, Import, Euro Area 15, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0781;France, Foreign Trade, Countries, Import, Europe, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0768;France, Foreign Trade, Countries, Import, Southern Common Market (Mercosur), Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0782;France, Foreign Trade, Countries, Import, Middle East, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0789;France, Foreign Trade, Countries, Import, Various, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0061;France, Foreign Trade, Commodity, Import, Products of Agriculture, Forestry, Aquaculture & Fishing, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0071;France, Foreign Trade, Commodity, Import, Computer, Electronic & Optical Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0067;France, Foreign Trade, Commodity, Import, Chemicals, Perfumes & Cosmetics, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0072;France, Foreign Trade, Commodity, Import, Electrical & Household Equipment, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0076;France, Foreign Trade, Commodity, Import, Electricity & Gas Manufactured, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0063;France, Foreign Trade, Commodity, Import, Products of Food Industry, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0515;France, Foreign Trade, Import, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0077;France, Foreign Trade, Commodity, Import, Industrial & Household Waste, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0073;France, Foreign Trade, Commodity, Import, Industrial & Agricultural Machinery, Various Machines, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0817;France, Foreign Trade, Commodity, Import, Mechanical, Electrical, Electronic & Computer Equipments, SA, EUR;fra;International Trade
+frtrad0070;France, Foreign Trade, Commodity, Import, Metal Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0823;France, Foreign Trade, Commodity, Import, Natural Hydrocarbons, Other Mining Products, Electricity, Waste, SA, EUR;fra;International Trade
+frtrad0075;France, Foreign Trade, Commodity, Import, Various Products Manufactured, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0821;France, Foreign Trade, Commodity, Import, Other Industrial Products, SA, EUR;fra;International Trade
+frtrad0062;France, Foreign Trade, Commodity, Import, Natural Hydrocarbons & Other Products of Extractive Industries, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0066;France, Foreign Trade, Commodity, Import, Refined Petroleum Products & Coke, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0068;France, Foreign Trade, Commodity, Import, Pharmaceutical Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0069;France, Foreign Trade, Commodity, Import, Rubber & Plastic & Various Mineral Products, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0064;France, Foreign Trade, Commodity, Import, Textiles, Clothing, Leather & Footwear, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0074;France, Foreign Trade, Commodity, Import, Transport Equipment, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0509;France, Foreign Trade, Import, Overall CIF/FOB Excluding Military Equipment, Calendar Adjusted, SA, EUR;fra;International Trade
+frtrad0065;France, Foreign Trade, Commodity, Import, Wood, Paper & Cardboard, Calendar Adjusted, SA, EUR;fra;International Trade
+frlama0808;France, Métropolitaine, Unemployment, Job Seekers, Women & Men, Total, Category A, Calendar Adjusted, SA;fra;Labor Market
+frlama0830;France, Métropolitaine, Unemployment, Job Seekers, Women & Men, Total, Category B, Calendar Adjusted, SA;fra;Labor Market
+frlama0831;France, Métropolitaine, Unemployment, Job Seekers, Women & Men, Total, Category C, Calendar Adjusted, SA;fra;Labor Market
+frlama0832;France, Métropolitaine, Unemployment, Job Seekers, Women & Men, Total, Category D, Calendar Adjusted, SA;fra;Labor Market
+frlama0833;France, Métropolitaine, Unemployment, Job Seekers, Women & Men, Total, Category E, Calendar Adjusted, SA;fra;Labor Market
+frlama0280;France, Productivity, Costs & Hours Worked, Hourly Labor Costs, Salaries Including Expenses, Construction, Index;fra;Labor Market
+frlama1006;France, Job Vacancy Statistics, Vacancies Collected, Sustainable Job Advertisements, Calendar Adjusted, SA;fra;Labor Market
+frlama1008;France, Job Vacancy Statistics, Vacancies Collected, Casual Job Advertisements, Calendar Adjusted, SA;fra;Labor Market
+frlama1010;France, Job Vacancy Statistics, Vacancies Collected, Total, Calendar Adjusted, SA;fra;Labor Market
+frlama1007;France, Job Vacancy Statistics, Vacancies Collected, Temporary Job Advertisements, Calendar Adjusted, SA;fra;Labor Market
+frprod0276;France, Manufacturing, Machinery & Equipment N.E.C., Calendar Adjusted, SA, Index;fra;Manufacturing 
+frprod0186;France, Industrial Production, Capital Goods, Calendar Adjusted, SA, Index;fra;Manufacturing 
+frprod0188;France, Industrial Production, Durable Consumer Goods, Calendar Adjusted, SA, Index;fra;Manufacturing 
+frprod0190;France, Industrial Production, Non-Durable Consumer Goods, Calendar Adjusted, SA, Index;fra;Manufacturing 
+frprod0184;France, Industrial Production, Intermediate Goods, Calendar Adjusted, SA, Index;fra;Manufacturing 
+frprod0230;France, Industrial Production, Manufacturing, Calendar Adjusted, SA, Index;fra;Manufacturing 
+frprod0228;France, Industrial Production, Total Industry Excluding Construction, Calendar Adjusted, SA, Index;fra;Manufacturing 
+frpric0484;France, Producer Price Index, Industry, Manufactured Products, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0490;France, Producer Price Index, Industry, Coke & Petroleum Products, Index, Basic Prices;fra;Prices and Monetary Variables
+princ29c30nsai15frpd;France, Eurostat, Producer Prices in Industry, Domestic Market, Manufacture of Motor Vehicles, Trailers, Semi-Trailers & of Other Transport Equipment (C29_C30), 2015=100, Index;fra;Prices and Monetary Variables
+frpric0503;France, Producer Price Index, Industry, Energy, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0483;France, Producer Price Index, Industry, Capital Goods, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0494;France, Producer Price Index, Industry, Basic Metals & Metallic Products Except Machinery & Equipment, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0485;France, Producer Price Index, Industry, Electrical, Electronic, Computer, Machinery Equipments, Index, Basic Prices;fra;Prices and Monetary Variables
+insee_010538987_012;France, France Métropolitaine + DOM, INSEE, Indices des Prix des Moyens de Production Agricole, Indice Brut des Prix d'Achat des Moyens de Production Agricole (IPAMPA), Indice Général, Index;fra;Prices and Monetary Variables
+insee_010538794_012;France, France Métropolitaine + DOM, INSEE, Indices des Prix des Moyens de Production Agricole, Indice des Prix Agricoles à la Production (IPPAP), Indice Général, SA, Index;fra;Prices and Monetary Variables
+frpric0794;France, Inflation, Underlying, Core CPI, SA, Index;fra;Prices and Monetary Variables
+frpric0611;France, Harmonized CPI, Total, Index;fra;Prices and Monetary Variables
+insee_001626595_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Exportations, Toutes Zones, Produits de l'Agriculture, Index;fra;Prices and Monetary Variables
+insee_001626673_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Exportations, Toutes Zones, Biens Intermédiaires, Index;fra;Prices and Monetary Variables
+insee_001626674_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Exportations, Toutes Zones, Biens d'Investissement (MIGS), Index;fra;Prices and Monetary Variables
+insee_001626675_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Exportations, Toutes Zones, Produits Manufacturés (A10 CZ), Index;fra;Prices and Monetary Variables
+insee_001626665_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Exportations, Toutes Zones, Biens de Consommation, Index;fra;Prices and Monetary Variables
+insee_001626769_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Exportations, Toutes Zones, Total des Biens (A,B,C,D,E), Index;fra;Prices and Monetary Variables
+insee_001626152_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Produits de l'Agriculture, Index;fra;Prices and Monetary Variables
+insee_001626223_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Ensemble de l'Industrie Sauf Gestion Eau, Dépollution, Index;fra;Prices and Monetary Variables
+insee_001626226_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Biens Intermédiaires, Index;fra;Prices and Monetary Variables
+insee_001626227_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Biens d'Investissement (MIGS), Index;fra;Prices and Monetary Variables
+insee_001626228_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Produits Manufacturés (A10 CZ), Index;fra;Prices and Monetary Variables
+insee_001626155_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Biens de Consommation, Index;fra;Prices and Monetary Variables
+insee_001626322_012;France, Métropolitaine, INSEE, Indice du Commerce Extérieur, Indices des Prix, Importations, Toutes Zones, Total des Biens (A,B,C,D,E), Index;fra;Prices and Monetary Variables
+frpric0542;France, Import Prices, Overall Industry Excluding Water Management, Waste Management & Remediation Activities, Index;fra;Prices and Monetary Variables
+oecd_mei_00395742;France, OECD MEI, Interest Rates, 3-Month or 90-Day Rates & Yields, Interbank Rates, Total;fra;Prices and Monetary Variables
+frmost0001;France, Monetary Statistics, Monetary Aggregates, M1, Total, EUR;fra;Prices and Monetary Variables
+frmost0002;France, Monetary Statistics, Monetary Aggregates, M2, Total, EUR;fra;Prices and Monetary Variables
+frmost0003;France, Monetary Statistics, Monetary Aggregates, M3, Total, EUR;fra;Prices and Monetary Variables
+oecd_mei_00395971;France, OECD MEI, Consumer Price Index, All Items, Total, Total, Index;fra;Prices and Monetary Variables
+frpric0487;France, Producer Price Index, Industry, Food Products, Beverages & Tobacco Products, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0474;France, Producer Price Index, Industry, Consumer Goods, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0501;France, Producer Price Index, Industry, Electricity, Gas, Steam, Water Supply, Sewerage & Waste Management, Index, Basic Prices;fra;Prices and Monetary Variables
+prinmigingnsai15frpd;France, Eurostat, Producer Prices in Industry, Domestic Market, MIG - Intermediate Goods, 2015=100, Index;fra;Prices and Monetary Variables
+prenc19nsai15frpn;France, Eurostat, Producer Prices in Industry, Non Domestic Market, Manufacture of Coke & Refined Petroleum Products (C19), 2015=100, Index;fra;Prices and Monetary Variables
+insee_010535319_012;France, France Métropolitaine + DOM, INSEE, Indices de Prix de Production et d'Importation, Indice de Prix de Production de l'Industrie Française Pour les Marchés Extérieurs, Hors Zone Euro, Équipements Électriques, Électroniques, Informatiques, Machines (A17 C3), Index;fra;Prices and Monetary Variables
+frpric0527;France, Export Prices, Manufactured Products, Index;fra;Prices and Monetary Variables
+frpric0548;France, Import Prices, Other Industrial Products, Index;fra;Prices and Monetary Variables
+frpric0774;France, Producer Price Index, Industrial Production, Transport Equipment, Index;fra;Prices and Monetary Variables
+frpric0763;France, Producer Price Index, Industrial Production, Food Products, Beverages & Tobacco Products, Index;fra;Prices and Monetary Variables
+frpric0766;France, Producer Price Index, Industrial Production, Coke & Petroleum Products, Index;fra;Prices and Monetary Variables
+frpric0782;France, Producer Price Index, Industrial Production, Electrical, Computer & Electronic Equipment, Index;fra;Prices and Monetary Variables
+frpric0760;France, Producer Price Index, Industrial Production, Manufactured Products, Index;fra;Prices and Monetary Variables
+frpric0486;France, Producer Price Index, Industry, Other Industrial Products, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0498;France, Producer Price Index, Industry, Transport Equipment, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0479;France, Producer Price Index, Total, Industry, Overall Industry, Index, Basic Prices;fra;Prices and Monetary Variables
+frpric0512;France, Export Prices, Overall Industry, Index;fra;Prices and Monetary Variables
+fr10ygov;France, Government Benchmarks, Macrobond, 10 Year, Yield;fra;Prices and Monetary Variables
+frtrad0928;France, Domestic Trade, Retail Trade, Total, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1031;France, Domestic Trade, Retail Trade, Textiles & Clothing, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1025;France, Domestic Trade, Retail Trade, Household Appliances, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1017;France, Domestic Trade, Retail Trade, Food Products, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1018;France, Domestic Trade, Retail Trade, Industrial Goods Including Automobile Sales, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1016;France, Domestic Trade, Retail Trade, Large General Retailers, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad0973;France, Domestic Trade, Retail Trade, Hypermarkets, Calendar Adjusted, Current Prices, SA, Index;fra;Retail and Consumption
+frtrad0974;France, Domestic Trade, Retail Trade, Department Stores, Calendar Adjusted, Current Prices, SA, Index;fra;Retail and Consumption
+frtrad1050;France, Domestic Trade, Retail Trade, Supermarkets, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1019;France, Domestic Trade, Retail Trade, Small Retail Stores Excluding Automobiles, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad1020;France, Domestic Trade, Retail Trade, New Automobiles, Calendar Adjusted, Constant Prices, SA, Index;fra;Retail and Consumption
+frtrad0557;France, Domestic Trade, Vehicle Sales & Registrations, New, Passenger Cars, Total, Calendar Adjusted, SA;fra;Retail and Consumption
+frnaac0876;France, Expenditure Approach, Household Consumption Expenditure, Goods, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0860;France, Expenditure Approach, Household Consumption Expenditure, Transport Equipment, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0861;France, Expenditure Approach, Household Consumption Expenditure, Durable Goods, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0874;France, Expenditure Approach, Household Consumption Expenditure, Energy, Water, Waste, Coke & Refined Petroleum Products, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0872;France, Expenditure Approach, Household Consumption Expenditure, Energy Excluding Petroleum Products, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0873;France, Expenditure Approach, Household Consumption Expenditure, Petroleum Products, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0875;France, Expenditure Approach, Household Consumption Expenditure, Food, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0867;France, Expenditure Approach, Household Consumption Expenditure, Dwelling Equipment, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0858;France, Expenditure Approach, Household Consumption Expenditure, Manufactured Goods, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0870;France, Expenditure Approach, Household Consumption Expenditure, Engineered Goods, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0871;France, Expenditure Approach, Household Consumption Expenditure, Personal Equipment Durable Goods, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0863;France, Expenditure Approach, Household Consumption Expenditure, Other Engineered Goods, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+frnaac0862;France, Expenditure Approach, Household Consumption Expenditure, Textile-Leather, at Previous Year Prices (Chained Since 2014), Calendar Adjusted, Constant Prices, SA, EUR;fra;Retail and Consumption
+itsurv0641;Italy, Business Surveys, ISTAT, Confidence Climate, Total, Consumer Goods, SA, Index;it;Business Surveys
+itsurv0639;Italy, Business Surveys, ISTAT, Confidence Climate, Total, Intermediate Goods, SA, Index;it;Business Surveys
+indu_it_inve_cof_bs_m;Italy, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Investment Goods, Confidence Indicator, SA;it;Business Surveys
+itsurv0539;Italy, Business Surveys, ISTAT, Construction, Order Books, Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0540;Italy, Business Surveys, ISTAT, Construction, Selling Prices, Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0541;Italy, Business Surveys, ISTAT, Construction, Firm's Total Employment, Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0538;Italy, Business Surveys, ISTAT, Construction, Assessments of Building Activity Developed over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0537;Italy, Business Surveys, ISTAT, Construction, Assessments of Current Order Books, Balance, SA;it;Business Surveys
+itsurv0506;Italy, Business Surveys, ISTAT, Construction, Main Factors Currently Limiting Building Activity-Yes, Balance of Reply;it;Business Surveys
+itsurv0003;Italy, Business Surveys, ISTAT, Confidence Climate, Total, Manufacturing, SA, Index;it;Business Surveys
+itsurv0331;Italy, Business Surveys, ISTAT, Confidence Climate, Total, Business Confidence (IESI), SA, Index;it;Business Surveys
+itsurv0473;Italy, Business Surveys, ISTAT, Retail Trade, Total, Confidence Indicator, SA;it;Business Surveys
+itsurv0001;Italy, Business Surveys, ISTAT, Confidence Climate, Total, Construction, SA, Index;it;Business Surveys
+itsurv0352;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Cash Availability with Respect to Firm's Needs, over the Past 3 Months, Balance, Index;it;Business Surveys
+itsurv0380;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Cash Availability with Respect to Firm's Needs, over the Past 3 Months, Balance, Index;it;Business Surveys
+itsurv0357;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Cash Availability, Expectations over the Next 3 Months, Balance, Index;it;Business Surveys
+itsurv0385;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Cash Availability, Expectations over the Next 3 Months, Balance, Index;it;Business Surveys
+oecd_mei_00408363;Italy, OECD MEI, Leading Indicators OECD, Leading Indicators, Composite Leading Indicators, Trend Restored, SA, Index;it;Business Surveys
+itsurv0038;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Domestic Order Books, over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0384;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Economic Situation, Expectations over the Next 3 Months, Balance, Index;it;Business Surveys
+itsurv0046;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Economy, Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0358;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Firm’S Employment, Expectations over the Next 3 Months, Balance, Index;it;Business Surveys
+itsurv0386;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Firm’s Employment, Expectations over the Next 3 Months, Balance, Index;it;Business Surveys
+buil_it_tot_cof_b_m;Italy, Business Surveys, DG ECFIN, Construction Confidence Indicator, Balance;it;Business Surveys
+cons2_it_tot_cof_b_m;Italy, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance;it;Business Surveys
+itecfin0010;Italy, Economic Surveys, DG ECFIN, Economic Sentiment Indicator, Balance, SA, Index;it;Business Surveys
+indu_it_tot_cof_b_m;Italy, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance;it;Business Surveys
+itsurv0039;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Export Order Books, over the Past 3 Months, Balance, SA;it;Business Surveys
+bs_esi_isaitib;Italy, Eurostat, Business Surveys, Eurostat, Sentiment Indicators, Economic Sentiment Indicator, SA;it;Business Surveys
+itsurv0019;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Export Order Books, over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0356;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Economic Situation, Expectations over the Next 3 Months, Balance, Index;it;Business Surveys
+itsurv0023;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Order Books, Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0025;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Prices, Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0018;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Domestic Order Books, over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0022;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Production, over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0021;Italy, Business Surveys, ISTAT, Industry, Capital Goods, Stocks of Finished Products, over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0041;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Stocks of Finished Products, over the Past 3 Months, Balance, SA;it;Business Surveys
+bs_sci_balsaitib;Italy, Eurostat, Business Surveys, Eurostat, Sentiment Indicators, Services Confidence Indicator, SA;it;Business Surveys
+itsurv0043;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Order Books, Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0045;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Prices, Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0044;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Production, Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0592;Italy, Business Surveys, ISTAT, Services Confidence Indicator, Evolution of the Demand over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0593;Italy, Business Surveys, ISTAT, Services Confidence Indicator, Expectations of the Demand over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0594;Italy, Business Surveys, ISTAT, Services Confidence Indicator, Expectations of the Employment over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0596;Italy, Business Surveys, ISTAT, Services Confidence Indicator, Evolution of the Employment over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0597;Italy, Business Surveys, ISTAT, Services Confidence Indicator, Expectations of the Domestic Economic Situation over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0595;Italy, Business Surveys, ISTAT, Services Confidence Indicator, Expectations of the Prices over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0040;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Total Order Books, over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0042;Italy, Business Surveys, ISTAT, Industry, Manufacturing, Production, over the Past 3 Months, Balance, SA;it;Business Surveys
+indu_it_tot_3_bs_m;Italy, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Assessment of Export Order-Book Levels, Balance, SA;it;Business Surveys
+indu_it_tot_cof_bs_m;Italy, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance, SA;it;Business Surveys
+reta_it_tot_4_bs_m;Italy, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Business Activity Expectations Over the Next 3 Months, Balance, SA;it;Business Surveys
+reta_it_tot_5_bs_m;Italy, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Employment Expectations Over the Next 3 Months, Balance, SA;it;Business Surveys
+itsurv0480;Italy, Business Surveys, ISTAT, Retail Trade, Total, Prices Expectations over the Next 3 Months, Balance, SA;it;Business Surveys
+reta_it_tot_3_bs_m;Italy, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Orders Expectations Over the Next 3 Months, Balance, SA;it;Business Surveys
+reta_it_tot_1_bs_m;Italy, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Business Activity (Sales) Development Over the Past 3 Months, Balance, SA;it;Business Surveys
+itsurv0283;Italy, Business Surveys, ISTAT, Retail Trade, Large Scale Distribution, Current Suppliers' Prices, Balance;it;Business Surveys
+itsurv0475;Italy, Business Surveys, ISTAT, Retail Trade, Total, Volume of Stock Currently Hold, Balance, SA;it;Business Surveys
+cstifcc11xcc113nsai15itci;Italy, Eurostat, Construction Cost (or Producer Prices), New Residential Buildings, Construction Cost Index (National Currency), Residential Buildings, Except Residences for Communities (F_CC11_X_CC113), 2015=100, Index;it;Construction
+itcons0064;Italy, Construction Production, Production in Construction, SA, Index, Italian National Institute of Statistics (Istat);it;Construction
+cons2_it_tot_cof_bs_m;Italy, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance, SA;it;Consumer Surveys
+cons2_it_tot_4_bs_m;Italy, Consumer Surveys, DG ECFIN, Consumer Confidence, General Economic Situation Over Next 12 Months, Balance, SA;it;Consumer Surveys
+cons2_it_tot_2_bs_m;Italy, Consumer Surveys, DG ECFIN, Consumer Confidence, Financial Situation Over Next 12 Months, Balance, SA;it;Consumer Surveys
+cons2_it_tot_11_bs_m;Italy, Consumer Surveys, DG ECFIN, Consumer Confidence, Savings Over Next 12 Months, Balance, SA;it;Consumer Surveys
+cons2_it_tot_7_bs_m;Italy, Consumer Surveys, DG ECFIN, Consumer Confidence, Unemployment Expectations Over Next 12 Months, Balance, SA;it;Consumer Surveys
+itbank0067;Italy, Balance Sheet & Flows of MFI Sector, Banks, Assets, Total Loans (Residents of Italy), EUR;it;Financial Variables
+itbank0092;Italy, Deposits & Loans, Banks & Cassa Depositi e Prestiti, Loans, By Maturity, to Households, Consumer Credit, over 5 Years, EUR;it;Financial Variables
+itbank0095;Italy, Deposits & Loans, Banks & Cassa Depositi e Prestiti, Loans, By Maturity, to Households, Loans for House Purchases, over 5 Years, EUR;it;Financial Variables
+itbank0098;Italy, Deposits & Loans, Banks & Cassa Depositi e Prestiti, Loans, By Maturity, to Households, Loans for Other Uses, over 5 Years, EUR;it;Financial Variables
+itbank0131;Italy, Deposits & Loans, Credit Institutions, Interest Rates on Loans, By Entity, to Households, House Purchases, New Business, Floating Rate & Interest Rate Fixation up to 1 Year;it;Financial Variables
+itbank0115;Italy, Deposits & Loans, Credit Institutions, Interest Rates on Loans, By Entity, to Non-Financial Corporations, Loans Other than Bank Overdrafts, up to EUR 1 Million, New Business;it;Financial Variables
+imfm136eneer_ix;Italy, IMF IFS, Financial Sector, Exchange Rates, Nominal Effective Exchange Rate, Trade Partners by Consumer Price Index;it;Financial Variables
+itbank0287;Italy, Deposits & Loans, Banks & Cassa Depositi e Prestiti, Loans, By Entity, To Other Sectors, Domestic, Consumer Households, EUR;it;Financial Variables
+ftseftp_wiita8000_eur;Italy, Equity Indices, FTSE, All World, Financials, Financials, Index, Price Return, Close, EUR;it;Financial Variables
+ftseftp_it2000_treur;Italy, Equity Indices, FTSE, Select Sector, Industrials, Industrials, Index, Gross Total Return, Close, EUR;it;Financial Variables
+ftseftp_it7000_treur;Italy, Equity Indices, FTSE, Select Sector, Utilities, Utilities, Index, Gross Total Return, Close, EUR;it;Financial Variables
+ftseftp_wiita5550_eur;Italy, Equity Indices, FTSE, All World, Media, Index, Price Return, Close, EUR;it;Financial Variables
+ftseftp_wiita6000_eur;Italy, Equity Indices, FTSE, All World, Telecommunications, Telecommunications, Index, Price Return, Close, EUR;it;Financial Variables
+ftseftp_wiita3350_eur;Italy, Equity Indices, FTSE, All World, Automobiles & Parts, Automobiles & Parts, Index, Price Return, Close, EUR;it;Financial Variables
+msci_702743;Italy, Equity Indices, MSCI, Mid & Large Cap, 25-50 Index, Price Return, Local Currency;it;Financial Variables
+ittrad0180;Italy, Foreign Trade, By MIGS, Export, All Countries of the World, Consumer Goods, EUR;it;International Trade
+ittrad0181;Italy, Foreign Trade, By MIGS, Export, All Countries of the World, Energy, EUR;it;International Trade
+ittrad1270_eu27;Italy, Foreign Trade, Countries, Export, European Union (27), SA, EUR;it;International Trade
+ittrad1251;Italy, Foreign Trade, Export, SA, EUR;it;International Trade
+ittrad0176;Italy, Foreign Trade, By MIGS, Export, All Countries of the World, Intermediate Goods, EUR;it;International Trade
+exptrdvalscaworldcapitb9;Italy, Eurostat, International Trade in Goods, Exports, All Countries of the World, Capital Goods, Calendar Adjusted, SA, EUR;it;International Trade
+ittrad2434;Italy, Foreign Trade, Countries, Average Unit Value Indexes, Export, World, Index;it;International Trade
+ittrad2358;Italy, Foreign Trade, Countries, Export, Extra-EU27, SA, EUR;it;International Trade
+ittrad0559;Italy, Foreign Trade, By MIGS, Import, All Countries of the World, Consumer Goods, EUR;it;International Trade
+ittrad0560;Italy, Foreign Trade, By MIGS, Import, All Countries of the World, Energy, EUR;it;International Trade
+ittrad1269_eu27;Italy, Foreign Trade, Countries, Import, European Union (27), SA, EUR;it;International Trade
+ittrad1250;Italy, Foreign Trade, Import, SA, EUR;it;International Trade
+ittrad0555;Italy, Foreign Trade, By MIGS, Import, All Countries of the World, Intermediate Goods, EUR;it;International Trade
+ittrad0556;Italy, Foreign Trade, By MIGS, Import, All Countries of the World, Capital Goods, EUR;it;International Trade
+ittrad2500;Italy, Foreign Trade, Countries, Average Unit Value Indexes, Import, World, Index;it;International Trade
+ittrad2357;Italy, Foreign Trade, Countries, Import, Extra-EU27, SA, EUR;it;International Trade
+ittrad2562;Italy, Export/Import Prices, Terms of Trade, Total, Index;it;International Trade
+ittrad2359;Italy, Foreign Trade, Countries, Balance, Extra-EU27, SA, EUR;it;International Trade
+itlama0496;Italy, Employment, Rate, Women & Men, Aged 15-64, SA;it;Labor Market
+itlama1041;Italy, Employment, By Professional Status, Total, Total, SA;it;Labor Market
+itlama0515;Italy, Labor Force Statistics, Labor Force, Italy, Males & Females, Total, 15-89, SA;it;Labor Market
+itlama0497;Italy, Unemployment, Rate, Women & Men, Aged 15-64, SA;it;Labor Market
+itlama0519;Italy, Unemployment, Job Seekers, Women & Men, SA;it;Labor Market
+itinea0047;Italy, Wages & Salaries, Wages, Hourly, Total, Index;it;Labor Market
+itinea0482;Italy, Wages & Salaries, Wages, Per Employee, Total Industry, Blue Collar, Index;it;Labor Market
+itprod0499;Italy, Industrial Production, Durables Consumer Goods, SA, Index;it;Manufacturing 
+itprod0500;Italy, Industrial Production, Non-Durables Consumer Goods, SA, Index;it;Manufacturing 
+itprod0501;Italy, Industrial Production, Consumer Goods, SA, Index;it;Manufacturing 
+itprod0502;Italy, Industrial Production, Total, Energy, SA, Index;it;Manufacturing 
+itprod0497;Italy, Industrial Production, Intermediate Goods, SA, Index;it;Manufacturing 
+itprod0498;Italy, Industrial Production, Capital Goods, SA, Index;it;Manufacturing 
+itprod0504;Italy, Manufacturing, Total, SA, Index;it;Manufacturing 
+itprod0496;Italy, Industrial Production, Total Industry Excluding Construction, SA, Index;it;Manufacturing 
+itprod0519;Italy, New Orders, Total, Industry Excluding Construction, Current Prices, SA, Index;it;Manufacturing 
+ittrad1243;Italy, Industry Turnover, Total Market, Total Industry Excluding Construction, SA, Index;it;Manufacturing 
+itpric0001;Italy, Consumer Price Index, Total with Tobacco, Index;it;Prices and Monetary Variables
+i15totxnrgfoodnpitdx;Italy, Eurostat, HICP, Overall Index Excluding Energy & Unprocessed Food, 2015=100, Index;it;Prices and Monetary Variables
+oecd_mei_00407951;Italy, OECD MEI, Interest Rates, 3-Month or 90-Day Rates & Yields, Interbank Rates, Total;it;Prices and Monetary Variables
+itmost0004;Italy, Monetary Statistics, Monetary Aggregates, M1, Total, Excluding Currency Held by The Public, Stocks, EUR;it;Prices and Monetary Variables
+itmost0005;Italy, Monetary Statistics, Monetary Aggregates, M2, Total, Excluding Currency Held by The Public, Stocks, EUR;it;Prices and Monetary Variables
+itmost0006;Italy, Monetary Statistics, Monetary Aggregates, M3, Total, Excluding Currency Held by The Public, Stocks, EUR;it;Prices and Monetary Variables
+itbank0291;Italy, Deposits & Loans, Banks & Cassa Depositi e Prestiti, Deposits, Other Euro-Area Countries, Overnight Deposits, Current Prices, EUR;it;Prices and Monetary Variables
+ites10ygov;Italy, Government Benchmarks, Eurostat, Government Bond, 10 Year, Yield;it;Prices and Monetary Variables
+itpric0827;Italy, Producer Price Index, Total, Durables Consumer Goods, Index;it;Prices and Monetary Variables
+itpric0828;Italy, Producer Price Index, Total, Non-Durables Consumer Goods, Index;it;Prices and Monetary Variables
+itpric0829;Italy, Producer Price Index, Total, Consumer Goods, Index;it;Prices and Monetary Variables
+itpric0830;Italy, Producer Price Index, Total, Energy, Index;it;Prices and Monetary Variables
+itpric0825;Italy, Producer Price Index, Total, Intermediate Goods, Index;it;Prices and Monetary Variables
+itpric0826;Italy, Producer Price Index, Total, Capital Goods, Index;it;Prices and Monetary Variables
+itpric0831;Italy, Producer Price Index, Total, Total Industry Excluding Construction, Index;it;Prices and Monetary Variables
+itttrad0728;Italy, Domestic Trade, Retail Trade, All Items, SA, Index;it;Retail and Consumption
+ittrad2606;Italy, Domestic Trade, Retail Trade, All Items, Volume, SA, Index;it;Retail and Consumption
+ittrad2607;Italy, Domestic Trade, Retail Trade, Food Products, Food, Volume, SA, Index;it;Retail and Consumption
+ittrad2608;Italy, Domestic Trade, Retail Trade, Non Food Products, Total, Non-Food, Volume, SA, Index;it;Retail and Consumption
+essurv0094;Spain, Business Surveys, Ministry of Economy & Business, Industry, Order-Book Level, Total, SA;es;Business Surveys
+reta_es_tot_4_bs_m;Spain, Business Surveys, DG ECFIN, Retail Trade Confidence Indicator, Business Activity Expectations Over the Next 3 Months, Balance, SA;es;Business Surveys
+essurv0389;Spain, Business Surveys, Ministry of Economy & Business, Industry, Construction Sector, Confidence Indicator;es;Business Surveys
+essurv0555;Spain, Business Surveys, Ministry of Economy & Business, Industry, Retail Trade, Confidence Indicator;es;Business Surveys
+essurv0419;Spain, Business Surveys, Ministry of Economy & Business, Industry, Consumer Goods, Confidence Indicator, SA;es;Business Surveys
+essurv0420;Spain, Business Surveys, Ministry of Economy & Business, Industry, Intermediate Goods, Confidence Indicator, SA;es;Business Surveys
+essurv0418;Spain, Business Surveys, Ministry of Economy & Business, Industry, Investment Goods, Confidence Indicator, SA;es;Business Surveys
+oecd_mei_00430728;Spain, OECD MEI, Leading Indicators OECD, Leading Indicators, Composite Leading Indicators, Trend Restored, SA, Index;es;Business Surveys
+oecd_mei_00430242;Spain, OECD MEI, Business Tendency Surveys (Retail Trade), Employment, Future Tendency, National Indicator, SA;es;Business Surveys
+essurv0095;Spain, Business Surveys, Ministry of Economy & Business, Industry, Foreign Order-Book Level, Total, SA;es;Business Surveys
+essurv0126;Spain, Business Surveys, Ministry of Economy & Business, Industry, Production Level Trend, Intermediate Goods, SA;es;Business Surveys
+essurv0121;Spain, Business Surveys, Ministry of Economy & Business, Industry, Production Level, Intermediate Goods;es;Business Surveys
+essurv0112;Spain, Business Surveys, Ministry of Economy & Business, Industry, Stocks of Finished Products, Consumer Goods, SA;es;Business Surveys
+indu_es_cons_6_bs_m;Spain, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Consumer Goods, Selling Price Expectations for the Months Ahead, SA;es;Business Surveys
+bs_iemensabalesuf;Spain, Eurostat, Business Surveys, Eurostat, Industry, Employment Expectations Over the Next 3 Months;es;Business Surveys
+essurv0122;Spain, Business Surveys, Ministry of Economy & Business, Industry, Production Level Trend, Total, SA;es;Business Surveys
+indu_es_intm_3_bs_m;Spain, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Intermediate Goods, Assessment of Export Order-Book Levels, SA;es;Business Surveys
+indu_es_intm_6_bs_m;Spain, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Intermediate Goods, Selling Price Expectations for the Months Ahead, SA;es;Business Surveys
+essurv0113;Spain, Business Surveys, Ministry of Economy & Business, Industry, Stocks of Finished Products, Intermediate Goods, SA;es;Business Surveys
+indu_es_inve_6_bs_m;Spain, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Investment Goods, Selling Price Expectations for the Months Ahead, SA;es;Business Surveys
+essurv0111;Spain, Business Surveys, Ministry of Economy & Business, Industry, Stocks of Finished Products, Capital Goods, SA;es;Business Surveys
+essurv0127;Spain, Business Surveys, Ministry of Economy & Business, Industry, Price Trend, Total, SA;es;Business Surveys
+esprod0479;Spain, Industrial Production, Synthetic Indicators, Activity, Calendar Adjusted, SA, Index;es;Business Surveys
+esprod0481;Spain, Industrial Production, Synthetic Indicators, Equipment, Calendar Adjusted, SA, Index;es;Business Surveys
+esprod0477;Spain, Industrial Production, Synthetic Indicators, Construction, Calendar Adjusted, SA, Index;es;Business Surveys
+esprod0480;Spain, Industrial Production, Synthetic Indicators, Private Consumption, Calendar Adjusted, SA, Index;es;Business Surveys
+esprod0478;Spain, Industrial Production, Synthetic Indicators, Services, Calendar Adjusted, SA, Index;es;Business Surveys
+essurv0118;Spain, Business Surveys, Ministry of Economy & Business, Industry, Production Level, Total, SA;es;Business Surveys
+essurv1446;Spain, Business Surveys, Ministry of Economy & Business, Industry, Construction Production Level, Trend;es;Business Surveys
+essurv0434;Spain, Business Surveys, Ministry of Industry, Energy & Tourism, Industrial Situation Survey, Construction Sector, Housing, Orders;es;Business Surveys
+essurv0435;Spain, Business Surveys, Ministry of Industry, Energy & Tourism, Industrial Situation Survey, Construction Sector, Industrial, Orders;es;Business Surveys
+buil_es_42_3_b_m;Spain, Business Surveys, DG ECFIN, Construction Confidence Indicator, Civil Engineering, Evolution of Your Current Overall Order Books;es;Business Surveys
+indu_es_cons_1_bs_m;Spain, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Consumer Goods, Production Trend Observed in Recent Months, SA;es;Business Surveys
+essurv0125;Spain, Business Surveys, Ministry of Economy & Business, Industry, Production Level Trend, Consumer Goods, SA;es;Business Surveys
+essurv0124;Spain, Business Surveys, Ministry of Economy & Business, Industry, Production Level Trend, Capital Goods, SA;es;Business Surveys
+essurv0110;Spain, Business Surveys, Ministry of Economy & Business, Industry, Stocks of Finished Products, Total, SA;es;Business Surveys
+essurv0674;Spain, Business Surveys, Ministry of Economy & Business, Retail Trade, Level of Stocks;es;Business Surveys
+essurv0673;Spain, Business Surveys, Ministry of Economy & Business, Retail Trade, Order Intentions to Suppliers, Trend in Next Six Months;es;Business Surveys
+indu_es_tot_cof_bs_m;Spain, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance, SA;es;Business Surveys
+escons0048;Spain, Construction Finances, Buildings, Total, Weighted with Labor Force & Material Consumption, Index, Spanish Ministry of Development, Costs;es;Construction
+escons0055;Spain, Construction Finances, Buildings, Total, Weighted with Material Consumption, Index, Spanish Ministry of Development, Costs;es;Construction
+escons0054;Spain, Construction Finances, Labor Force, Index, Spanish Ministry of Development, Costs;es;Construction
+escons0053;Spain, Construction Finances, Total, Weighted with Labor Force & Material Consumption, Index, Spanish Ministry of Development, Costs;es;Construction
+esprod0475;Spain, Industrial Production, Domestic Production of Cement;es;Construction
+essurv0131;Spain, Consumer Surveys, Ministry of Economy & Business, Consumer Confidence Indicator, Total;es;Consumer Surveys
+cons2_es_tot_4_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, General Economic Situation Over Next 12 Months, Balance, SA;es;Consumer Surveys
+cons2_es_tot_12_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Statement on Financial Situation of Household, Balance, SA;es;Consumer Surveys
+cons2_es_tot_2_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Financial Situation Over Next 12 Months, Balance, SA;es;Consumer Surveys
+cons2_es_tot_8_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Major Purchases at Present, Balance, SA;es;Consumer Surveys
+cons2_es_tot_9_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Major Purchases Over Next 12 Months, Balance, SA;es;Consumer Surveys
+cons2_es_tot_10_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Savings at Present, Balance, SA;es;Consumer Surveys
+cons2_es_tot_11_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Savings Over Next 12 Months, Balance, SA;es;Consumer Surveys
+cons2_es_tot_6_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Price Trends Over Next 12 Months, Balance, SA;es;Consumer Surveys
+cons2_es_tot_cof_bs_m;Spain, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance, SA;es;Consumer Surveys
+esbank0380;Spain, Deposits & Loans, All Institutions, Loans, By Entity, to Non-Financial Sectors, Corporations, Stock, EUR;es;Financial Variables
+esbank0430;Spain, Deposits & Loans, All Institutions, Loans, By Entity, to Non-Financial Sectors, Non-Financial Corporations & Households & NPISHs, EUR;es;Financial Variables
+esbank0182;Spain, Deposits & Loans, Credit Institutions, Loans, By Entity, Other Resident Sectors, Total, EUR;es;Financial Variables
+esbank0307;Spain, Deposits & Loans, All Institutions, Loans, By Entity, to Non-Financial Sectors, Total, Stock, EUR;es;Financial Variables
+esbank1283;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, New Business, Loans to Households & NPISH, Credit Institutions & Credit Financial intermediaries, House Purchase;es;Financial Variables
+escons0047;Spain, Real Estate Prices, Total, Average per Square Meter, EUR, Spanish Media Group Fotocasa, Residential, Prices;es;Financial Variables
+esbank0351;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Volumes of New Business, Loans to Households & NPISH, Credit Institutions & Credit Financial intermediaries, Bank Overdraft & Revolving Loans, EUR;es;Financial Variables
+esbank0357;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Volumes of New Business, Loans to Households & NPISH, Credit Institutions & Credit Financial intermediaries, Consumer Credit, Total, EUR;es;Financial Variables
+esbank0361;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Volumes of New Business, Loans to Households & NPISH, Credit Institutions & Credit Financial intermediaries, Other Lending, Total, EUR;es;Financial Variables
+esbank0352;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Volumes of New Business, Loans to Households & NPISH, Credit Institutions & Credit Financial intermediaries, Lending for House Purchase, Total, EUR;es;Financial Variables
+esbank0387;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Interest Rates on New Business, Loans to Non-Financial Corporations, Credit Institutions & Credit Financial Intermediaries, Other Loans over EUR 1 Million, Weighted Average Rate;es;Financial Variables
+esbank1317;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Interest Rates on New Business, Loans to Non-Financial Corporations, Credit Institutions & Credit Financial Intermediaries, Other Loans over EUR 250.000 & up to 1 Million, Weighted Average Rate;es;Financial Variables
+esbank1316;Spain, Deposits & Loans, MFIs, Interest Rates on Loans, By Entity, of Euro Area Residents, Interest Rates on New Business, Loans to Non-Financial Corporations, Credit Institutions & Credit Financial Intermediaries, Other Loans up to EUR 250.000, Weighted Average Rate;es;Financial Variables
+esbank0493;Spain, Deposits & Loans, Other MFIs, Loans, By Entity, Other Resident Sectors, Insurance Corporations & Pension Funds, EUR;es;Financial Variables
+esbank0495;Spain, Deposits & Loans, Other MFIs, Loans, By Entity, Other Resident Sectors, Non-financial Corporation, EUR;es;Financial Variables
+esbank0500;Spain, Deposits & Loans, Other MFIs, Loans, By Entity, Other Resident Sectors, NPISH, EUR;es;Financial Variables
+esbank0022;Spain, Balance Sheet & Flows of MFI Sector, MFIs, Assets, By Entity, Residents, Domestic, Loans, Other Resident Sectors, EUR;es;Financial Variables
+esbank0169;Spain, Deposits & Loans, Credit Institutions, Loans, By Type, Mortgages, Constituted, Total, EUR;es;Financial Variables
+esbank0168;Spain, Deposits & Loans, Credit Institutions, Loans, By Type, Mortgages, Constituted, Total;es;Financial Variables
+escons0013;Spain, Real Estate Prices, Total, Index, EUR, Tinsa, Residential, Price Index;es;Financial Variables
+escons0014;Spain, Real Estate Prices, Capitals & Large Cities, Index, EUR, Tinsa, Residential, Price Index;es;Financial Variables
+escons0015;Spain, Real Estate Prices, Metropolitan Areas, Index, EUR, Tinsa, Residential, Price Index;es;Financial Variables
+escons0016;Spain, Real Estate Prices, Mediterranean Coast, Index, EUR, Tinsa, Residential, Price Index;es;Financial Variables
+esrate0005;Spain, Government Benchmarks, Bank of Spain, Treasury Bills, 345-376 Days, Yield;es;Financial Variables
+esrate0002;Spain, Government Benchmarks, Bank of Spain, Treasury Bills, 34-94 Days, Yield;es;Financial Variables
+esrate0003;Spain, Government Benchmarks, Bank of Spain, Treasury Bills, 172-192 Days, Yield;es;Financial Variables
+esgpfi0237;Spain, Government Securities Auctions, Treasury Bills, Average Rate, 9 Month, Yield;es;Financial Variables
+eseqin0001;Spain, Equity Indices, Madrid Stock Exchange, IBEX 35 Index, Close, EUR;es;Financial Variables
+eseqin0004;Spain, Equity Indices, Madrid Stock Exchange, IGBM Banks Index, Close, EUR;es;Financial Variables
+eseqin0015;Spain, Equity Indices, Madrid Stock Exchange, IGBM Manufacture & Assembly of Capital Goods Index, Close, EUR;es;Financial Variables
+eseqin0008;Spain, Equity Indices, Madrid Stock Exchange, IGBM Construction Materials Index, Close, EUR;es;Financial Variables
+eseqin0007;Spain, Equity Indices, Madrid Stock Exchange, IGBM Construction Index, Close, EUR;es;Financial Variables
+eseqin0013;Spain, Equity Indices, Madrid Stock Exchange, IGBM Insurance Index, Close, EUR;es;Financial Variables
+eseqin0014;Spain, Equity Indices, Madrid Stock Exchange, IGBM Leisure, Tourism & Hotel Industry Index, Close, EUR;es;Financial Variables
+eseqin0002;Spain, Equity Indices, Madrid Stock Exchange, IGBM Index, Close, EUR;es;Financial Variables
+eseqin0026;Spain, Equity Indices, Madrid Stock Exchange, IGBM Transport & Distribution Index, Close, EUR;es;Financial Variables
+estrad0420;Spain, Foreign Trade, Commodity, Export, Intermediate Goods, Energy, Index;es;International Trade
+estrad0421;Spain, Foreign Trade, Commodity, Export, Intermediate Goods, Non-Energy, Total, Index;es;International Trade
+estrad0841;Spain, Foreign Trade, Countries, Export, Africa, EUR;es;International Trade
+estrad1353;Spain, Foreign Trade, Countries, Export, Asia, EUR;es;International Trade
+espric1099;Spain, Export Prices, Industrial Products, Capital Goods, Index;es;International Trade
+espric1097;Spain, Export Prices, Industrial Products, Durable Consumer Goods, Index;es;International Trade
+espric1098;Spain, Export Prices, Industrial Products, Non-Durable Consumer Goods, Index;es;International Trade
+estrad0375;Spain, Foreign Trade, Countries, Export, Euro Area, EUR;es;International Trade
+estrad0366;Spain, Foreign Trade, Export, SA (X-13 ARIMA), EUR;es;International Trade
+espric1096;Spain, Export Prices, Industrial Products, Consumer Goods, Index;es;International Trade
+espric1100;Spain, Export Prices, Industrial Products, Intermediate Goods, Index;es;International Trade
+estrad0422;Spain, Foreign Trade, Commodity, Export, Intermediate Goods, Non-Energy, Industrial, Index;es;International Trade
+estrad0541;Spain, Foreign Trade, Countries, Export, Latin America, EUR;es;International Trade
+estrad0567;Spain, Foreign Trade, Countries, Export, Middle East, EUR;es;International Trade
+estrad0450;Spain, Foreign Trade, Countries, Export, OPEC Members, EUR;es;International Trade
+estrad0414;Spain, Foreign Trade, Export, Index;es;International Trade
+espric1095;Spain, Export Prices, Industrial Products, Total, Index;es;International Trade
+estrad0580;Spain, Foreign Trade, Commodity, Import, Capital Goods, Total, SA (X-13 ARIMA), EUR;es;International Trade
+estrad0581;Spain, Foreign Trade, Commodity, Import, Consumer Goods, Food, EUR;es;International Trade
+estrad0913;Spain, Foreign Trade, Commodity, Import, Consumer Goods, Total, EUR;es;International Trade
+estrad1991;Spain, Foreign Trade, Commodity, Import, Other, Finished Industrial Products, SA (X-13 ARIMA), EUR;es;International Trade
+estrad0578;Spain, Foreign Trade, Commodity, Import, Intermediate Goods, Total, SA (X-13 ARIMA), EUR;es;International Trade
+espric5005;Spain, Import Prices, Intermediate Goods, Energy Products, Index;es;International Trade
+estrad0411;Spain, Foreign Trade, Commodity, Import, Intermediate Goods, Non-Energy, Total, Index;es;International Trade
+espric3582;Spain, Import Prices, By Country, Non European Union, Index;es;International Trade
+espric3584;Spain, Import Prices, By Country, OECD, Index;es;International Trade
+estrad1417;Spain, Foreign Trade, Countries, Import, Africa, EUR;es;International Trade
+espric3563;Spain, Import Prices, Intermediate Goods, Agriculture, Silviculture & Fishing, Index;es;International Trade
+estrad1454;Spain, Foreign Trade, Countries, Import, Asia, EUR;es;International Trade
+espric1106;Spain, Import Prices, Industrial Products, Capital Goods, Index;es;International Trade
+espric1104;Spain, Import Prices, Industrial Products, Durable Consumer Goods, Index;es;International Trade
+espric1105;Spain, Import Prices, Industrial Products, Non-durable Consumer Goods, Index;es;International Trade
+espric3583;Spain, Import Prices, By Country, European Union, Index;es;International Trade
+estrad0377;Spain, Foreign Trade, Countries, Import, Euro Area, EUR;es;International Trade
+estrad0367;Spain, Foreign Trade, Import, SA (X-13 ARIMA), EUR;es;International Trade
+espric1103;Spain, Import Prices, Industrial Products, Consumer Goods, Index;es;International Trade
+imprcnsai15esii;Spain, Eurostat, Import Prices in Industry, Total Market, Manufacturing (C), 2015=100, Index;es;International Trade
+espric1107;Spain, Import Prices, Industrial Products, Intermediate Goods, Index;es;International Trade
+estrad0412;Spain, Foreign Trade, Commodity, Import, Intermediate Goods, Non-Energy, Industrial, Index;es;International Trade
+espric1102;Spain, Import Prices, Industrial Products, Total, Index;es;International Trade
+estrad0543;Spain, Foreign Trade, Countries, Import, Latin America, EUR;es;International Trade
+estrad0568;Spain, Foreign Trade, Countries, Import, Middle East, EUR;es;International Trade
+imprbnsai15esii;Spain, Eurostat, Import Prices in Industry, Total Market, Mining & Quarrying (B), 2015=100, Index;es;International Trade
+estrad0453;Spain, Foreign Trade, Countries, Import, OPEC Members, EUR;es;International Trade
+estrad0404;Spain, Foreign Trade, Import, Index;es;International Trade
+estrad0582;Spain, Foreign Trade, Commodity, Import, Consumer Goods, Non Food, EUR;es;International Trade
+estrad0579;Spain, Foreign Trade, Commodity, Import, Intermediate Goods, Non Energy Products, EUR;es;International Trade
+estrad0452;Spain, Foreign Trade, Countries, Import, OECD Countries, EUR;es;International Trade
+espric1108;Spain, Import Prices, Industrial Products, Energy, Index;es;International Trade
+estrad0449;Spain, Foreign Trade, Countries, Export, OECD Countries, EUR;es;International Trade
+estrad0575;Spain, Foreign Trade, Commodity, Export, Capital Goods, Total, EUR;es;International Trade
+estrad0576;Spain, Foreign Trade, Commodity, Export, Consumer Goods, Food, EUR;es;International Trade
+estrad0674;Spain, Foreign Trade, Commodity, Export, Consumer Goods, Total, EUR;es;International Trade
+estrad0573;Spain, Foreign Trade, Commodity, Export, Intermediate Goods, Total, SA (X-13 ARIMA), EUR;es;International Trade
+estrad0551;Spain, Foreign Trade, Commodity, Export, Other, Finished Industrial Products, Constant Prices, EUR;es;International Trade
+estrad0369;Spain, Foreign Trade, Export Total excluding Energy, EUR;es;International Trade
+estrad0577;Spain, Foreign Trade, Commodity, Export, Consumer Goods, Non Food, SA (X-13 ARIMA), EUR;es;International Trade
+estrad0574;Spain, Foreign Trade, Commodity, Export, Intermediate Goods, Non Energy Products, EUR;es;International Trade
+espric1101;Spain, Export Prices, Industrial Products, Energy, Index;es;International Trade
+esinea0006;Spain, Wages & Salaries, Wage Agreements, Agreed Wage Increase, Negotiated in Business Agreements;es;Labor Market
+essurv1449;Spain, Business Surveys, Ministry of Economy & Business, Industry, Construction, Trend in Employment;es;Labor Market
+emplm73scai15essb;Spain, Eurostat, Trade & Services, Labor Input in Services, Employment, Advertising & Market Research (M73), 2015=100, Calendar Adjusted, SA, Index;es;Labor Market
+emplg45nsai15eslm;Spain, Eurostat, Trade & Services, Employment, Wholesale & Retail Trade & Repair of Motor Vehicles & Motorcycles (G45), 2015=100, Index;es;Labor Market
+estrad1023;Spain, Domestic Trade, Services Turnover, Wholesale Trade, Household Goods, Index;es;Labor Market
+estrad1043;Spain, Domestic Trade, Services Turnover, Information & Communication Technologies, Index;es;Labor Market
+eslama0896;Spain, Employment, Males & Females, Services, Total, Index;es;Labor Market
+estrad1015;Spain, Domestic Trade, Services Turnover, Commerce, Index;es;Labor Market
+eslama0877;Spain, Employment, Males & Females, By Type of Contract, Part-Time Contracts;es;Labor Market
+esinea0001;Spain, Wages & Salaries, Wage Agreements, Agreed Wage Increase, Total, Cumulative;es;Labor Market
+eslama0868;Spain, Employment, Males & Females, By Type of Contract, Fixed-term Contracts, Total;es;Labor Market
+eslama1823;Spain, Unemployment, Males & Females, Agriculture, Number;es;Labor Market
+eslama1824;Spain, Unemployment, Males & Females, Construction, Number;es;Labor Market
+eslama1825;Spain, Unemployment, Males & Females, Industry, Number;es;Labor Market
+eslama0952;Spain, Unemployment, Males & Females, All Sectors, Number, SA;es;Labor Market
+eslama1826;Spain, Unemployment, Males & Females, Services, Number;es;Labor Market
+eslama1510;Spain, Job Vacancy Statistics, Jobs Offered;es;Labor Market
+esinea0028;Spain, Wages & Salaries, Agriculture, Wage Index, Index;es;Labor Market
+estrad0569;Spain, Industry Turnover, Domestic Market, Electricity, Gas & Other Fuels, Consumption, Electricity, SA;es;Manufacturing
+estrad0570;Spain, Industry Turnover, Domestic Market, Electricity, Gas & Other Fuels, Consumption, Electricity, Industrial Sector, SA;es;Manufacturing
+tovtmigcagscai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, MIG - Capital Goods, 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+tovtmigndcogscai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, MIG - Non-Durable Consumer Goods, 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+tovtmigdcogscai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, MIG - Durable Consumer Goods, 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+tovtmigcogscai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, MIG - Consumer Goods, 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+tovtmignrgxdescai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, MIG - Energy (Except D & E), 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+tovtmigingscai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, MIG - Intermediate Goods, 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+tovtcscai15esvm;Spain, Eurostat, Turnover in Industry, Total Market, Manufacturing (C), 2015=100, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0650;Spain, Manufacturing, Motor Vehicles, Trailers & Semi-Trailers, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0641;Spain, Manufacturing, Chemicals & Chemical Products, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0421;Spain, Industrial Production, Consumer Goods, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0422;Spain, Industrial Production, Durable Consumer Goods, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0655;Spain, Industrial Production, Electricity, Gas, Steam & Air Conditioning Supply, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0426;Spain, Industrial Production, Energy, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0631;Spain, Manufacturing, Food Products, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0425;Spain, Industrial Production, Intermediate Goods, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0424;Spain, Industrial Production, Capital Goods, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0649;Spain, Manufacturing, Machinery & Equipment N.E.C., Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0646;Spain, Manufacturing, Fabricated Metal Products, Except Machinery & Equipment, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0653;Spain, Manufacturing, Other, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0645;Spain, Manufacturing, Basic Metals, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0423;Spain, Industrial Production, Non-Durable Consumer Goods, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0634;Spain, Manufacturing, Textiles, Total, Calendar Adjusted, SA, Index;es;Manufacturing
+esprod0420;Spain, Industrial Production, Total Industry Excluding Construction, Calendar Adjusted, SA, Index;es;Manufacturing
+esrate0009;Spain, FX Indices, Bank of Spain, Competitiveness Index, Total with Consumer Prices Against Developed Countries;es;Prices and Monetary Variables
+esrate0007;Spain, FX Indices, Bank of Spain, Competitiveness Index, Total with Consumer Prices Against Euro Area;es;Prices and Monetary Variables
+esrate0014;Spain, FX Indices, Bank of Spain, Competitiveness Index, Based on Consumer Prices, Against Asian Industrialized Countries;es;Prices and Monetary Variables
+esrate0013;Spain, FX Indices, Bank of Spain, Competitiveness Index, Based on Consumer Prices, Against Industrialized Countries;es;Prices and Monetary Variables
+espric0074;Spain, Consumer Price Index, Total, Chained, Index;es;Prices and Monetary Variables
+espric1867;Spain, Consumer Price Index, Health, Medical & A like Services, Chained, Index;es;Prices and Monetary Variables
+espric0634;Spain, Consumer Price Index, Special Aggregates, Overall Index, Excluding Unprocessed Food & Energy Products, Chained, Index;es;Prices and Monetary Variables
+espric1132;Spain, Harmonized CPI, National Indices, Alcoholic Beverages & Tobacco, Total, Chained, Index;es;Prices and Monetary Variables
+espric4357;Spain, Harmonized CPI, National Indices, Total, Chained, Index;es;Prices and Monetary Variables
+espric1131;Spain, Harmonized CPI, National Indices, Food & Non-Alcoholic Beverages, Total, Chained, Index;es;Prices and Monetary Variables
+espric1130;Spain, Harmonized CPI, National Indices, Health, Total, Chained, Index;es;Prices and Monetary Variables
+espric1134;Spain, Harmonized CPI, National Indices, Housing, Dwelling, Water, Electricity, Gas & Other Fuels, Chained, Index;es;Prices and Monetary Variables
+espric1140;Spain, Harmonized CPI, National Indices, Restaurants & Hotels, Total, Chained, Index;es;Prices and Monetary Variables
+espric1136;Spain, Harmonized CPI, National Indices, Transport, Transport, Chained, Index;es;Prices and Monetary Variables
+espric0082;Spain, Consumer Price Index, Communication, Chained, Index;es;Prices and Monetary Variables
+espric0085;Spain, Consumer Price Index, Restaurants & Hotels, Chained, Index;es;Prices and Monetary Variables
+espric0637;Spain, Consumer Price Index, Special Aggregates, Services, Including Rentals for Housing, Chained, Index;es;Prices and Monetary Variables
+esbank0280;Spain, Deposits & Loans, MFIs, Deposits, By Entity, of Non-Financial Corporations & Households, New Business, Household & NPISH, Credit Institutions & Credit Financial Intermediaries, With Agreed Maturity, Weighted Average Rate;es;Prices and Monetary Variables
+esbank0286;Spain, Deposits & Loans, MFIs, Deposits, By Entity, of Non-Financial Corporations & Households, New Business, Non-Financial Corporations, Credit Institutions & Credit Financial Intermediaries, With Agreed Maturity, Weighted Average Rate;es;Prices and Monetary Variables
+es10ygov;Spain, Government Benchmarks, Macrobond, 10 Year, Yield;es;Prices and Monetary Variables
+es3ygov;Spain, Government Benchmarks, Bank of Spain, 3 Year, Yield;es;Prices and Monetary Variables
+es5ygov;Spain, Government Benchmarks, Macrobond, 5 Year, Yield;es;Prices and Monetary Variables
+esmost0001;Spain, Monetary Statistics, Monetary Aggregates, M1, Total, EUR;es;Prices and Monetary Variables
+esmost0002;Spain, Monetary Statistics, Monetary Aggregates, M2, Total, EUR;es;Prices and Monetary Variables
+esmost0003;Spain, Monetary Statistics, Monetary Aggregates, M3, Total, EUR;es;Prices and Monetary Variables
+espric4408;Spain, Producer Price Index, Industrial, Manufacture of Motor Vehicles, Trailers & Semi-Trailers, Index;es;Prices and Monetary Variables
+espric4390;Spain, Producer Price Index, Industrial, Manufacture of Beverages, Index;es;Prices and Monetary Variables
+espric4405;Spain, Producer Price Index, Industrial, Manufacture of Computer, Electronic & Optical Products, Index;es;Prices and Monetary Variables
+espric4399;Spain, Producer Price Index, Industrial, Manufacture of Chemicals & Chemical Products, Index;es;Prices and Monetary Variables
+espric4361;Spain, Producer Price Index, Industrial, Consumer Goods, Total, Index;es;Prices and Monetary Variables
+espric4362;Spain, Producer Price Index, Industrial, Consumer Goods, Durable, Index;es;Prices and Monetary Variables
+espric4412;Spain, Producer Price Index, Industrial, Electricity, Gas, Steam & Air Conditioning Supply, Index;es;Prices and Monetary Variables
+espric4366;Spain, Producer Price Index, Industrial, Energy, Index;es;Prices and Monetary Variables
+espric4389;Spain, Producer Price Index, Industrial, Manufacture of Food Products, Index;es;Prices and Monetary Variables
+espric4365;Spain, Producer Price Index, Industrial, Intermediate Goods, Total, Index;es;Prices and Monetary Variables
+espric4364;Spain, Producer Price Index, Industrial, Capital Goods, Total, Index;es;Prices and Monetary Variables
+espric1193;Spain, Producer Price Index, Industrial, Manufacturing, Index;es;Prices and Monetary Variables
+espric4407;Spain, Producer Price Index, Industrial, Manufacture of Machinery & Equipment N.E.C., Index;es;Prices and Monetary Variables
+espric4404;Spain, Producer Price Index, Industrial, Manufacture of Fabricated Metal Products, Except Machinery & Equipment, Index;es;Prices and Monetary Variables
+espric1194;Spain, Producer Price Index, Industrial, Mining & Quarrying, Index;es;Prices and Monetary Variables
+espric4411;Spain, Producer Price Index, Industrial, Other Manufacturing, Index;es;Prices and Monetary Variables
+espric4403;Spain, Producer Price Index, Industrial, Manufacture of Basic Metals, Index;es;Prices and Monetary Variables
+espric4363;Spain, Producer Price Index, Industrial, Consumer Goods, Non-Durable, Index;es;Prices and Monetary Variables
+espric4398;Spain, Producer Price Index, Industrial, Manufacture of Coke & Refined Petroleum Products, Index;es;Prices and Monetary Variables
+espric4402;Spain, Producer Price Index, Industrial, Manufacture of Other Non-Metallic Mineral Products, Index;es;Prices and Monetary Variables
+espric4409;Spain, Producer Price Index, Industrial, Manufacture of Other Transport Equipment, Index;es;Prices and Monetary Variables
+espric4400;Spain, Producer Price Index, Industrial, Manufacture of Basic Pharmaceutical Products & Pharmaceutical Preparations, Index;es;Prices and Monetary Variables
+espric4392;Spain, Producer Price Index, Industrial, Manufacture of Textiles, Index;es;Prices and Monetary Variables
+espric4413;Spain, Producer Price Index, Industrial, Water Collection, Treatment & Supply, Index;es;Prices and Monetary Variables
+espric4360;Spain, Producer Price Index, Industrial, Total, Index;es;Prices and Monetary Variables
+estrad0549;Spain, Domestic Trade, Vehicle Sales & Registrations, Vehicle Registrations, Vehicles;es;Retail and Consumption
+estrad0464;Spain, Domestic Trade, Retail Trade, Household Equipment, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0461;Spain, Domestic Trade, Retail Trade, Food, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0462;Spain, Domestic Trade, Retail Trade, Remainder (Other Groups), Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0387;Spain, Domestic Trade, Retail Trade, Large Chain Stores, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0385;Spain, Domestic Trade, Retail Trade, Single Retail Stores, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0386;Spain, Domestic Trade, Retail Trade, Small Chain Stores, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0388;Spain, Domestic Trade, Retail Trade, Large Department Stores, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0382;Spain, Domestic Trade, Retail Trade, Total, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0384;Spain, Domestic Trade, Retail Trade, Total, Excluding Service Stations, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0383;Spain, Domestic Trade, Retail Trade, Service Stations, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0151;Spain, Domestic Trade, Services Turnover, Staff Recruitment & Placement, Index;es;Retail and Consumption
+estrad0511;Spain, Domestic Trade, Services Turnover, Catering Trade, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0504;Spain, Domestic Trade, Services Turnover, Other Services, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0499;Spain, Domestic Trade, Services Turnover, Total, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0500;Spain, Domestic Trade, Services Turnover, Commerce, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0505;Spain, Domestic Trade, Services Turnover, Transport, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0503;Spain, Domestic Trade, Services Turnover, Retail Trade, Calendar Adjusted, SA, Index;es;Retail and Consumption
+estrad0502;Spain, Domestic Trade, Services Turnover, Wholesale Trade, Total, Calendar Adjusted, SA, Index;es;Retail and Consumption
+buil_nl_tot_1_bs_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Building Activity Development Over the Past 3 Months, Balance, SA;nl;Business Surveys
+buil_nl_tot_3_bs_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Evolution of Your Current Overall Order Books, Balance, SA;nl;Business Surveys
+buil_nl_tot_4_bs_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Employment Expectations Over the Next 3 Months, Balance, SA;nl;Business Surveys
+buil_nl_tot_5_bs_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Prices Expectations Over the Next 3 Months, Balance, SA;nl;Business Surveys
+buil_nl_tot_cof_bs_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Balance, SA;nl;Business Surveys
+nlsurv0000;Netherlands, Business Surveys, Statistics Netherlands, Total, Producer Confidence, SA;nl;Business Surveys
+oecd_mei_00418597;Netherlands, OECD MEI, Leading Indicators OECD, Leading Indicators, Composite Leading Indicators, Amplitude Adjusted, SA, Index;nl;Business Surveys
+oecd_mei_00418599;Netherlands, OECD MEI, Leading Indicators OECD, Leading Indicators, Composite Leading Indicators, Trend Restored, SA, Index;nl;Business Surveys
+buil_nl_tot_2_f3s_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Weather Conditions, SA;nl;Business Surveys
+buil_nl_tot_2_f7s_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Financial Constraints, SA;nl;Business Surveys
+buil_nl_tot_2_f2s_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Insufficient Demand, SA;nl;Business Surveys
+buil_nl_tot_2_f4_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Shortage of Labour Force;nl;Business Surveys
+buil_nl_tot_2_f1s_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, None, SA;nl;Business Surveys
+buil_nl_tot_2_f5s_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Shortage of Material And/Or Equipment, SA;nl;Business Surveys
+buil_nl_tot_2_f6s_m;Netherlands, Business Surveys, DG ECFIN, Construction Confidence Indicator, Main Factors Currently Limiting Your Building Activity, Other Factors, SA;nl;Business Surveys
+nlsurv0151;Netherlands, Business Surveys, Statistics Netherlands, Manufacturing Industry, Orders, Total, Index;nl;Business Surveys
+indu_nl_cons_5_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Consumer Goods, Production Expectations for the Months Ahead, SA;nl;Business Surveys
+indu_nl_cons_1_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Consumer Goods, Production Trend Observed in Recent Months, SA;nl;Business Surveys
+indu_nl_cdur_5_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Durable Consumer Goods, Production Expectations for the Months Ahead, SA;nl;Business Surveys
+indu_nl_cdur_1_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Durable Consumer Goods, Production Trend Observed in Recent Months, SA;nl;Business Surveys
+indu_nl_intm_5_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Intermediate Goods, Production Expectations for the Months Ahead, SA;nl;Business Surveys
+indu_nl_intm_1_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Intermediate Goods, Production Trend Observed in Recent Months, SA;nl;Business Surveys
+indu_nl_cndu_5_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Non-Durable Consumer Goods, Production Expectations for the Months Ahead, SA;nl;Business Surveys
+indu_nl_cndu_1_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Non-Durable Consumer Goods, Production Trend Observed in Recent Months, SA;nl;Business Surveys
+indu_nl_inve_5_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Investment Goods, Production Expectations for the Months Ahead, SA;nl;Business Surveys
+indu_nl_inve_1_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Main Industrial Grouping, Investment Goods, Production Trend Observed in Recent Months, SA;nl;Business Surveys
+oecd_mei_00418418;Netherlands, OECD MEI, Business Tendency Surveys (Manufacturing), Production, Future Tendency, National Indicator, SA;nl;Business Surveys
+nlprod0197;Netherlands, Capacity Utilization, Manufacturing, Forecast Production Balance;nl;Business Surveys
+nlprod0193;Netherlands, Capacity Utilization, Manufacturing, Realisation Production Balance;nl;Business Surveys
+indu_nl_tot_4_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Assessment of Stocks of Finished Products, Balance, SA;nl;Business Surveys
+indu_nl_tot_cof_bs_m;Netherlands, Business Surveys, DG ECFIN, Industrial Confidence Indicator, Total Sector, Monthly, Balance, SA;nl;Business Surveys
+bis_mnl011160;Netherlands, Real Estate Prices, Existing Dwellings, Pure Price, Index, BIS, Residential, Price Index;nl;Construction
+nlcons0452;Netherlands, Construction Indicators, Total building costs, Index, Statistics Netherlands (CBS);nl;Construction
+cstmfcc11xcc113nsai15nlci;Netherlands, Eurostat, Construction Cost (or Producer Prices), New Residential Buildings, Input Prices for Materials (National Currency), Residential Buildings, Except Residences for Communities (F_CC11_X_CC113), 2015=100, Index;nl;Construction
+nlsurv0007;Netherlands, Consumer Surveys, Statistics Netherlands, Consumer Confidence Index, Indicator, Balance, SA;nl;Consumer Surveys
+nlsurv0016;Netherlands, Consumer Surveys, Statistics Netherlands, Economic Climate, Indicator, Balance, SA;nl;Consumer Surveys
+nlsurv0023;Netherlands, Consumer Surveys, Statistics Netherlands, Willingness to Buy, Indicator, Balance, SA;nl;Consumer Surveys
+nlsurv2768;Netherlands, Consumer Surveys, Statistics Netherlands, Economic Climate, Economic Situation Next 12 Months, Balance;nl;Consumer Surveys
+nlsurv0025;Netherlands, Consumer Surveys, Statistics Netherlands, Willingness to Buy, Financial Situation Next 12 Months, Balance, SA;nl;Consumer Surveys
+nlsurv0012;Netherlands, Consumer Surveys, Statistics Netherlands, Consumer Confidence Index, Right Time to Make Large Purchases, Balance, SA;nl;Consumer Surveys
+cons2_nl_tot_cof_bs_m;Netherlands, Consumer Surveys, DG ECFIN, Consumer Confidence, Balance, SA;nl;Consumer Surveys
+vstoxx;Euro Area, Volatility Indices, STOXX, VSTOXX Index, Close;nl;Financial Variables
+nleqin0013;Netherlands, Equity Indices, Euronext Amsterdam, AMX Index, Price Return, Close, EUR;nl;Financial Variables
+nleqin0001;Netherlands, Equity Indices, Euronext Amsterdam, AEX-Index, Price Return, Close, EUR;nl;Financial Variables
+aex0013;Netherlands, Equity Indices, Euronext Amsterdam, Basic Materials, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0012;Netherlands, Equity Indices, Euronext Amsterdam, Consumer Goods, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0001;Netherlands, Equity Indices, Euronext Amsterdam, Consumer Services, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0002;Netherlands, Equity Indices, Euronext Amsterdam, Financials, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0020;Netherlands, Equity Indices, Euronext Amsterdam, Technology, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0003;Netherlands, Equity Indices, Euronext Amsterdam, Health Care, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0008;Netherlands, Equity Indices, Euronext Amsterdam, Industrials, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0007;Netherlands, Equity Indices, Euronext Amsterdam, Oil & Gas, Index, Price Return, Close, EUR;nl;Financial Variables
+aex0014;Netherlands, Equity Indices, Euronext Amsterdam, Telecommunications, Index, Price Return, Close, EUR;nl;Financial Variables
+nleqin0012;Netherlands, Equity Indices, Euronext Amsterdam, AEX Leverage Index, Price Return, Close, EUR;nl;Financial Variables
+aax;Netherlands, Equity Indices, Euronext Amsterdam, AEX All Share Index, Price Return, Close, EUR;nl;Financial Variables
+msci_106220n;Netherlands, Equity Indices, MSCI, Small Cap, Index, Net Total Return, Local Currency;nl;Financial Variables
+nlbank0372;Netherlands, Balance Sheet & Flows of MFI Sector, MFIs, Assets, Loans to Euro Area Residents, Total, EUR;nl;Financial Variables
+nlbank0370;Netherlands, Balance Sheet & Flows of MFI Sector, MFIs, Assets, Loans to Euro Area Residents, General Government, EUR;nl;Financial Variables
+nlbank0029;Netherlands, Balance Sheet & Flows of MFI Sector, MFIs Excluding Central Bank, Assets, Loans to Euro Area Residents, Private Sector, EUR;nl;Financial Variables
+nlbank0030;Netherlands, Balance Sheet & Flows of MFI Sector, MFIs Excluding Central Bank, Assets, Loans to Euro Area Residents, Total, EUR;nl;Financial Variables
+nlbank0004;Netherlands, Balance Sheet & Flows of MFI Sector, Central Bank, Assets, Loans to Euro Area Residents, Total, EUR;nl;Financial Variables
+reeric42cpii10nlv9;Netherlands, Eurostat, Industrial Countries' Effective Exchange Rates, Exchange Rate Index, Real Effective Exchange Rate (Deflator: Consumer Price Index - 42 Trading Partners - Industrial Countries), 2010=100, Index;nl;Financial Variables
+reerea19cpii10nlv9;Netherlands, Eurostat, Industrial Countries' Effective Exchange Rates, Exchange Rate Index, Real Effective Exchange Rate (Deflator: Consumer Price Index - 19 Trading Partners - Euro Area), 2010=100, Index;nl;Financial Variables
+nlbank0075;Netherlands, Deposits & Loans, MFIs, Loans, By Entity, to Euro Area Residents, Private Sector, Households, Other Lending, over 1 Year & up to 5 Years, EUR;nl;Financial Variables
+nlbank0068;Netherlands, Deposits & Loans, MFIs, Loans, By Entity, to Euro Area Residents, Private Sector, Households, Consumer Credit, up to 1 Year, EUR;nl;Financial Variables
+nlbank0073;Netherlands, Deposits & Loans, MFIs, Loans, By Entity, to Euro Area Residents, Private Sector, Households, Lending for House Purchase, over 5 Years, EUR;nl;Financial Variables
+nlbank0076;Netherlands, Deposits & Loans, MFIs, Loans, By Entity, to Euro Area Residents, Private Sector, Households, Other Lending, over 5 Years, EUR;nl;Financial Variables
+nlbank0074;Netherlands, Deposits & Loans, MFIs, Loans, By Entity, to Euro Area Residents, Private Sector, Households, Other Lending, up to 1 Year, EUR;nl;Financial Variables
+nlmost0016;Netherlands, Monetary Statistics, Monetary Aggregates, Other, Lending, Loans (Not Adjusted for Securitisations), EUR;nl;Financial Variables
+nlbank0268;Netherlands, Deposits & Loans, MFIs, Loans, By Type, Domestic, Private Sector, Weighted Average Interest Rates, Non-Financial Corporations, Loans Granted > € 1 Mln - New Business, > 5 Year Initial Rate Fixation, Total;nl;Financial Variables
+nlbank0407;Netherlands, Deposits & Loans, MFIs, Loans, Loans Granted for House Purchase, New Business, Including Renegotiated Loans, Households, EUR;nl;Financial Variables
+nlbank0262;Netherlands, Deposits & Loans, MFIs, Loans, By Type, Domestic, Private Sector, Weighted Average Interest Rates, Non-Financial Corporations, Loans Granted > € 1 Mln - New Business, Floating Rate & <= 1 Year Initial Rate Fixation, Total;nl;Financial Variables
+ecb_00010424;Netherlands, ECB, Business Volumes, Non-Financial Corporations, Loans Other than Revolving Loans & Overdrafts, Convenience & Extended Credit Card Debt [A20-A2Z], All Maturities, Over EUR 1 Million, New Business, Currency Denominator: Euro, EUR;nl;Financial Variables
+nlmost0021;Netherlands, Monetary Statistics, Monetary Aggregates, M1, Currency in Circulation, EUR;nl;Financial Variables
+nlmost0019;Netherlands, Monetary Statistics, Monetary Aggregates, M1, Total, EUR;nl;Financial Variables
+nlmost0020;Netherlands, Monetary Statistics, Monetary Aggregates, M2, Total, EUR;nl;Financial Variables
+nlmost0008;Netherlands, Monetary Statistics, Monetary Aggregates, M3, Total (incl. Currency in Circulation), EUR;nl;Financial Variables
+nlbank0213;Netherlands, Deposits & Loans, MFIs, Loans, By Type, Domestic, Private Sector, Weighted Average Interest Rates, Households, Loans for House Purchase New Business, > 5 Year Initial Rate Fixation & <= 10 Year Initial Rate Fixation;nl;Financial Variables
+nlbank0212;Netherlands, Deposits & Loans, MFIs, Loans, By Type, Domestic, Private Sector, Weighted Average Interest Rates, Households, Loans for House Purchase New Business, > 1 Year & <= 5 Year Initial Rate Fixation;nl;Financial Variables
+ecb_00010726;Netherlands, ECB, MFI Interest Rates, Households & NPISH, Lending for House Purchase Excluding Revolving Loans & Overdrafts, Convenience & Extended Credit Card Debt [A22-A2Z], Annualised Agreed Rate (AAR) / Narrowly Defined Effective Rate (NDER), Over 10 Years, Total, New Business, Currency Denominator: Euro;nl;Financial Variables
+ecb_00010708;Netherlands, ECB, MFI Interest Rates, Households & NPISH, Lending for House Purchase Excluding Revolving Loans & Overdrafts, Convenience & Extended Credit Card Debt [A22-A2Z], Annualised Agreed Rate (AAR) / Narrowly Defined Effective Rate (NDER), Up to 1 Year, Total, New Business, Currency Denominator: Euro;nl;Financial Variables
+ecb_00010698;Netherlands, ECB, MFI Interest Rates, Households & NPISH, Lending for House Purchase Excluding Revolving Loans & Overdrafts, Convenience & Extended Credit Card Debt [A22-A2Z], Annual Percentage Rate of Charge (APRC), All Maturities, Total, New Business, Currency Denominator: Euro;nl;Financial Variables
+nlmost0001;Netherlands, Monetary Statistics, Monetary Aggregates, M1, Overnight Deposits, EUR;nl;Financial Variables
+b_c1_cl;Crude Oil, Future, ICE Brent Crude, 1st Position, Close, USD;nl;Financial Variables
+msci_990100u;World, Equity Indices, MSCI, Mid & Large Cap, Index, Price Return, USD;nl;Financial Variables
+imfd_m13870__dzf505;Netherlands, IMF DOTS, International Transactions, Exports, Developing Asia, USD;nl;International Trade
+nltrad0284;Netherlands, Foreign Trade, Commodity, Export, All, Chemicals & Related Products, N.E.S., EUR;nl;International Trade
+nltrad0088;Netherlands, Foreign Trade, Countries, Export, Total, France, EUR;nl;International Trade
+nltrad0328;Netherlands, Foreign Trade, Commodity, Export, All, Manufactured Goods Classified by Material, EUR;nl;International Trade
+nltrad0390;Netherlands, Foreign Trade, Commodity, Export, All, Machinery & Transport Equipment, EUR;nl;International Trade
+nltrad0924;Netherlands, Foreign Trade, Commodity, Export, All, Manufactured Articles, Others, EUR;nl;International Trade
+nltrad0097;Netherlands, Foreign Trade, Countries, Export, Total, Belgium, EUR;nl;International Trade
+nltrad0155;Netherlands, Foreign Trade, Countries, Export, Total, China, EUR;nl;International Trade
+nltrad0085;Netherlands, Foreign Trade, Countries, Export, Total Countries, EUR;nl;International Trade
+nltrad0910;Netherlands, Foreign Trade, Countries, Export, Total Other, Non-EU, EUR;nl;International Trade
+nlpric0002;Netherlands, Export Prices, Total, Index;nl;International Trade
+nltrad1039;Netherlands, Foreign Trade, Total, Exports, Value Index, Index;nl;International Trade
+nltrad1033;Netherlands, Foreign Trade, Total, Exports, Volume Index, Index;nl;International Trade
+nltrad0221;Netherlands, Foreign Trade, Commodity, Export, All, Crude Materials, Inedible Ex. Fuels, EUR;nl;International Trade
+nltrad0089;Netherlands, Foreign Trade, Countries, Export, Total, Germany, EUR;nl;International Trade
+nltrad0002;Netherlands, Foreign Trade, Countries, Import, Total, EU, EUR;nl;International Trade
+nltrad0592;Netherlands, Foreign Trade, Commodity, Import, All, Crude Petroleum, EUR;nl;International Trade
+nltrad0038;Netherlands, Foreign Trade, Countries, Import, Total, Europe, EUR;nl;International Trade
+nltrad0018;Netherlands, Foreign Trade, Countries, Import, Total, France, EUR;nl;International Trade
+nltrad0595;Netherlands, Foreign Trade, Commodity, Import, All, Gas, Natural & Manufactured, EUR;nl;International Trade
+nltrad0711;Netherlands, Foreign Trade, Commodity, Import, All, Machinery & Transport Equipment, EUR;nl;International Trade
+nltrad0945;Netherlands, Foreign Trade, Commodity, Import, All, Manufactured Articles, Others, EUR;nl;International Trade
+nltrad0014;Netherlands, Foreign Trade, Countries, Import, Total, Belgium, EUR;nl;International Trade
+nltrad0072;Netherlands, Foreign Trade, Countries, Import, Total, China, EUR;nl;International Trade
+nltrad0001;Netherlands, Foreign Trade, Countries, Import, Total Countries, EUR;nl;International Trade
+nltrad0003;Netherlands, Foreign Trade, Countries, Import, Total, Non-EU, EUR;nl;International Trade
+nlpric0001;Netherlands, Import Prices, Total, Index;nl;International Trade
+nltrad1038;Netherlands, Foreign Trade, Total, Import, Value Index, Index;nl;International Trade
+nltrad1032;Netherlands, Foreign Trade, Total, Import, Volume Index, Index;nl;International Trade
+nltrad0543;Netherlands, Foreign Trade, Commodity, Import, All, Crude Materials, Inedible Ex. Fuels, EUR;nl;International Trade
+nltrad0006;Netherlands, Foreign Trade, Countries, Import, Total, Germany, EUR;nl;International Trade
+nltotgemmonth;Netherlands, World Bank, Global Economic Monitor, Terms of Trade, Total, Index;nl;International Trade
+nllama1468;Netherlands, Labor Force Statistics, Labor Force, Males & Females, Aged 15-75, Not Included, SA;nl;Labor Market
+nllama1223;Netherlands, Productivity, Costs & Hours Worked, Labor Costs, Education, Contractual, Index;nl;Labor Market
+nllama1156;Netherlands, Productivity, Costs & Hours Worked, Labor Costs, Total, Contractual, Index;nl;Labor Market
+nllama1157;Netherlands, Productivity, Costs & Hours Worked, Labor Costs, Hourly, Total, Contractual, Index;nl;Labor Market
+nllama1187;Netherlands, Productivity, Costs & Hours Worked, Labor Costs, Trade, Contractual, Index;nl;Labor Market
+nllama1465;Netherlands, Unemployment, Labor Force, Males & Females, Aged 15-75, Rate, SA;nl;Labor Market
+nlinea0149;Netherlands, Wages & Salaries, Wages, Total, Excl. Bonus, Index;nl;Labor Market
+nlinea0150;Netherlands, Wages & Salaries, Wages, Total, Incl. Bonus, Index;nl;Labor Market
+nlinea0163;Netherlands, Earnings, Earnings of Employees, Hourly, Industry, Excl. Bonus, Index;nl;Labor Market
+nlinea0106;Netherlands, Wages & Salaries, Wages, By Sector, Private Companies, Monthly Cao Wages Excluding Special Payments, Index;nl;Labor Market
+nlprod0698;Netherlands, Manufacturing, Seasonally Adjusted Production, Electrical & Electronic Industry, SA, Index;nl;Manufacturing
+nlprod0537;Netherlands, Energy & Water Supply, Seasonally Adjusted Production, Total, SA, Index;nl;Manufacturing
+nlprod0528;Netherlands, Manufacturing, Seasonally Adjusted Production, Manufacture of Food & Beverages, SA, Index;nl;Manufacturing
+nlprod0527;Netherlands, Manufacturing, Seasonally Adjusted Production, Total, SA, Index;nl;Manufacturing
+nlprod0525;Netherlands, Industrial Production, Seasonally Adjusted Production, Excluding Construction, SA, Index;nl;Manufacturing
+tovdc20c21scai15nlvd;"Netherlands, Eurostat, Turnover in Industry, Domestic Market, Manufacture of Chemicals & Chemical Products; Basic Pharmaceutical Products & Pharmaceutical Preparations (C20_C21), 2015=100, Calendar Adjusted, SA, Index";nl;Manufacturing
+tovec20c21scai15nlvn;"Netherlands, Eurostat, Turnover in Industry, Non Domestic Market, Manufacture of Chemicals & Chemical Products; Basic Pharmaceutical Products & Pharmaceutical Preparations (C20_C21), 2015=100, Calendar Adjusted, SA, Index";nl;Manufacturing
+nlprod0526;Netherlands, Mining & Quarrying, Seasonally Adjusted Production, Total, SA, Index;nl;Manufacturing
+tovdc28nsai15nlvd;Netherlands, Eurostat, Turnover in Industry, Domestic Market, Manufacture of Machinery & Equipment N.E.C. (C28), 2015=100, Index;nl;Manufacturing
+tovec28scai15nlvn;Netherlands, Eurostat, Turnover in Industry, Non Domestic Market, Manufacture of Machinery & Equipment N.E.C. (C28), 2015=100, Calendar Adjusted, SA, Index;nl;Manufacturing
+nlprod0614;Netherlands, Manufacturing, Turnover, Refineries & Chemistry, Index;nl;Manufacturing
+tovdc18nsai15nlvd;Netherlands, Eurostat, Turnover in Industry, Domestic Market, Printing & Reproduction of Recorded Media (C18), 2015=100, Index;nl;Manufacturing
+tovdc29c30nsai15nlvd;Netherlands, Eurostat, Turnover in Industry, Domestic Market, Manufacture of Motor Vehicles, Trailers, Semi-Trailers & of Other Transport Equipment (C29_C30), 2015=100, Index;nl;Manufacturing
+tovec29c30cai15nlvn;Netherlands, Eurostat, Turnover in Industry, Non Domestic Market, Manufacture of Motor Vehicles, Trailers, Semi-Trailers & of Other Transport Equipment (C29_C30), 2015=100, Calendar Adjusted, Index;nl;Manufacturing
+tovtc29c30cai15nlvm;Netherlands, Eurostat, Turnover in Industry, Total Market, Manufacture of Motor Vehicles, Trailers, Semi-Trailers & of Other Transport Equipment (C29_C30), 2015=100, Calendar Adjusted, Index;nl;Manufacturing
+nlprod0532;Netherlands, Manufacturing, Seasonally Adjusted Production, Refineries & Chemistry, SA, Index;nl;Manufacturing
+nl3mibr;Netherlands, Interbank Rates, EURIBOR, 3 Month, Fixing;nl;Prices and Monetary Variables
+nlpric0003;Netherlands, Consumer Price Index, Total, Index;nl;Prices and Monetary Variables
+nlpric0345;Netherlands, Consumer Price Index, Communication, Index;nl;Prices and Monetary Variables
+nlpric2110;Netherlands, Consumer Price Index, Total, Core, Index;nl;Prices and Monetary Variables
+nlpric0199;Netherlands, Consumer Price Index, Housing, Water, Electricity, Gas & Other Fuels, Electricity, Gas & Other Fuels, Index;nl;Prices and Monetary Variables
+nlpric0201;Netherlands, Consumer Price Index, Housing, Water, Electricity, Gas & Other Fuels, Electricity, Index;nl;Prices and Monetary Variables
+nlpric0209;Netherlands, Consumer Price Index, Housing, Water, Electricity, Gas & Other Fuels, Gas, Index;nl;Prices and Monetary Variables
+nlpric1838;Netherlands, Harmonized CPI, Total, Index;nl;Prices and Monetary Variables
+nlpric0273;Netherlands, Consumer Price Index, Furnishing & Household Equipment, Household Services, Index;nl;Prices and Monetary Variables
+nlpric0275;Netherlands, Consumer Price Index, Health, Index;nl;Prices and Monetary Variables
+nlpric0175;Netherlands, Consumer Price Index, Housing, Water, Electricity, Gas, Index;nl;Prices and Monetary Variables
+nlpric0277;Netherlands, Consumer Price Index, Health & Personal Care, Medical Products & Equipment, Index;nl;Prices and Monetary Variables
+nlpric0283;Netherlands, Consumer Price Index, Health & Personal Care, Out- Patient Services, Index;nl;Prices and Monetary Variables
+nlpric0279;Netherlands, Consumer Price Index, Health & Personal Care, Pharmaceutical Products, Index;nl;Prices and Monetary Variables
+nlpric0353;Netherlands, Consumer Price Index, Recreation & Culture, Index;nl;Prices and Monetary Variables
+nlpric0189;Netherlands, Consumer Price Index, Housing, Water, Electricity, Gas & Other Fuels, Services Maintenance/Repair Dwellings, Index;nl;Prices and Monetary Variables
+nlpric0291;Netherlands, Consumer Price Index, Transport, Index;nl;Prices and Monetary Variables
+nl10ydnbgov;Netherlands, Government Benchmarks, DNB, 10 Year, Yield;nl;Prices and Monetary Variables
+nlpric2015;Netherlands, Producer Price Index, Agricultural & Forestry Machinery, Total Output Prices, Index;nl;Prices and Monetary Variables
+nlpric1831;Netherlands, Producer Price Index, Basic Chemicals, Fertilisers & Nitrogen Compounds, Plastics & Synthetic Rubber in Primary Forms, Total Output Prices, Index;nl;Prices and Monetary Variables
+nlpric1929;Netherlands, Producer Price Index, Basic Metals, Total Output Prices, Index;nl;Prices and Monetary Variables
+nlpric1883;Netherlands, Producer Price Index, Basic Pharmaceutical Products & Pharmaceutical Preparations, Total Output Prices, Index;nl;Prices and Monetary Variables
+nlpric1830;Netherlands, Producer Price Index, Chemicals & Chemical Products, Total Output Prices, Index;nl;Prices and Monetary Variables
+nlpric2025;Netherlands, Producer Price Index, Machinery for Mining, Quarrying & Construction, Total Output Prices, Index;nl;Prices and Monetary Variables
+nlpric1706;Netherlands, Producer Price Index, Manufactured Products, Total Output Prices, Index;nl;Prices and Monetary Variables
+nl2ygov;Netherlands, Government Benchmarks, Macrobond, 2 Year, Yield;nl;Prices and Monetary Variables
+nl5ygov;Netherlands, Government Benchmarks, Macrobond, 5 Year, Yield;nl;Prices and Monetary Variables
+nl1ygov;Netherlands, Government Benchmarks, Macrobond, 1 Year, Yield;nl;Prices and Monetary Variables
+tovvg47scai15nltu;Netherlands, Eurostat, Trade & Services, Total Market (Deflated), Retail Trade, Except of Motor Vehicles & Motorcycles (G47), 2015=100, Calendar Adjusted, Constant Prices, SA, Index;nl;Retail and Consumption
+nltour0003;Netherlands, Guests, Total, Foreign Countries;nl;Retail and Consumption
+nltour0002;Netherlands, Guests, Total, Netherlands;nl;Retail and Consumption
+tovtg47scai15nltu;Netherlands, Eurostat, Trade & Services, Total Market, Retail Trade, Except of Motor Vehicles & Motorcycles (G47), 2015=100, Calendar Adjusted, SA, Index;nl;Retail and Consumption
