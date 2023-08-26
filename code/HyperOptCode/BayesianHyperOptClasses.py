@@ -82,7 +82,6 @@ class Bayesian_Optimizer:
                                  random_state = 1,
                                  verbose = 0)
         print("Now right before setting the optimal_params field")
-        # TODO: change to minimize dependent on to optimize metric
         self.optimizer.maximize(init_points = init_points, n_iter = n_iter)
         print(self.optimizer.max["params"])
         self.optimal_params = self.transform_params(self.optimizer.max["params"])
