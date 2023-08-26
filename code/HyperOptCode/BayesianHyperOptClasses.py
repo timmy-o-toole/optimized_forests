@@ -3,14 +3,18 @@
 
 import copy
 import time
+from typing import Tuple
 
 import catboost as cat
 import lightgbm as lgb
+import numpy as np
+
+# Models that are hyper-para optimized
+import xgboost as xgb
 
 #pip install bayesian-optimization
-import numpy as np
-import xgboost as xgb
 from bayes_opt import BayesianOptimization
+from sklearn.ensemble import BaggingRegressor
 from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.model_selection import train_test_split
 
@@ -52,6 +56,9 @@ class Bayesian_Optimizer:
         self.optimizer = None
         self.optimal_params = None
 
+        # Track the performance at different choices of hyperparameters
+        self.model_history = {}
+
         # The name of the algorithm that is optimized
         self.name = name
 
@@ -62,6 +69,27 @@ class Bayesian_Optimizer:
         if not max_or_min in ["max", "min"]:
             raise ValueError(f"max_or_min has to be set to either 'max' or 'min', not: '{max_or_min}'.")
         self.max_or_min = max_or_min
+
+    def store_bayes_optimizer(self, file_path: str):
+        # TODO
+        pass
+
+    def add_to_model_history(self, trained_model, para_dict: dict, perf_score: float):
+        '''
+        Keeps track of tried params and the resulting performances.
+        '''
+        self.model_history[len(self.model_history)] = {"model": trained_model, "params": para_dict, "perf": perf_score}
+
+
+    def check_para_already_tested(self, para_dict: dict) -> Tuple[bool, float]:
+        '''
+        Tests if para dict was already tested.
+        '''
+        for dict_id in self.model_history:
+            stored_dict = self.model_history[dict_id]
+            if stored_dict["params"] == para_dict:
+                return True, stored_dict["perf"]
+        return False, None
 
 
     def optimize_hyperparameters(self, init_points: int, n_iter: int):
@@ -127,6 +155,9 @@ class Bayesian_Optimizer:
         Since for pbounds it is not possible to specify that some parameters are integers.
         '''
         cor_params = self.transform_params(params)
+        was_tested, perf_was = self.check_para_already_tested(cor_params)
+        if was_tested:
+            return perf_was
 
         sum_perf_score = 0
         # We train the algorithm self.amt_train_per_params many times on the given params
@@ -148,10 +179,10 @@ class Bayesian_Optimizer:
             # 3. make that classifier predict unseen test data
             model_pred = trained_model.predict(test_X)
 
-            # 4. evaluate the performance of the trading bots prediction (trade fee: 0.3%)
+            # 4. evaluate the performance of the prediction
             perf_score = self.prediction_performance_score(test_y, model_pred)
 
-            # since library only can maximize scores, in case we want to minimize we invert the performance metric
+            # since library only can maximize scores, in case we want to minimize we negate the performance metric
             if self.max_or_min == "min":
                 perf_score = -perf_score
             
@@ -161,6 +192,8 @@ class Bayesian_Optimizer:
             
         # The performance of a set of hyperparameters for an ML algo is the average performance over multiple train-test splits
         ret_perf_score = sum_perf_score/self.amt_train_per_params    
+        # TODO: careful, the handed over model is possibly only trained on parts of the data
+        self.add_to_model_history(trained_model, cor_params, ret_perf_score)
         print("The average performance is "+str(ret_perf_score))
         return ret_perf_score
     
