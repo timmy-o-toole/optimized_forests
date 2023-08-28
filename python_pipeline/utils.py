@@ -1,6 +1,7 @@
 
 import numpy as np
 from typing import List, Tuple
+from tqdm import tqdm
 
 class opt:
     def __init__(self):
@@ -39,6 +40,30 @@ class opt:
         self.vntt = []  # Includes variable names transformations for all if "all" include
 
 
+class trainable_model:
+    def __init__(self, train_X, train_y):
+        self.train_X = train_X
+        self.train_y = train_y
+
+    def train_model(self, X: np.ndarray=None, y: np.ndarray=None):
+        if X is None or y is None:
+            X = self.train_X
+            y = self.train_y
+        pass
+
+    def incremental_train(self):
+        '''
+        TODO: To be implemented.
+        '''
+        pass
+
+    def predict(self, X: np.ndarray, y: np.ndarray) -> np.ndarray:
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+        '''
+        pass
+
+
 def add_lags(dataset: np.ndarray, lags: int) -> np.ndarray:
     '''
     For a time-series of datapoints, adds "lags"-many lags to each datapoint.
@@ -54,40 +79,39 @@ def add_lags(dataset: np.ndarray, lags: int) -> np.ndarray:
     return lagged_dataset
 
 
-def expanding_window(data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
+def expanding_window(data: np.ndarray, model: trainable_model, ind_f_vars: List[int], col_names: List[str],
                   num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
     # ind_f_vars - Indices of variables to forecast
     T = data.shape[0]   # T - number of points in dataset
-    print(T)
-    m = opt.m   # m - insample window size
+    #TODO: m = opt.m   # m - insample window size, WHY???
     h = opt.h[0]   # h - forecast horizon
-    print(h)
     min_window_idx = min_window_size+num_lags+1 # +1 for "test" datapoint
     max_window_idx = T-h   # all datapoints available up to last one that can be tested
 
+    error_list_per_var = []
     for pred_var_id in ind_f_vars:
         # window grows from min_window_size 
         # to whole dataset size (minus forecast horizon)
-        for last_index_of_window in range(min_window_idx, max_window_idx):
+        error_list = []
+        for last_index_of_window in tqdm(range(min_window_idx, max_window_idx)):
             # growing window of data
             X = data[:last_index_of_window, :]
             # add lags: new X will contain "num_lags"-many points less than X
             X = add_lags(X, num_lags)
             # labels are h many timesteps in the future of "available" data X
             # "+num_lags" since first datapoints lost due to "not enough lags"
-            Y = data[num_lags+h:last_index_of_window+h, pred_var_id]
+            y = data[num_lags+h:last_index_of_window+h, pred_var_id]
 
             # all but last point are used fore training
             train_X = X[:-1, :]
-            train_Y = Y[:-1]
+            train_y = y[:-1]
             # last datapoint in timeframe has to be predicted
             test_X = X[-1, :]
-            test_Y = Y[-1]
+            test_y = y[-1]
 
-            # TODO: train a model on (train_X, train_Y)
-            # TODO: test the trained model on (test_X, test_Y)
-            
-
-            return
-            pass
-    return
+            model.reset_model_training()
+            model.train_final_model(train_X, train_y)
+            predictions = model.predict(test_X)
+            error_list.append(predictions - test_y)
+        error_list_per_var.append(error_list)
+    return error_list_per_var

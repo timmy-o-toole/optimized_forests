@@ -4,35 +4,78 @@
 import copy
 import time
 from typing import Tuple
-
-import catboost as cat
-import lightgbm as lgb
 import numpy as np
 
 # Models that are hyper-para optimized
 import xgboost as xgb
+import catboost as cat
+import lightgbm as lgb
+from sklearn.ensemble import BaggingRegressor
 
 #pip install bayesian-optimization
 from bayes_opt import BayesianOptimization
-from sklearn.ensemble import BaggingRegressor
 from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.model_selection import train_test_split
 
+class trainable_model:
+    def __init__(self, X: np.ndarray, y: np.ndarray, device: str):
+        if X.shape[0] != y.shape[0]:
+            raise ValueError("X and y don't have the same amount of datapoints.")
+        self.X = X
+        self.y = y
+        self.device = device
+        self.trained_model = None
 
-class Bayesian_Optimizer:
+    def reset_model_training(self):
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+
+        Resets the class to a state where it is like it hasn't done
+        any training so far (e.g. self.trained_model is deleted)
+        E.g. for BayerisanHyperOpt the optimizer is reset
+        '''
+        pass
+
+    def train_final_model(self, X: np.ndarray, y: np.ndarray):
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+
+        Takes features X and labels y and returns a trained model 
+        that is saved to self.trained_model.
+        '''
+        pass
+
+    def incremental_train(self, X: np.ndarray, y: np.ndarray):
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+        '''
+        pass
+
+    def predict(self, X: np.ndarray, model=None) -> np.ndarray:
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+
+        Takes the given model or the model in self.trained_model and
+        makes a prediction on the data given in X.
+        '''
+        pass
+
+
+class Bayesian_Optimizer(trainable_model):
     '''
     The parent class for classes that want to implement bayesian hyperparameter optimization.
     To effectively implement a child of this class, we need to create the methods:
     black_box_function_adapter(), transform_params(), train_model() in the child class.
     For examples, see the classes: XGBoost_HyperOpt, CatBoost_HyperOpt, LightGBM_HyperOpt.
     '''
-    def __init__(self, X: np.ndarray, y: np.ndarray, train_test_split_perc: float, search_space: dict, is_reg_task: bool, pred_perf_metric: str, max_or_min: str, name: str):
+    def __init__(self, X: np.ndarray, y: np.ndarray, train_test_split_perc: float, search_space: dict,
+                 is_reg_task: bool, pred_perf_metric: str, max_or_min: str, name: str,
+                 init_points: int, n_iter: int, device: str):
         # Part of the data that the ML model is trained with
         
         if X.shape[0] != y.shape[0]:
             raise ValueError("X and y don't have the same amount of datapoints.")
-        self.X = X
-        self.y = y
+        super().__init__(X, y, device)
         self.amount_datapoints = self.y.shape[0]
         
         # True -> its a regression task, False -> its a classification task
@@ -70,6 +113,45 @@ class Bayesian_Optimizer:
             raise ValueError(f"max_or_min has to be set to either 'max' or 'min', not: '{max_or_min}'.")
         self.max_or_min = max_or_min
 
+        # Number of random exploration steps
+        self.init_points = init_points
+        # Number of bayesian optimization steps
+        self.n_iter = n_iter
+
+    def reset_model_training(self):
+        self.optimizer = None
+        self.optimal_params = None
+        self.model_history = {}
+        
+    def train_final_model(self, X: np.ndarray, y: np.ndarray):
+        '''
+        Uses the bayesian hyperpara optimization to find good parameters
+        and then returns a model trained on the whole dataset using those parameters.
+        '''
+        if X.shape[0] != y.shape[0]:
+            raise ValueError("X and y don't have the same amount of datapoints.")
+        self.X = X
+        self.y = y
+        self.optimize_hyperparameters()
+        self.trained_model = self.train_optimal_model()
+        return copy.deepcopy(self.trained_model)
+
+    def incremental_train(self):
+        # TODO: has to be implemented
+        return super().incremental_train()
+
+    def predict(self, X: np.ndarray, model=None) -> np.ndarray:
+        '''
+        Usese the optimal_model to make a prediction on given data.
+        '''
+        if model is None:
+            if self.trained_model is None:
+                raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
+            else:
+                model = self.trained_model
+        pred = model.predict(X)
+        return pred
+
     def store_bayes_optimizer(self, file_path: str):
         # TODO
         pass
@@ -79,7 +161,6 @@ class Bayesian_Optimizer:
         Keeps track of tried params and the resulting performances.
         '''
         self.model_history[len(self.model_history)] = {"model": trained_model, "params": para_dict, "perf": perf_score}
-
 
     def check_para_already_tested(self, para_dict: dict) -> Tuple[bool, float]:
         '''
@@ -91,8 +172,7 @@ class Bayesian_Optimizer:
                 return True, stored_dict["perf"]
         return False, None
 
-
-    def optimize_hyperparameters(self, init_points: int, n_iter: int):
+    def optimize_hyperparameters(self, init_points: int=None, n_iter: int=None):
         '''
         The heart of the class that calls the actual hyperparameter optimization using Bayesian Optimization.
         
@@ -109,9 +189,13 @@ class Bayesian_Optimizer:
                                  pbounds = self.search_space,
                                  random_state = 1,
                                  verbose = 0)
-        print("Now right before setting the optimal_params field")
+        # print("Now right before setting the optimal_params field")
+        if init_points is None:
+            init_points = self.init_points
+        if n_iter is None:
+            n_iter = self.n_iter
         self.optimizer.maximize(init_points = init_points, n_iter = n_iter)
-        print(self.optimizer.max["params"])
+        # print(self.optimizer.max["params"])
         self.optimal_params = self.transform_params(self.optimizer.max["params"])
         
         
@@ -168,12 +252,12 @@ class Bayesian_Optimizer:
                                                                 random_state = self.random_state)
 
             # 2. train a model using the given params
-            print("Start Training of "+str(self.name))
+            # print("Start Training of "+str(self.name))
             start = time.time()
             trained_model = self.train_model(params = cor_params, X = train_X, y = train_y)
             end = time.time()
             time_taken = end-start
-            print("Training of "+str(self.name)+" took: "+str(time_taken)+" sec.")
+            # print("Training of "+str(self.name)+" took: "+str(time_taken)+" sec.")
 
             # 3. make that classifier predict unseen test data
             model_pred = trained_model.predict(test_X)
@@ -186,14 +270,13 @@ class Bayesian_Optimizer:
                 perf_score = -perf_score
             
             sum_perf_score += perf_score
-            print("Performance for the "+ str(i) + " iteration: " + str(perf_score))
+            # print("Performance for the "+ str(i) + " iteration: " + str(perf_score))
             self.random_state = self.random_state + 1
             
         # The performance of a set of hyperparameters for an ML algo is the average performance over multiple train-test splits
         ret_perf_score = sum_perf_score/self.amt_train_per_params    
         # TODO: careful, the handed over model is possibly only trained on parts of the data
         self.add_to_model_history(trained_model, cor_params, ret_perf_score)
-        print("The average performance is "+str(ret_perf_score))
         return ret_perf_score
     
     
@@ -265,9 +348,9 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
     '''
 
     def __init__(self, X: str, y: str, train_test_split_perc: float, search_space: dict, 
-                 is_reg_task: bool = "True", perf_metric: str = "rmse", max_or_min: str = "min"):
+                 is_reg_task: bool = "True", perf_metric: str = "rmse", max_or_min: str = "min", init_points: int = 2, n_iter: int = 20, device: str="CPU"):
         self.is_reg_task = is_reg_task
-        super().__init__(X, y, train_test_split_perc, search_space, self.is_reg_task, perf_metric, max_or_min, "CatBoost")
+        super().__init__(X, y, train_test_split_perc, search_space, self.is_reg_task, perf_metric, max_or_min, "CatBoost", init_points, n_iter, device)
 
     
     def black_box_function_adapter(self, iterations, depth, learning_rate, random_strength, bagging_temperature, border_count, l2_leaf_reg):
@@ -305,9 +388,9 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
         '''
         cor_params = self.transform_params(params)
         if self.is_reg_task:
-            model = cat.CatBoostRegressor(**cor_params)
+            model = cat.CatBoostRegressor(**cor_params, verbose=0, task_type=self.device)
         else:
-            model = cat.CatBoostClassifier(**cor_params)
+            model = cat.CatBoostClassifier(**cor_params, verbose=0, task_type=self.device)
         model.fit(X, y)
         return model
 
@@ -318,9 +401,9 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
     optimization of a trading bot that uses a LightGBM decision tree.
     '''    
     def __init__(self, X: str, y: str, train_test_split_perc: float, search_space: dict, 
-                 is_reg_task: bool = "True", perf_metric: str = "rmse", max_or_min: str = "min"):
+                 is_reg_task: bool = "True", perf_metric: str = "rmse", max_or_min: str = "min", init_points: int = 2, n_iter:int = 20, device: str="CPU"):
         self.is_reg_task = is_reg_task
-        super().__init__(X, y, train_test_split_perc, search_space, self.is_reg_task, perf_metric, max_or_min, "XGBoost")
+        super().__init__(X, y, train_test_split_perc, search_space, self.is_reg_task, perf_metric, max_or_min, "XGBoost", init_points, n_iter, device)
 
 
     def black_box_function_adapter(self, learning_rate, num_leaves, max_depth, min_data_in_leaf,
@@ -377,9 +460,9 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
     optimization of a trading bot that uses a XGBoost decision tree.
     '''
     def __init__(self, X: str, y: str, train_test_split_perc: float, search_space: dict, 
-                 is_reg_task: bool = "True", perf_metric: str = "rmse", max_or_min: str = "min"):
+                 is_reg_task: bool = "True", perf_metric: str = "rmse", max_or_min: str = "min", init_points: int = 2, n_iter: int = 20, device: str="CPU"):
         self.is_reg_task = is_reg_task
-        super().__init__(X, y, train_test_split_perc, search_space, self.is_reg_task, perf_metric, max_or_min, "XGBoost")
+        super().__init__(X, y, train_test_split_perc, search_space, self.is_reg_task, perf_metric, max_or_min, "XGBoost", init_points, n_iter, device)
 
 
     def black_box_function_adapter(self, lambda_1, alpha, max_depth, eta, gamma):
