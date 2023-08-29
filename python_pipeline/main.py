@@ -74,4 +74,6 @@ if __name__ == "__main__":
     # TODO: add functions to trainable_model class that store and load instances of the class
     # TODO: visualize the optimization process during hyper-opt (use hyp-opt library)
     # TODO: create a procedure for evaluating and comparing performance
+    # TODO: check more in detail if the implementation of BaggedTree is as in Matlab
+    # TODO: write a hyper opt version of BaggedTree
     # TODO: check correctness of expanding_window() - did not understand Matlab code fully
