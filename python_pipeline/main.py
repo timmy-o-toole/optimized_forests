@@ -69,3 +69,9 @@ if __name__ == "__main__":
     errors = utils.expanding_window(data=dataset, model=trainabale_model_cat, ind_f_vars=[104], col_names=[""],
                            num_factors=4, num_lags=2, opt=opt, min_window_size=565)
     print("Sum of squared errors: ", sum([e*e for e in errors[0]]))
+
+    # Next up:
+    # TODO: add functions to trainable_model class that store and load instances of the class
+    # TODO: visualize the optimization process during hyper-opt (use hyp-opt library)
+    # TODO: create a procedure for evaluating and comparing performance
+    # TODO: check correctness of expanding_window() - did not understand Matlab code fully

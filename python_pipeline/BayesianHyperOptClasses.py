@@ -62,12 +62,6 @@ class trainable_model:
         '''
         pass
 
-    def predict_trained_model(self, X: np.ndarray) -> np.ndarray:
-        model = self.trained_model
-        if model is None:
-            raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
-        return self.predict(X, model)
-
     def predict(self, X: np.ndarray, model) -> np.ndarray:
         '''
         HAS TO BE IMPLEMENTED BY CHILD CLASS
@@ -76,6 +70,12 @@ class trainable_model:
         makes a prediction on the data given in X.
         '''
         pass
+    
+    def predict_with_trained_model(self, X: np.ndarray) -> np.ndarray:
+        model = self.trained_model
+        if model is None:
+            raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
+        return self.predict(X, model)
 
 
 class Bayesian_Optimizer(trainable_model):
@@ -143,6 +143,7 @@ class Bayesian_Optimizer(trainable_model):
         self.optimizer = None
         self.optimal_params = None
         self.model_history = {}
+        self.trained_model = None
         
     def train_final_model(self):
         '''
@@ -585,7 +586,7 @@ class BaggedTree(trainable_model):
         super().__init__(X, y)
 
     def reset_model_training(self):
-        pass
+        self.trained_model = None
 
     def train_final_model(self):
         if self.X.shape[0] != self.y.shape[0]:
@@ -605,4 +606,3 @@ class BaggedTree(trainable_model):
 
     def predict(self, X: np.ndarray, model) -> np.ndarray:
         return model.predict(X)
-    
