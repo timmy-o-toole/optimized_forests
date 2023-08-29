@@ -40,30 +40,6 @@ class opt:
         self.vntt = []  # Includes variable names transformations for all if "all" include
 
 
-class trainable_model:
-    def __init__(self, train_X, train_y):
-        self.train_X = train_X
-        self.train_y = train_y
-
-    def train_model(self, X: np.ndarray=None, y: np.ndarray=None):
-        if X is None or y is None:
-            X = self.train_X
-            y = self.train_y
-        pass
-
-    def incremental_train(self):
-        '''
-        TODO: To be implemented.
-        '''
-        pass
-
-    def predict(self, X: np.ndarray, y: np.ndarray) -> np.ndarray:
-        '''
-        HAS TO BE IMPLEMENTED BY CHILD CLASS
-        '''
-        pass
-
-
 def add_lags(dataset: np.ndarray, lags: int) -> np.ndarray:
     '''
     For a time-series of datapoints, adds "lags"-many lags to each datapoint.
@@ -79,39 +55,62 @@ def add_lags(dataset: np.ndarray, lags: int) -> np.ndarray:
     return lagged_dataset
 
 
-def expanding_window(data: np.ndarray, model: trainable_model, ind_f_vars: List[int], col_names: List[str],
-                  num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
+def expanding_window(data: np.ndarray, model, ind_f_vars: List[int], col_names: List[str],
+                    num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
     # ind_f_vars - Indices of variables to forecast
     T = data.shape[0]   # T - number of points in dataset
     #TODO: m = opt.m   # m - insample window size, WHY???
     h = opt.h[0]   # h - forecast horizon
-    min_window_idx = min_window_size+num_lags+1 # +1 for "test" datapoint
-    max_window_idx = T-h   # all datapoints available up to last one that can be tested
+    min_last_window_idx = min_window_size+1 # +1 for "test" datapoint
+    max_last_window_idx = T-h-1   # all datapoints available up to last one that can be tested
 
     error_list_per_var = []
     for pred_var_id in ind_f_vars:
         # window grows from min_window_size 
         # to whole dataset size (minus forecast horizon)
         error_list = []
-        for last_index_of_window in tqdm(range(min_window_idx, max_window_idx)):
-            # growing window of data
-            X = data[:last_index_of_window, :]
-            # add lags: new X will contain "num_lags"-many points less than X
-            X = add_lags(X, num_lags)
-            # labels are h many timesteps in the future of "available" data X
-            # "+num_lags" since first datapoints lost due to "not enough lags"
-            y = data[num_lags+h:last_index_of_window+h, pred_var_id]
 
-            # all but last point are used fore training
-            train_X = X[:-1, :]
-            train_y = y[:-1]
-            # last datapoint in timeframe has to be predicted
-            test_X = X[-1, :]
-            test_y = y[-1]
+        # add lags: new data will contain "num_lags"-many points less than data
+        data_with_lags = add_lags(data, num_lags)
+        
+        # first window
+        X = data_with_lags[:min_last_window_idx]
+        # labels are h many timesteps in the future of "available" data X
+        y = data[h:min_last_window_idx+h, pred_var_id]
+        
+        # all but last point are used fore training
+        model.X = X[:-1, :]
+        model.y = y[:-1]
+        # last datapoint in timeframe has to be predicted
+        test_X = X[-1, :]
+        test_X = np.reshape(test_X, (1, test_X.size))
+        test_y = y[-1]
 
-            model.reset_model_training()
-            model.train_final_model(train_X, train_y)
-            predictions = model.predict(test_X)
-            error_list.append(predictions - test_y)
+        # train a model
+        model.train_final_model()
+        # evaluate its performance
+        predictions = model.predict_trained_model(test_X)
+        error_list.extend(predictions - test_y)
+
+        for new_testpoint_idx in tqdm(range(min_last_window_idx+1, max_last_window_idx)):
+            # append extra_X and extra_y to the dataset
+            model.add_extraXy_to_dataset()
+            # add old test point as extra data of this iteration 
+            # (the "extension of the window" for this iteration)
+            model.extra_X = test_X
+            model.extra_y = np.array([test_y])
+            
+            # set a new test point
+            test_X = data_with_lags[new_testpoint_idx]  
+            test_X = np.reshape(test_X,(1, test_X.size))
+            test_y = data_with_lags[new_testpoint_idx, pred_var_id]
+
+            # train the model
+            model.train_final_model()
+
+            # evaluate the model
+            predictions = model.predict_trained_model(test_X)
+            error_list.extend(predictions - test_y)
+
         error_list_per_var.append(error_list)
     return error_list_per_var
