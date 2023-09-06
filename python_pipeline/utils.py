@@ -89,7 +89,7 @@ def expanding_window(data: np.ndarray, model, ind_f_vars: List[int], col_names: 
         # train a model
         model.train_final_model()
         # evaluate its performance
-        predictions = model.predict_trained_model(test_X)
+        predictions = model.predict_with_trained_model(test_X)
         error_list.extend(predictions - test_y)
 
         for new_testpoint_idx in tqdm(range(min_last_window_idx+1, max_last_window_idx)):
@@ -109,7 +109,7 @@ def expanding_window(data: np.ndarray, model, ind_f_vars: List[int], col_names: 
             model.train_final_model()
 
             # evaluate the model
-            predictions = model.predict_trained_model(test_X)
+            predictions = model.predict_with_trained_model(test_X)
             error_list.extend(predictions - test_y)
 
         error_list_per_var.append(error_list)
