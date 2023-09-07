@@ -206,8 +206,8 @@ class Bayesian_Optimizer(trainable_model):
                  init_points: int, n_iter: int, device: str, optimize_lag: bool, 
                  incrementally_trainable: bool=False, train_incrementally: bool=False):
         
-        super().__init__(device=device, 
-                         incrementally_trainable=incrementally_trainable, train_incrementally=train_incrementally)
+        super().__init__(device=device, incrementally_trainable=incrementally_trainable,
+                         train_incrementally=train_incrementally)
         # True -> its a regression task, False -> its a classification task
         self.is_reg_task = is_reg_task
 
@@ -694,8 +694,7 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
         super().__init__(train_test_split_perc=train_test_split_perc, search_space=search_space,
                          is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="XGBoost",
                          init_points=init_points, n_iter=n_iter, device=device,
-                         optimize_lag=optimize_lag,
-                         incrementally_trainable=False, train_incrementally=False)
+                         optimize_lag=optimize_lag, incrementally_trainable=False, train_incrementally=False)
 
     def transform_params(self, input_params: dict) -> dict:
         '''
