@@ -27,7 +27,6 @@ class trainable_model:
         self.y = y
         self.extra_X = None
         self.extra_y = None
-        self.num_lags = None
 
         self.device = device
         self.incrementally_trainable = incrementally_trainable
@@ -35,16 +34,16 @@ class trainable_model:
         if not incrementally_trainable and train_incrementally:
             self.train_incrementally = False
             print("Incremental training is not available or not implemented for this model.")
-        
         self.trained_model = None
 
     def add_extraXy_to_dataset(self):
         if not (self.extra_X is None or self.extra_y is None):
-            self.lagless_X = np.concatenate([self.lagless_X, self.extra_X], axis=0)
-            self.lagless_y = np.concatenate([self.lagless_y, self.extra_y], axis=None)
+            self.X = np.concatenate([self.X, self.extra_X], axis=0)
+            self.y = np.concatenate([self.y, self.extra_y], axis=None)
+            assert self.y.shape[0] == self.X.shape[0]
+
             self.extra_X = None
             self.extra_y = None
-            assert self.lagless_y.shape[0] == self.lagless_X.shape[0]
 
     def reset_model_training(self):
         '''
@@ -79,100 +78,63 @@ class trainable_model:
         if model is None:
             raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
         return self.predict(X, model)
-    
-    def add_lags(self, dataset: np.ndarray, lags: int) -> np.ndarray:
-        '''
-        For a time-series of datapoints, adds "lags"-many lags to each datapoint.
-        Since for the first "lags"-many ts points there is no data for the lags,
-        the dataset that is returned contains "lags"-many datapoints less.
-        '''
-        # datapoints for which we are able to add the requested number of lags
-        lagged_dataset = dataset[lags:, :]
-        for this_lag in range(lags):
-            # for lags = 3 we get this_lag = 0 -> 1 -> 2
-            this_subset = dataset[this_lag:-lags+this_lag, :]
-            lagged_dataset = np.concatenate([lagged_dataset, this_subset], axis=1)
-        return lagged_dataset
 
-    def manage_lags(self, lag_to_add):
-        if lag_to_add is None:
-            raise ValueError("There is no specification given regarding the lag size! Check if the search_space variable is correct.")
-        self.X = self.add_lags(self.lagless_X, lag_to_add)
-        self.y = self.lagless_y[lag_to_add:]
-        assert self.X.shape[0] == self.y.shape[0]
-        assert self.X.shape[1] == self.lagless_X.shape[1] * (lag_to_add+1)
-
-    def expanding_window(self, lagless_data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
+    def expanding_window_optimize_lag(self, data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
                     num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
+        pass
 
-        # make the num_lags available as class attribute
-        self.num_lags = num_lags
-
+    def expanding_window(self, data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
+                    num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
         # ind_f_vars - Indices of variables to forecast
-        T = lagless_data.shape[0]   # T - number of points in dataset
+        T = data.shape[0]   # T - number of points in dataset
         #TODO: m = opt.m   # m - insample window size, WHY???
         h = opt.h[0]   # h - forecast horizon
-        min_last_window_idx = min_window_size+1+h # +1 for "test" datapoint
+        min_last_window_idx = min_window_size+1 # +1 for "test" datapoint
         max_last_window_idx = T-h-1   # all datapoints available up to last one that can be tested
 
-        self.lagless_data = lagless_data
-        self.X = None
-        self.y = None
- 
         error_list_per_var = []
         for pred_var_id in ind_f_vars:
             # window grows from min_window_size 
             # to whole dataset size (minus forecast horizon)
             error_list = []
 
+            # add lags: new data will contain "num_lags"-many points less than data
+            data_with_lags = add_lags(data, num_lags)
             # first window
-            self.lagless_X = self.lagless_data[:min_last_window_idx]
-            self.lagless_y = self.lagless_data[h:min_last_window_idx+h, pred_var_id]
-
-            # last datapoint in timeframe has to be predicted
-            test_lagless_X = self.lagless_X[-1, :]
-            test_lagless_X = np.reshape(test_lagless_X, (1, test_lagless_X.size))
-            test_lagless_y = self.lagless_y[-1]
+            X = data_with_lags[:min_last_window_idx]
+            # labels are h many timesteps in the future of "available" data X
+            y = data[h:min_last_window_idx+h, pred_var_id]
+            
             # all but last point are used fore training
-            self.lagless_X = self.lagless_X[:-1, :]
-            self.lagless_y = self.lagless_y[:-1]
+            self.X = X[:-1, :]
+            self.y = y[:-1]
+            # last datapoint in timeframe has to be predicted
+            test_X = X[-1, :]
+            test_X = np.reshape(test_X, (1, test_X.size))
+            test_y = y[-1]
 
-            # check if same amount of datapoints in X and y that are used by model training
-            assert self.lagless_X.shape[0] == self.lagless_y.shape[0]
-
-            # make sure model trains only on the newly defined lagless data (in self.lagless_X, self.lagless_y)
-            assert self.X is None and self.y is None
             # train a model
             self.train_final_model()
-            
             # evaluate its performance
-            # CURRENTLY HERE: function that manages to generate the lagged datapoint test_X, 
-            # where lagged info possibly comes from train_final_model()
-            test_X = some_function(test_lagless_X)  
             predictions = self.predict_with_trained_model(test_X)
             error_list.extend(predictions - test_y)
 
             for new_testpoint_idx in tqdm(range(min_last_window_idx+1, max_last_window_idx)):
-                # make sure model trains only on the newly defined lagless data 
-                self.X = None
-                self.y = None
-
                 # append extra_X and extra_y to the dataset (used to enable iterative training)
                 self.add_extraXy_to_dataset()
-                # the "extension of the window" for this iteration
-                self.extra_X = test_X # add old test point as extra data of this iteration 
+                print(self.X.shape)
+
+                # add old test point as extra data of this iteration 
+                # (the "extension of the window" for this iteration)
+                self.extra_X = test_X
                 self.extra_y = np.array([test_y])
                 
                 # set a new test point
-                test_X = self.lagless_data[new_testpoint_idx]  
+                test_X = data_with_lags[new_testpoint_idx]  
                 test_X = np.reshape(test_X,(1, test_X.size))
-                test_y = self.lagless_data[new_testpoint_idx, pred_var_id]
+                test_y = data_with_lags[new_testpoint_idx, pred_var_id]
 
-                # Current dataset shape that is used for the model training
-                print(f"Lagless dataset in this window: {self.lagless_X.shape}")
-
-                # train the model using only the modified self.lagless_X, self.lagless_y
-                assert self.X is None and self.y is None
+                # train the model
                 self.train_final_model()
 
                 # evaluate the model
@@ -227,12 +189,12 @@ class Bayesian_Optimizer(trainable_model):
 
         # can decide to also include the nr of lags as a hyperparameter in the optimization
         self.optimize_lag = optimize_lag
-        '''if self.optimize_lag and not lagless_X.shape[0] > 1:
+        if self.optimize_lag and not lagless_X.shape[0] > 1:
             raise ValueError("Make sure to properly set the lagless_X and lagless_y variable with the available clean (non-lagged) data.")
         if lagless_X.shape[0] != lagless_y.shape[0]:
             raise ValueError("X and y don't have the same amount of datapoints.")
         self.lagless_X = lagless_X
-        self.lagless_y = lagless_y'''
+        self.lagless_y = lagless_y
 
         # Track the performance at different choices of hyperparameters
         self.model_history = {}
@@ -267,18 +229,17 @@ class Bayesian_Optimizer(trainable_model):
         Uses the bayesian hyperpara optimization to find good parameters
         and then returns a model trained on the whole dataset using those parameters.
         '''
-        if self.lagless_X.shape[0] != self.lagless_y.shape[0]:
-            raise ValueError("lagless_X and lagless_y don't have the same amount of datapoints.")
+        if self.X.shape[0] != self.y.shape[0]:
+            raise ValueError("X and y don't have the same amount of datapoints.")
         
         if self.train_incrementally:
             if not (self.extra_X is None or self.extra_y is None):
                 if self.extra_X.shape[0] != self.extra_y.size:
-                    raise ValueError("extra_X and extra_y don't have the same amount of datapoints.")
+                    raise ValueError("X and y don't have the same amount of datapoints.")
             self.optimize_hyperparameters(init_points=0, n_iter=self.incremental_train_n_iter)
-        else: # regular training
+        else:
             self.reset_model_training()
-            # add additionally available datapoint to the dataset so its used during training
-            self.add_extraXy_to_dataset()
+            self.add_extraXy_to_dataset()   # add additionally available datapoint to the dataset so its used during training
             self.optimize_hyperparameters(init_points=self.init_points, n_iter=self.n_iter)
         trained_model = self.train_optimal_model()
         return trained_model
@@ -323,7 +284,6 @@ class Bayesian_Optimizer(trainable_model):
         Output:
             Sets the self.optimal_params field to the best found parameters.
         '''
-
         # print("Now right before setting the optimal_params field")
         if init_points is None:
             init_points = self.init_points
@@ -334,8 +294,7 @@ class Bayesian_Optimizer(trainable_model):
                                 pbounds = self.search_space,
                                 random_state = 1,
                                 verbose = 0)
-        
-        '''if (self.train_incrementally and self.model_history is not None 
+        if (self.train_incrementally and self.model_history is not None 
             and self.extra_X is not None and self.extra_y is not None):
             print("Using incremental training...")
             if self.extra_X.shape[0] != self.extra_y.size:
@@ -353,8 +312,7 @@ class Bayesian_Optimizer(trainable_model):
                 # feed the evaluated parameter/performance pairs into the bayes optimizer
                 params_arr = self.optimizer._space._as_array(stored_dict["params"])
                 self.optimizer._space.register(params_arr, stored_dict["perf_score"])
-                print(self.optimizer._space.__len__())'''
-        
+                print(self.optimizer._space.__len__())  
         # use the optimizer find best parameters
         self.optimizer.maximize(init_points = init_points, n_iter = n_iter)
         # print(self.optimizer.max["params"])
@@ -408,23 +366,15 @@ class Bayesian_Optimizer(trainable_model):
         Transform params to be accaptable hyperparameters for the Classifier.
         Since for pbounds it is not possible to specify that some parameters are integers.
         '''
-        
         was_tested, perf_was = self.check_para_already_tested(cor_params)
         if was_tested:
             return perf_was
 
         # 0. modify the data to contain the lag specified in the dictionary
+        lag_to_add = cor_params["lag_to_add"]
         if self.optimize_lag:
-            lag_to_add = cor_params["lag_to_add"]
-        else:
-            lag_to_add = self.num_lags
-        # add lags to the data: new data will contain "lag_to_add"-many points less than data
-        self.manage_lags(lag_to_add=lag_to_add) # -> set: self.X, self.y
-        assert self.X.shape[1]/self.lagless_X.shape[1] == lag_to_add+1
-        print(f"This iteration, lag: {lag_to_add}")
-        print(f"This iteration, dataset format: {self.X.shape}")
-        #print(f"Modified lag to be {self.X.shape[1]/self.lagless_X.shape[1] -1}, since given {lag_to_add}")
-        
+            self.manage_varying_lags(lag_to_add = lag_to_add)
+            print(f"Modified lag to be {self.X.shape[1]/self.lagless_X.shape[1]}, since given {lag_to_add}")
         # We train the algorithm self.amt_train_per_params many times on the given params
         # with different train-test-splits to counteract overfitting.
         sum_perf_score = 0
@@ -437,7 +387,7 @@ class Bayesian_Optimizer(trainable_model):
             # 2. train a model using the given params
             model_params = copy.deepcopy(cor_params)
             model_params.pop("lag_to_add")
-            # print(f"Working on data of shape: {train_X.shape}")
+            print(f"Working on data of shape: {train_X.shape}")
             trained_model = self.train_new_model(params = model_params, X = train_X, y = train_y)
 
             # 3. make that classifier predict unseen test data
@@ -516,13 +466,21 @@ class Bayesian_Optimizer(trainable_model):
             if train_features is None:
                 optimal_params = copy.deepcopy(self.optimal_params)
                 if self.optimize_lag:
-                    self.manage_lags(optimal_params["lag_to_add"])
+                    self.manage_varying_lags(optimal_params["lag_to_add"])
                 optimal_params.pop("lag_to_add")
                 train_features = self.X
                 train_labels = self.y
             trained_model = self.train_new_model(optimal_params, train_features, train_labels)
             self.trained_model = copy.deepcopy(trained_model)
             return trained_model
+
+    def manage_varying_lags(self, lag_to_add: int):
+        if lag_to_add is None:
+            raise ValueError("There is no specification given regarding the lag size! Check if the search_space variable is correct.")
+        self.X = add_lags(self.lagless_X, lag_to_add)
+        self.y = self.lagless_y[lag_to_add:]
+        assert self.X.shape[0] == self.y.shape[0]
+        assert self.X.shape[1] == self.lagless_X.shape[1] * lag_to_add
 
 class CatBoost_HyperOpt(Bayesian_Optimizer):
     '''

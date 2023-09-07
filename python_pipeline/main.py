@@ -70,8 +70,8 @@ if __name__ == "__main__":
     trainabale_model_bagged = bho.BaggedTree(X = fake_data, y = fake_data, n_estimators=5)
 
     # handover the "trainable model" to the expanding window method
-    errors = trainabale_model_cat.expanding_window(data=dataset, ind_f_vars=[104], col_names=[""],
-                           num_factors=4, num_lags=2, opt=opt, min_window_size=570)
+    errors = trainabale_model_cat.expanding_window(lagless_data=dataset, ind_f_vars=[104], col_names=[""],
+                           num_factors=4, num_lags=2, opt=opt, min_window_size=565)
     
     pred_some_stuff = utils.add_lags(dataset, 2)
     print(trainabale_model_cat.predict_with_trained_model(pred_some_stuff))
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     print("Sum of squared errors: ", sum([e*e for e in errors[0]]))
 
     # Next up:
-    # TODO: add lag as parameter of hyper opt
+    # ON IT - TODO: add lag as parameter of hyper opt -> need to take data def out of class init and only include in expanding_window()
     # TODO: add functions to trainable_model class that store and load instances of the class
     # TODO: visualize the optimization process during hyper-opt (use hyp-opt library)
     # TODO: create a procedure for evaluating and comparing performance

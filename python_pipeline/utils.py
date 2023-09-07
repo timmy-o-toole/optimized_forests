@@ -49,9 +49,11 @@ def add_lags(dataset: np.ndarray, lags: int) -> np.ndarray:
     # datapoints for which we are able to add the requested number of lags
     lagged_dataset = dataset[lags:, :]
     for this_lag in range(lags):
+        print(this_lag)
         # for lags = 3 we get this_lag = 0 -> 1 -> 2
         this_subset = dataset[this_lag:-lags+this_lag, :]
         lagged_dataset = np.concatenate([lagged_dataset, this_subset], axis=1)
+        print(lagged_dataset.shape)
     return lagged_dataset
 
 
