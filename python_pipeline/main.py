@@ -12,13 +12,14 @@ if __name__ == "__main__":
     dataset = np.loadtxt(data_file_path, delimiter=";", encoding='utf-8-sig')
     print("Data points:\t", dataset.shape[0])
     print("Data dimensions:", dataset.shape[1])
+    print("--------------------------------------")
 
     opt = utils.opt()
 
     # Create an instance of the class that contains the ML model that should be optimized
     fake_data = np.zeros((1,1))
     # CatBoost
-    search_space_cat = {'lag_to_add': (0, 10),
+    search_space_cat = {'lag_to_add': (0, 6),
                         'iterations': (100, 1000),
                         'depth': (2, 9),
                         'learning_rate': (0.01, 1.0),
@@ -27,16 +28,15 @@ if __name__ == "__main__":
                         'border_count': (1, 255),
                         'l2_leaf_reg': (2, 30),
                         }
-    trainabale_model_cat = bho.CatBoost_HyperOpt(X = fake_data, y = fake_data,
-                            train_test_split_perc = 0.8, search_space = search_space_cat,
+    trainabale_model_cat = bho.CatBoost_HyperOpt(train_test_split_perc = 0.8, search_space = search_space_cat,
                             is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min", 
                             init_points=1, n_iter=1, device="CPU",
-                            optimize_lag=True, lagless_X=fake_data, lagless_y=fake_data)
+                            optimize_lag=True)
     
     # LightGBM
     search_space_lgbm = {
         #"n_estimators": trial.suggest_categorical("n_estimators", [10000]),
-        'lag_to_add': (0, 10),
+        'lag_to_add': (0, 6),
         "learning_rate": (0.01, 0.3), # float
         "num_leaves": (10, 3000), # int
         "max_depth": (2, 9), #int
@@ -48,39 +48,43 @@ if __name__ == "__main__":
         #"bagging_freq": trial.suggest_categorical("bagging_freq", [1]),
         "feature_fraction": (0.1, 0.95) #float
     }
-    trainabale_model_lgbm = bho.LightGBM_HyperOpt(X = fake_data, y = fake_data,
-                         train_test_split_perc = 0.8, search_space = search_space_lgbm,
+    trainabale_model_lgbm = bho.LightGBM_HyperOpt(train_test_split_perc = 0.8, search_space = search_space_lgbm,
                          is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min",
                          init_points=2, n_iter=4, device="CPU")
     
     # XGBoost
-    search_space_xgb = {'lag_to_add': (0, 10),
+    search_space_xgb = {'lag_to_add': (0, 6),
                         "lambda_": (1e-9, 1.0),
                         "alpha": (1e-9, 1.0),
                         "max_depth": (2, 9),
                         "eta": (1e-9, 1.0),
                         "gamma": (1e-8, 1.0)
                         }
-    trainabale_model_xgb = bho.XGBoost_HyperOpt(X = fake_data, y = fake_data,
-                            train_test_split_perc = 0.8, search_space = search_space_xgb,
+    trainabale_model_xgb = bho.XGBoost_HyperOpt(train_test_split_perc = 0.8, search_space = search_space_xgb,
                             is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min",
-                            init_points=2, n_iter=4, device="CPU")
+                            init_points=6, n_iter=26, device="CPU")
 
     # BaggedTree
     trainabale_model_bagged = bho.BaggedTree(X = fake_data, y = fake_data, n_estimators=5)
 
+    #
+    errors_xgb = trainabale_model_xgb.expanding_window(lagless_data=dataset, ind_f_vars=[104], col_names=[""],
+                           num_factors=4, num_lags=2, opt=opt, min_window_size=440, verbose=0)
+    print("Sum of squared errors - xgb: ", sum([e*e for e in errors_xgb[0]]))
+
     # handover the "trainable model" to the expanding window method
-    errors = trainabale_model_cat.expanding_window(lagless_data=dataset, ind_f_vars=[104], col_names=[""],
-                           num_factors=4, num_lags=2, opt=opt, min_window_size=565)
-    
-    pred_some_stuff = utils.add_lags(dataset, 2)
-    print(trainabale_model_cat.predict_with_trained_model(pred_some_stuff))
-    #errors = utils.expanding_window(data=dataset, model=trainabale_model_cat, ind_f_vars=[104], col_names=[""],
-    #                       num_factors=4, num_lags=2, opt=opt, min_window_size=565)
-    print("Sum of squared errors: ", sum([e*e for e in errors[0]]))
+    errors_cat = trainabale_model_cat.expanding_window(lagless_data=dataset, ind_f_vars=[104], col_names=[""],
+                           num_factors=4, num_lags=2, opt=opt, min_window_size=570, verbose=0)
+    best_model_dict = trainabale_model_cat.optimal_params
+    optimal_lag = best_model_dict["lag_to_add"]
+    print(best_model_dict)
+    print("Sum of squared errors - cat: ", sum([e*e for e in errors_cat[0]]))
+
+    #pred_some_stuff = utils.add_lags(dataset, 2)
+    #print(trainabale_model_cat.predict_with_trained_model(pred_some_stuff))
 
     # Next up:
-    # ON IT - TODO: add lag as parameter of hyper opt -> need to take data def out of class init and only include in expanding_window()
+    # TODO: check if data flow is correct (self.extra_X, self.test_X, self.lagless_X, self.X)
     # TODO: add functions to trainable_model class that store and load instances of the class
     # TODO: visualize the optimization process during hyper-opt (use hyp-opt library)
     # TODO: create a procedure for evaluating and comparing performance

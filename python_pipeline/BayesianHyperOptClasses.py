@@ -20,15 +20,14 @@ from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.model_selection import train_test_split
 
 class trainable_model:
-    def __init__(self, X: np.ndarray, y: np.ndarray, device: str="CPU", incrementally_trainable: bool=False, train_incrementally: bool=False):
-        if X.shape[0] != y.size:
-            raise ValueError("X and y don't have the same amount of datapoints.")
-        self.X = X
-        self.y = y
+    def __init__(self, device: str="CPU", incrementally_trainable: bool=False, train_incrementally: bool=False):
+        self.X = None
+        self.y = None
         self.extra_X = None
         self.extra_y = None
         self.num_lags = None
 
+        self.verbose = 0
         self.device = device
         self.incrementally_trainable = incrementally_trainable
         self.train_incrementally = train_incrementally
@@ -40,7 +39,7 @@ class trainable_model:
 
     def add_extraXy_to_dataset(self):
         if not (self.extra_X is None or self.extra_y is None):
-            self.lagless_X = np.concatenate([self.lagless_X, self.extra_X], axis=0)
+            self.lagless_X = np.concatenate([self.lagless_X, self.extra_X.reshape(1, self.extra_X.size)], axis=0)
             self.lagless_y = np.concatenate([self.lagless_y, self.extra_y], axis=None)
             self.extra_X = None
             self.extra_y = None
@@ -103,17 +102,18 @@ class trainable_model:
         assert self.X.shape[1] == self.lagless_X.shape[1] * (lag_to_add+1)
 
     def expanding_window(self, lagless_data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
-                    num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
+                    num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100, verbose: int = 0) -> np.ndarray:
 
         # make the num_lags available as class attribute
         self.num_lags = num_lags
+        self.verbose = verbose
 
         # ind_f_vars - Indices of variables to forecast
         T = lagless_data.shape[0]   # T - number of points in dataset
         #TODO: m = opt.m   # m - insample window size, WHY???
         h = opt.h[0]   # h - forecast horizon
-        min_last_window_idx = min_window_size+1+h # +1 for "test" datapoint
-        max_last_window_idx = T-h-1   # all datapoints available up to last one that can be tested
+        min_last_window_idx = min_window_size+h
+        max_last_window_idx = T-h-1  # all datapoints available up to last one that can be tested
 
         self.lagless_data = lagless_data
         self.X = None
@@ -128,15 +128,6 @@ class trainable_model:
             # first window
             self.lagless_X = self.lagless_data[:min_last_window_idx]
             self.lagless_y = self.lagless_data[h:min_last_window_idx+h, pred_var_id]
-
-            # last datapoint in timeframe has to be predicted
-            test_lagless_X = self.lagless_X[-1, :]
-            test_lagless_X = np.reshape(test_lagless_X, (1, test_lagless_X.size))
-            test_lagless_y = self.lagless_y[-1]
-            # all but last point are used fore training
-            self.lagless_X = self.lagless_X[:-1, :]
-            self.lagless_y = self.lagless_y[:-1]
-
             # check if same amount of datapoints in X and y that are used by model training
             assert self.lagless_X.shape[0] == self.lagless_y.shape[0]
 
@@ -146,11 +137,22 @@ class trainable_model:
             self.train_final_model()
             
             # evaluate its performance
-            # CURRENTLY HERE: function that manages to generate the lagged datapoint test_X, 
-            # where lagged info possibly comes from train_final_model()
-            test_X = some_function(test_lagless_X)  
-            predictions = self.predict_with_trained_model(test_X)
-            error_list.extend(predictions - test_y)
+            # next datapoint in timeframe has to be predicted
+            new_testpoint_idx = min_last_window_idx
+
+            # this is the individual datapoint that is added this iteration ("one row")
+            single_test_X = self.lagless_data[new_testpoint_idx, :]
+            single_test_y = self.lagless_data[new_testpoint_idx, pred_var_id]
+
+            # create a lagged datapoint to ensure correct format when handing over to predict_with_trained_model()
+            used_num_lags = self.num_lags
+            assert used_num_lags >= 0 and used_num_lags+1 < new_testpoint_idx
+            lagged_test_X = self.lagless_data[new_testpoint_idx-(used_num_lags+1):new_testpoint_idx, :]  
+            lagged_test_X = self.add_lags(lagged_test_X, used_num_lags)
+            lagged_test_X = np.reshape(lagged_test_X, (1, lagged_test_X.size))
+
+            predictions = self.predict_with_trained_model(lagged_test_X)
+            error_list.extend(predictions - single_test_y)
 
             for new_testpoint_idx in tqdm(range(min_last_window_idx+1, max_last_window_idx)):
                 # make sure model trains only on the newly defined lagless data 
@@ -160,24 +162,33 @@ class trainable_model:
                 # append extra_X and extra_y to the dataset (used to enable iterative training)
                 self.add_extraXy_to_dataset()
                 # the "extension of the window" for this iteration
-                self.extra_X = test_X # add old test point as extra data of this iteration 
-                self.extra_y = np.array([test_y])
+                self.extra_X = single_test_X    # add old test point as extra data of this iteration 
+                self.extra_y = np.array([single_test_y])
                 
-                # set a new test point
-                test_X = self.lagless_data[new_testpoint_idx]  
-                test_X = np.reshape(test_X,(1, test_X.size))
-                test_y = self.lagless_data[new_testpoint_idx, pred_var_id]
-
                 # Current dataset shape that is used for the model training
-                print(f"Lagless dataset in this window: {self.lagless_X.shape}")
+                if self.verbose > 0:
+                    print(f"Shape of lagless dataset available in this window: {self.lagless_X.shape}")
 
                 # train the model using only the modified self.lagless_X, self.lagless_y
                 assert self.X is None and self.y is None
+                # CURRENTLY HERE
+                assert self.extra_X is None or (self.extra_X.ndim == 1 and self.extra_y.size == 1)
                 self.train_final_model()
 
+                # set a new test point
+                used_num_lags = self.num_lags
+                assert used_num_lags >= 0 and used_num_lags+1 <= new_testpoint_idx
+                # load new datapoint that will be given into self.extra_X, self.extra_y
+                single_test_X = self.lagless_data[new_testpoint_idx, :]
+                single_test_y = self.lagless_data[new_testpoint_idx, pred_var_id]
+                # create a test datapoint with the lag used by the model
+                lagged_test_X = self.lagless_data[new_testpoint_idx-(used_num_lags+1):new_testpoint_idx, :]  
+                lagged_test_X = self.add_lags(lagged_test_X, used_num_lags)
+                lagged_test_X = np.reshape(lagged_test_X, (1, lagged_test_X.size))
+
                 # evaluate the model
-                predictions = self.predict_with_trained_model(test_X)
-                error_list.extend(predictions - test_y)
+                predictions = self.predict_with_trained_model(lagged_test_X)
+                error_list.extend(predictions - single_test_y)
 
             error_list_per_var.append(error_list)
         return error_list_per_var
@@ -190,19 +201,13 @@ class Bayesian_Optimizer(trainable_model):
     black_box_function_adapter(), transform_params(), train_model() in the child class.
     For examples, see the classes: XGBoost_HyperOpt, CatBoost_HyperOpt, LightGBM_HyperOpt.
     '''
-    def __init__(self, X: np.ndarray, y: np.ndarray, train_test_split_perc: float, search_space: dict,
+    def __init__(self, train_test_split_perc: float, search_space: dict,
                  is_reg_task: bool, pred_perf_metric: str, max_or_min: str, name: str,
-                 init_points: int, n_iter: int, device: str, 
-                 optimize_lag: bool, lagless_X: np.ndarray, lagless_y: np.ndarray=np.zeros((1,1)),
+                 init_points: int, n_iter: int, device: str, optimize_lag: bool, 
                  incrementally_trainable: bool=False, train_incrementally: bool=False):
-        # Part of the data that the ML model is trained with
         
-        if X.shape[0] != y.shape[0]:
-            raise ValueError("X and y don't have the same amount of datapoints.")
-        super().__init__(X=X, y=y, device=device, 
+        super().__init__(device=device, 
                          incrementally_trainable=incrementally_trainable, train_incrementally=train_incrementally)
-        self.amount_datapoints = self.y.shape[0]
-        
         # True -> its a regression task, False -> its a classification task
         self.is_reg_task = is_reg_task
 
@@ -210,7 +215,7 @@ class Bayesian_Optimizer(trainable_model):
         # how much for the following performance evaluation -> better than single train set
         self.train_percentage = train_test_split_perc
         # Over how many different train-test splits the performance of a set of params should be evaluated
-        self.amt_train_per_params = 1
+        self.amt_train_per_params = 4
         # TODO: make this k-fold cross val instead of random draws
         # TODO: does this even make sense for time-series data? How is cross-val done in TS data?
 
@@ -218,7 +223,8 @@ class Bayesian_Optimizer(trainable_model):
         self.random_state = 0
         
         # Defining your search space (dictionary), has to contain the key "lag_to_add"
-        assert "lag_to_add" in search_space.keys()
+        if optimize_lag:
+            assert "lag_to_add" in search_space.keys()
         self.search_space = search_space
         
         # The BayesianOptimization object and the optimal found parameters
@@ -280,6 +286,9 @@ class Bayesian_Optimizer(trainable_model):
             # add additionally available datapoint to the dataset so its used during training
             self.add_extraXy_to_dataset()
             self.optimize_hyperparameters(init_points=self.init_points, n_iter=self.n_iter)
+        if self.verbose > 0:
+            print("Train optimal model...")
+            print("--------------------------------------")
         trained_model = self.train_optimal_model()
         return trained_model
 
@@ -416,13 +425,14 @@ class Bayesian_Optimizer(trainable_model):
         # 0. modify the data to contain the lag specified in the dictionary
         if self.optimize_lag:
             lag_to_add = cor_params["lag_to_add"]
+            self.num_lags = lag_to_add
         else:
             lag_to_add = self.num_lags
         # add lags to the data: new data will contain "lag_to_add"-many points less than data
         self.manage_lags(lag_to_add=lag_to_add) # -> set: self.X, self.y
         assert self.X.shape[1]/self.lagless_X.shape[1] == lag_to_add+1
-        print(f"This iteration, lag: {lag_to_add}")
-        print(f"This iteration, dataset format: {self.X.shape}")
+        if self.verbose > 0:
+            print(f"This iteration - lag: {lag_to_add} - dataset format: {self.X.shape}")
         #print(f"Modified lag to be {self.X.shape[1]/self.lagless_X.shape[1] -1}, since given {lag_to_add}")
         
         # We train the algorithm self.amt_train_per_params many times on the given params
@@ -516,7 +526,9 @@ class Bayesian_Optimizer(trainable_model):
             if train_features is None:
                 optimal_params = copy.deepcopy(self.optimal_params)
                 if self.optimize_lag:
-                    self.manage_lags(optimal_params["lag_to_add"])
+                    used_lag = optimal_params["lag_to_add"]
+                    self.manage_lags(used_lag)
+                    self.num_lags = used_lag
                 optimal_params.pop("lag_to_add")
                 train_features = self.X
                 train_labels = self.y
@@ -530,17 +542,17 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
     optimization of a CatBoost decision tree.
     '''
 
-    def __init__(self, X: str, y: str, train_test_split_perc: float, search_space: dict, 
+    def __init__(self, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter: int = 20, device: str="CPU",
-                 optimize_lag: bool=False, lagless_X: np.ndarray=np.zeros((1,1)), lagless_y: np.ndarray=np.zeros((1,1)),
+                 optimize_lag: bool=False
                  ):
         self.is_reg_task = is_reg_task
-        super().__init__(X=X, y=y, train_test_split_perc=train_test_split_perc,
+        super().__init__(train_test_split_perc=train_test_split_perc,
                          search_space=search_space, is_reg_task=self.is_reg_task, 
                          pred_perf_metric=perf_metric, max_or_min=max_or_min, name="CatBoost",
                          init_points=init_points, n_iter=n_iter, device=device, 
-                         optimize_lag=optimize_lag, lagless_X=lagless_X, lagless_y=lagless_y,
+                         optimize_lag=optimize_lag,
                          incrementally_trainable=False, train_incrementally=False)
         
     def transform_params(self, input_params: dict) -> dict:
@@ -599,16 +611,16 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
     A class that inherits from the Bayesian_Optimizer class and implements the bayesian hyperparameter
     optimization of a LightGBM decision tree.
     '''    
-    def __init__(self, X: str, y: str, train_test_split_perc: float, search_space: dict, 
+    def __init__(self, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter:int = 20, device: str="CPU",
-                 optimize_lag: bool=False, lagless_X: np.ndarray=np.zeros((1,1)), lagless_y: np.ndarray=np.zeros((1,1)),
+                 optimize_lag: bool=False
                 ):
         self.is_reg_task = is_reg_task
-        super().__init__(X=X, y=y, train_test_split_perc=train_test_split_perc, search_space=search_space,
+        super().__init__(train_test_split_perc=train_test_split_perc, search_space=search_space,
                          is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="LightGBM",
                          init_points=init_points, n_iter=n_iter, device=device,
-                         optimize_lag=optimize_lag, lagless_X=lagless_X, lagless_y=lagless_y,
+                         optimize_lag=optimize_lag,
                          incrementally_trainable=False, train_incrementally=False)
 
     def transform_params(self, input_params: dict) -> dict:
@@ -673,16 +685,16 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
     
     GPU: conda install py-xgboost-gpu (package not available for conda in windows)
     '''
-    def __init__(self, X: str, y: str, train_test_split_perc: float, search_space: dict, 
+    def __init__(self, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter: int = 20, device: str="CPU",
-                 optimize_lag: bool=False, lagless_X: np.ndarray=np.zeros((1,1)), lagless_y: np.ndarray=np.zeros((1,1)),
+                 optimize_lag: bool=False,
                 ):
         self.is_reg_task = is_reg_task
-        super().__init__(X=X, y=y, train_test_split_perc=train_test_split_perc, search_space=search_space,
+        super().__init__(train_test_split_perc=train_test_split_perc, search_space=search_space,
                          is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="XGBoost",
                          init_points=init_points, n_iter=n_iter, device=device,
-                         optimize_lag=optimize_lag, lagless_X=lagless_X, lagless_y=lagless_y,
+                         optimize_lag=optimize_lag,
                          incrementally_trainable=False, train_incrementally=False)
 
     def transform_params(self, input_params: dict) -> dict:
@@ -755,9 +767,10 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
 from sklearn.ensemble import BaggingRegressor 
 from sklearn.tree import DecisionTreeRegressor   
 class BaggedTree(trainable_model):
-    def __init__(self, X:np.ndarray, y:np.ndarray, n_estimators:int=500):
+    # TODO: make child-class of hyper opt so can optimize lag
+    def __init__(self, n_estimators: int = 500):
         self.n_estimators = n_estimators
-        super().__init__(X, y)
+        super().__init__(device="CPU", incrementally_trainable=False, train_incrementally=False)
 
     def reset_model_training(self):
         self.trained_model = None
