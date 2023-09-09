@@ -7,6 +7,10 @@ from typing import Tuple, List
 import numpy as np
 from utils import opt, add_lags
 from tqdm import tqdm
+import csv
+import json
+import os
+import datetime
 
 # Models that are hyper-para optimized
 import xgboost as xgb
@@ -20,13 +24,24 @@ from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.model_selection import train_test_split
 
 class trainable_model:
-    def __init__(self, device: str="CPU", incrementally_trainable: bool=False, train_incrementally: bool=False):
+    def __init__(self, experiment_id: int, model_name: str, device: str="CPU", incrementally_trainable: bool=False, train_incrementally: bool=False,
+                 summary_file_path: str="summary_file_path.csv"):
         self.X = None
         self.y = None
         self.extra_X = None
         self.extra_y = None
         self.num_lags = None
+        self.SUMMARY_FILE_PATH = f"{summary_file_path.split('.')[0]}_expid{experiment_id}.csv"
+        self.RESTART_FILE_PATH = f"{'/'.join(summary_file_path.split('/')[:-1])}/restart_file.json"
+        self.experiment_id = experiment_id
 
+        if os.path.exists(self.RESTART_FILE_PATH):
+            with open(self.RESTART_FILE_PATH, "r") as file:
+                experiments_so_far = json.load(file)
+            if self.SUMMARY_FILE_PATH.split(".")[0] in experiments_so_far.keys():
+                if experiments_so_far[self.SUMMARY_FILE_PATH.split(".")[0]]['status_of_experiment'] == "FINISHED":
+                    raise ValueError(f"You are trying to run an experiment with an ID that has already run to completion. See {experiments_so_far[self.SUMMARY_FILE_PATH.split('.')[0]]['experiment_summary_file']} for the results. Please choose a different experiment_id when initializing the trainable_model instance.")
+        self.model_name = model_name
         self.verbose = 0
         self.device = device
         self.incrementally_trainable = incrementally_trainable
@@ -45,6 +60,86 @@ class trainable_model:
             self.extra_y = None
             assert self.lagless_y.shape[0] == self.lagless_X.shape[0]
 
+    def store_model_to_path(self, model, path: str):
+        if not os.path.exists("/".join(path.split("/")[:-1])):
+            os.makedirs("/".join(path.split("/")[:-1]))
+        model.save_model(path)
+
+    def load_model_from_path(self, model, path: str):
+        model.load_model(path)
+
+    def manage_prediction_storing(self, test_point_idx: int, model, model_path: str, test_point_error: float,
+                                  in_sample_error_avg: float, in_sample_error_var: float, used_lags: int,
+                                  summary_file_path: str):
+        # Create tracking .csv file in case it doesn't exist yet
+        if not os.path.exists("/".join(summary_file_path.split("/")[:-1])):
+            os.makedirs("/".join(summary_file_path.split("/")[:-1]))
+        if not os.path.exists(summary_file_path):
+            header = ["test_point_idx", "datetime", "test_point_err", "in_sample_error_avg",
+                      "in_sample_error_var", "used_lags", "trained_model_file", "model_params"]
+            with open(summary_file_path, mode='w', newline='') as file:
+                writer = csv.writer(file, delimiter=';')
+                writer.writerow(header)
+
+        # Store the trained model that was used for the prediction of datapoint test_point_idx
+        self.store_model_to_path(model, model_path)
+        # Summarize some stats about the model that was used for the prediction
+        model_summary=[test_point_idx, str(datetime.datetime.now()), test_point_error[0], in_sample_error_avg,
+                       in_sample_error_var, used_lags, model_path, model.get_params()]
+        with open(summary_file_path, mode='a', newline='') as file:
+            writer = csv.writer(file, delimiter=';')
+            writer.writerow(model_summary)
+        
+    def track_progress(self, just_finished_idx: int, is_last_idx: bool):
+        mode = "r"
+        if not os.path.exists("/".join(self.RESTART_FILE_PATH.split("/")[:-1])):
+            os.makedirs("/".join(self.RESTART_FILE_PATH.split("/")[:-1]))
+        if not os.path.exists(self.RESTART_FILE_PATH):
+            experiments = {}
+            with open(self.RESTART_FILE_PATH, "w") as file:
+                json.dump(experiments, file)
+        else:
+            with open(self.RESTART_FILE_PATH, mode) as file:
+                experiments = json.load(file)
+        # check if experiment is already being tracked
+        if not (self.SUMMARY_FILE_PATH.split(".")[0] in experiments.keys()):
+            this_experiment = {"experiment_id": self.experiment_id,
+                               "experiment_summary_file": self.SUMMARY_FILE_PATH,
+                               "last_handled_idx": just_finished_idx,
+                               "time_of_last_update": str(datetime.datetime.now()),
+                               "handled_idxs": [just_finished_idx],
+                               }
+            print(this_experiment)
+        else:
+            this_experiment = experiments[self.SUMMARY_FILE_PATH.split(".")[0]]
+            print(this_experiment)
+            if this_experiment["status_of_experiment"] == "FINISHED":
+                raise ValueError("Trying to update finished experiment!")
+            this_experiment["last_handled_idx"] = just_finished_idx
+            this_experiment["handled_idxs"].append(just_finished_idx)
+            this_experiment["time_of_last_update"] = str(datetime.datetime.now())
+        if is_last_idx:
+            this_experiment["status_of_experiment"] = "FINISHED"
+        else:
+            this_experiment["status_of_experiment"] = "RUNNING"
+        experiments[self.SUMMARY_FILE_PATH.split(".")[0]] = this_experiment
+        # save the updated .json 
+        with open(self.RESTART_FILE_PATH, "w") as file:
+            json.dump(experiments, file)
+
+    def does_experiment_exist(self) -> Tuple[bool, int]:
+        last_handled_idx = None
+        exp_exists = False
+        if not os.path.exists(self.RESTART_FILE_PATH):
+            return False, None
+        
+        with open(self.RESTART_FILE_PATH, "r") as file:
+            experiments = json.load(file)
+        if self.SUMMARY_FILE_PATH.split(".")[0] in experiments.keys():
+            exp_exists = True
+            last_handled_idx = experiments[self.SUMMARY_FILE_PATH.split(".")[0]]["last_handled_idx"]
+        return exp_exists, last_handled_idx
+
     def reset_model_training(self):
         '''
         HAS TO BE IMPLEMENTED BY CHILD CLASS
@@ -61,6 +156,7 @@ class trainable_model:
 
         Takes features X and labels y and returns a trained model 
         that is saved to self.trained_model.
+        Also stores some in-sample stats into self.in_sample_stats.
         '''
         pass
 
@@ -101,6 +197,11 @@ class trainable_model:
         assert self.X.shape[0] == self.y.shape[0]
         assert self.X.shape[1] == self.lagless_X.shape[1] * (lag_to_add+1)
 
+    def compute_performance_stats(self, list_of_errors: List[float]) -> dict:
+        average = sum(list_of_errors) / len(list_of_errors)
+        variance = sum((x - average) ** 2 for x in list_of_errors) / len(list_of_errors)
+        return {"average": average, "variance": variance}
+
     def expanding_window(self, lagless_data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
                     num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100, verbose: int = 0) -> np.ndarray:
 
@@ -113,6 +214,9 @@ class trainable_model:
         #TODO: m = opt.m   # m - insample window size, WHY???
         h = opt.h[0]   # h - forecast horizon
         min_last_window_idx = min_window_size+h
+        exp_exists, last_handled_idx = self.does_experiment_exist()
+        if exp_exists:
+            min_last_window_idx = last_handled_idx+1
         max_last_window_idx = T-h-1  # all datapoints available up to last one that can be tested
 
         self.lagless_data = lagless_data
@@ -134,7 +238,7 @@ class trainable_model:
             # make sure model trains only on the newly defined lagless data (in self.lagless_X, self.lagless_y)
             assert self.X is None and self.y is None
             # train a model
-            self.train_final_model()
+            self.train_final_model()    # stores some in_sample stats into self.in_sample_stats
             
             # evaluate its performance
             # next datapoint in timeframe has to be predicted
@@ -152,8 +256,14 @@ class trainable_model:
             lagged_test_X = np.reshape(lagged_test_X, (1, lagged_test_X.size))
 
             predictions = self.predict_with_trained_model(lagged_test_X)
-            error_list.extend(predictions - single_test_y)
-
+            this_test_error = predictions - single_test_y
+            error_list.extend(this_test_error)
+            store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
+            self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, this_test_error, 
+                                           self.in_sample_stats["average"], self.in_sample_stats["variance"], 
+                                           used_num_lags, self.SUMMARY_FILE_PATH)
+            self.track_progress(new_testpoint_idx, min_last_window_idx+1 > max_last_window_idx)
+            self.in_sample_stats=None
             for new_testpoint_idx in tqdm(range(min_last_window_idx+1, max_last_window_idx)):
                 # make sure model trains only on the newly defined lagless data 
                 self.X = None
@@ -173,6 +283,7 @@ class trainable_model:
                 assert self.X is None and self.y is None
                 # CURRENTLY HERE
                 assert self.extra_X is None or (self.extra_X.ndim == 1 and self.extra_y.size == 1)
+                assert self.in_sample_stats is None
                 self.train_final_model()
 
                 # set a new test point
@@ -188,8 +299,15 @@ class trainable_model:
 
                 # evaluate the model
                 predictions = self.predict_with_trained_model(lagged_test_X)
-                error_list.extend(predictions - single_test_y)
-
+                this_test_error = predictions - single_test_y
+                error_list.extend(this_test_error)
+                store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
+                self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, this_test_error, 
+                                           self.in_sample_stats["average"], self.in_sample_stats["variance"], 
+                                           used_num_lags, self.SUMMARY_FILE_PATH)
+                print("Is last: ", new_testpoint_idx >= max_last_window_idx-1)
+                self.track_progress(new_testpoint_idx, new_testpoint_idx >= max_last_window_idx-1)
+                self.in_sample_stats = None
             error_list_per_var.append(error_list)
         return error_list_per_var
 
@@ -201,13 +319,13 @@ class Bayesian_Optimizer(trainable_model):
     black_box_function_adapter(), transform_params(), train_model() in the child class.
     For examples, see the classes: XGBoost_HyperOpt, CatBoost_HyperOpt, LightGBM_HyperOpt.
     '''
-    def __init__(self, train_test_split_perc: float, search_space: dict,
+    def __init__(self, experiment_id: int, train_test_split_perc: float, search_space: dict,
                  is_reg_task: bool, pred_perf_metric: str, max_or_min: str, name: str,
-                 init_points: int, n_iter: int, device: str, optimize_lag: bool, 
+                 init_points: int, n_iter: int, device: str, optimize_lag: bool, summary_file_path: str,
                  incrementally_trainable: bool=False, train_incrementally: bool=False):
         
-        super().__init__(device=device, incrementally_trainable=incrementally_trainable,
-                         train_incrementally=train_incrementally)
+        super().__init__(experiment_id=experiment_id, model_name=name, device=device, incrementally_trainable=incrementally_trainable,
+                         train_incrementally=train_incrementally, summary_file_path=summary_file_path)
         # True -> its a regression task, False -> its a classification task
         self.is_reg_task = is_reg_task
 
@@ -242,9 +360,6 @@ class Bayesian_Optimizer(trainable_model):
 
         # Track the performance at different choices of hyperparameters
         self.model_history = {}
-
-        # The name of the algorithm that is optimized
-        self.name = name
 
         # The metric used to evaluate which model performed best
         self.pred_perf_metric = pred_perf_metric
@@ -290,6 +405,7 @@ class Bayesian_Optimizer(trainable_model):
             print("Train optimal model...")
             print("--------------------------------------")
         trained_model = self.train_optimal_model()
+
         return trained_model
 
     def predict(self, X: np.ndarray, model=None) -> np.ndarray:
@@ -534,6 +650,11 @@ class Bayesian_Optimizer(trainable_model):
                 train_labels = self.y
             trained_model = self.train_new_model(optimal_params, train_features, train_labels)
             self.trained_model = copy.deepcopy(trained_model)
+
+            # compute and store some stats over the training data
+            predictions_in_sample = trained_model.predict(train_features)
+            in_sample_errors = list(predictions_in_sample - train_labels)
+            self.in_sample_stats = self.compute_performance_stats(in_sample_errors)
             return trained_model
 
 class CatBoost_HyperOpt(Bayesian_Optimizer):
@@ -542,17 +663,17 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
     optimization of a CatBoost decision tree.
     '''
 
-    def __init__(self, train_test_split_perc: float, search_space: dict, 
+    def __init__(self, experiment_id: int, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter: int = 20, device: str="CPU",
-                 optimize_lag: bool=False
+                 optimize_lag: bool=False, summary_file_path: str=f"trained_models/CatBoost_experiments_summary.csv"
                  ):
         self.is_reg_task = is_reg_task
-        super().__init__(train_test_split_perc=train_test_split_perc,
+        super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc,
                          search_space=search_space, is_reg_task=self.is_reg_task, 
                          pred_perf_metric=perf_metric, max_or_min=max_or_min, name="CatBoost",
                          init_points=init_points, n_iter=n_iter, device=device, 
-                         optimize_lag=optimize_lag,
+                         optimize_lag=optimize_lag, summary_file_path=summary_file_path,
                          incrementally_trainable=False, train_incrementally=False)
         
     def transform_params(self, input_params: dict) -> dict:
@@ -611,16 +732,16 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
     A class that inherits from the Bayesian_Optimizer class and implements the bayesian hyperparameter
     optimization of a LightGBM decision tree.
     '''    
-    def __init__(self, train_test_split_perc: float, search_space: dict, 
+    def __init__(self, experiment_id: int, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter:int = 20, device: str="CPU",
-                 optimize_lag: bool=False
+                 optimize_lag: bool=False, summary_file_path: str="trained_models/LightGBM_experiments_summary.csv"
                 ):
         self.is_reg_task = is_reg_task
-        super().__init__(train_test_split_perc=train_test_split_perc, search_space=search_space,
+        super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc, search_space=search_space,
                          is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="LightGBM",
                          init_points=init_points, n_iter=n_iter, device=device,
-                         optimize_lag=optimize_lag,
+                         optimize_lag=optimize_lag, summary_file_path=summary_file_path,
                          incrementally_trainable=False, train_incrementally=False)
 
     def transform_params(self, input_params: dict) -> dict:
@@ -685,15 +806,15 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
     
     GPU: conda install py-xgboost-gpu (package not available for conda in windows)
     '''
-    def __init__(self, train_test_split_perc: float, search_space: dict, 
+    def __init__(self,  experiment_id: int, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter: int = 20, device: str="CPU",
-                 optimize_lag: bool=False,
+                 optimize_lag: bool=False, summary_file_path: str="trained_models/XGBoost_experiments_summary.csv"
                 ):
         self.is_reg_task = is_reg_task
-        super().__init__(train_test_split_perc=train_test_split_perc, search_space=search_space,
+        super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc, search_space=search_space,
                          is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="XGBoost",
-                         init_points=init_points, n_iter=n_iter, device=device,
+                         init_points=init_points, n_iter=n_iter, device=device, summary_file_path=summary_file_path,
                          optimize_lag=optimize_lag, incrementally_trainable=False, train_incrementally=False)
 
     def transform_params(self, input_params: dict) -> dict:
