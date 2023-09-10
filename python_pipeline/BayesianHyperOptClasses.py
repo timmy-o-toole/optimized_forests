@@ -31,7 +31,7 @@ class trainable_model:
         self.extra_X = None
         self.extra_y = None
         self.num_lags = None
-        self.SUMMARY_FILE_PATH = f"{summary_file_path.split('.')[0]}_expid{experiment_id}.csv"
+        self.SUMMARY_FILE_PATH = f"{summary_file_path.split('.')[0]}_expid{experiment_id}_predvaridXYZ.csv"
         self.RESTART_FILE_PATH = f"{'/'.join(summary_file_path.split('/')[:-1])}/restart_file.json"
         self.experiment_id = experiment_id
 
@@ -89,7 +89,16 @@ class trainable_model:
         with open(summary_file_path, mode='a', newline='') as file:
             writer = csv.writer(file, delimiter=';')
             writer.writerow(model_summary)
-        
+    
+    def experiment_already_finished(self, experiment_file_path):
+        if os.path.exists(self.RESTART_FILE_PATH):
+            with open(self.RESTART_FILE_PATH, "r") as file:
+                experiment = json.load(file)
+            if experiment_file_path in experiment.keys():
+                if experiment[experiment_file_path]["status_of_experiment"] == "FINISHED":
+                    return True
+        return False
+
     def track_progress(self, just_finished_idx: int, is_last_idx: bool):
         mode = "r"
         if not os.path.exists("/".join(self.RESTART_FILE_PATH.split("/")[:-1])):
@@ -109,10 +118,8 @@ class trainable_model:
                                "time_of_last_update": str(datetime.datetime.now()),
                                "handled_idxs": [just_finished_idx],
                                }
-            print(this_experiment)
         else:
             this_experiment = experiments[self.SUMMARY_FILE_PATH.split(".")[0]]
-            print(this_experiment)
             if this_experiment["status_of_experiment"] == "FINISHED":
                 raise ValueError("Trying to update finished experiment!")
             this_experiment["last_handled_idx"] = just_finished_idx
@@ -225,8 +232,14 @@ class trainable_model:
  
         error_list_per_var = []
         for pred_var_id in ind_f_vars:
+
             # window grows from min_window_size 
             # to whole dataset size (minus forecast horizon)
+            self.SUMMARY_FILE_PATH = "_".join(self.SUMMARY_FILE_PATH.split("_")[:-1]) + f"_predvarid{pred_var_id}.csv"
+            print(f"Now starting: {self.SUMMARY_FILE_PATH}")
+            if self.experiment_already_finished(self.SUMMARY_FILE_PATH.split(".")[0]):
+                print(f"Experiment ({self.SUMMARY_FILE_PATH}) already finished, skipping to next pred_var_id.")
+                continue
             error_list = []
 
             # first window
@@ -258,7 +271,7 @@ class trainable_model:
             predictions = self.predict_with_trained_model(lagged_test_X)
             this_test_error = predictions - single_test_y
             error_list.extend(this_test_error)
-            store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
+            store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_predvarid{pred_var_id}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
             self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, this_test_error, 
                                            self.in_sample_stats["average"], self.in_sample_stats["variance"], 
                                            used_num_lags, self.SUMMARY_FILE_PATH)
@@ -301,14 +314,16 @@ class trainable_model:
                 predictions = self.predict_with_trained_model(lagged_test_X)
                 this_test_error = predictions - single_test_y
                 error_list.extend(this_test_error)
-                store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
+                store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_predvarid{pred_var_id}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
                 self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, this_test_error, 
                                            self.in_sample_stats["average"], self.in_sample_stats["variance"], 
                                            used_num_lags, self.SUMMARY_FILE_PATH)
-                print("Is last: ", new_testpoint_idx >= max_last_window_idx-1)
+                #print("Is last: ", new_testpoint_idx >= max_last_window_idx-1)
                 self.track_progress(new_testpoint_idx, new_testpoint_idx >= max_last_window_idx-1)
                 self.in_sample_stats = None
             error_list_per_var.append(error_list)
+            self.X = None
+            self.y = None
         return error_list_per_var
 
 

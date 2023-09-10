@@ -27,12 +27,12 @@ if __name__ == "__main__":
                         "eta": (1e-9, 1.0),
                         "gamma": (1e-8, 1.0)
                         }
-    trainabale_model_xgb = bho.XGBoost_HyperOpt(experiment_id=0, train_test_split_perc = 0.8, search_space = search_space_xgb,
+    trainabale_model_xgb = bho.XGBoost_HyperOpt(experiment_id=1, train_test_split_perc = 0.8, search_space = search_space_xgb,
                             is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min",
                             init_points=1, n_iter=2, device="CPU", optimize_lag=True)
     ###### testing XGBoost
-    errors_xgb = trainabale_model_xgb.expanding_window(lagless_data=dataset, ind_f_vars=[104], col_names=[""],
-                                                       num_factors=4, num_lags=2, opt=opt, min_window_size=550, verbose=0)
+    errors_xgb = trainabale_model_xgb.expanding_window(lagless_data=dataset, ind_f_vars=[104, 105], col_names=[""],
+                                                       num_factors=4, num_lags=2, opt=opt, min_window_size=565, verbose=0)
     print("Parameters: ", trainabale_model_xgb.optimal_params)
     print("Sum of squared errors - XGBoost: ", sum([e*e for e in errors_xgb[0]]))
 
@@ -51,7 +51,7 @@ if __name__ == "__main__":
                             is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min", 
                             init_points=1, n_iter=1, device="CPU", optimize_lag=True)
     ###### handover the "trainable model" to the expanding window method
-    errors_cat = trainabale_model_cat.expanding_window(lagless_data=dataset, ind_f_vars=[104], col_names=[""],
+    errors_cat = trainabale_model_cat.expanding_window(lagless_data=dataset, ind_f_vars=[104, 105], col_names=[""],
                            num_factors=4, num_lags=2, opt=opt, min_window_size=570, verbose=0)
     best_model_dict = trainabale_model_cat.optimal_params
     optimal_lag = best_model_dict["lag_to_add"]
