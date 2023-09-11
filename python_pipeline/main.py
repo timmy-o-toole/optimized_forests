@@ -78,6 +78,7 @@ if __name__ == "__main__":
                          is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min",
                          init_points=2, n_iter=4, device="CPU")
 
+
     # BaggedTree
     trainabale_model_bagged = bho.BaggedTree(n_estimators=5)
 
@@ -85,14 +86,12 @@ if __name__ == "__main__":
     #print(trainabale_model_cat.predict_with_trained_model(pred_some_stuff))
 
     # Next up:
+    # TODO: write a hyper opt version of BaggedTree
+    # TODO: create a procedure for evaluating and comparing performance
+            # -> show actual development and predictions in the same graph.
     # TODO: check if data flow is correct (self.extra_X, self.test_X, self.lagless_X, self.X)
-    # TODO: add functions to trainable_model class that store and load instances of the class
-        # to make sure that can stop and start the process midway! -> split along datapoints, not optimizers
-        # document the parameters used at each point in time -> lags, random_seeds, ...
     # TODO: write a moving window function
     # TODO: visualize the optimization process during hyper-opt (use hyp-opt library)
-    # TODO: create a procedure for evaluating and comparing performance
     # TODO: check more in detail if the implementation of BaggedTree is as in Matlab
-    # TODO: write a hyper opt version of BaggedTree
     # TODO: check correctness of expanding_window() - did not understand Matlab code fully
     

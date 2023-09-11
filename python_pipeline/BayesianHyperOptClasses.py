@@ -49,33 +49,38 @@ class trainable_model:
         if not incrementally_trainable and train_incrementally:
             self.train_incrementally = False
             print("Incremental training is not available or not implemented for this model.")
-        
         self.trained_model = None
 
-    def add_extraXy_to_dataset(self):
-        if not (self.extra_X is None or self.extra_y is None):
-            self.lagless_X = np.concatenate([self.lagless_X, self.extra_X.reshape(1, self.extra_X.size)], axis=0)
-            self.lagless_y = np.concatenate([self.lagless_y, self.extra_y], axis=None)
-            self.extra_X = None
-            self.extra_y = None
-            assert self.lagless_y.shape[0] == self.lagless_X.shape[0]
-
     def store_model_to_path(self, model, path: str):
+        '''
+        MAYBE HAS TO BE OVERWRITTEN BY CHILD CLASS
+        '''
         if not os.path.exists("/".join(path.split("/")[:-1])):
             os.makedirs("/".join(path.split("/")[:-1]))
         model.save_model(path)
 
     def load_model_from_path(self, model, path: str):
+        '''
+        MAYBE HAS TO BE OVERWRITTEN BY CHILD CLASS
+        '''
         model.load_model(path)
 
-    def manage_prediction_storing(self, test_point_idx: int, model, model_path: str, test_point_error: float,
-                                  in_sample_error_avg: float, in_sample_error_var: float, used_lags: int,
-                                  summary_file_path: str):
+    def manage_prediction_storing(self, test_point_idx: int, model, model_path: str, test_point_pred: float, 
+                                  test_point_error: float, in_sample_error_avg: float, in_sample_error_var: float, 
+                                  used_lags: int, summary_file_path: str):
+        '''
+        Creates and manages a .csv file for an experiment (e.g. "trained_models/XGBoost_experiments_summary_expid1_predvarid104.csv")
+        by (per datapoint idx) adding a row to the .csv that summarizes the most important information about the trained model and 
+        resulting performance ("test_point_idx", "datetime", "test_point_err", "in_sample_error_avg", "in_sample_error_var", "used_lags",
+        "trained_model_file", "model_params").
+
+        Can easily be extended to track more information!
+        '''
         # Create tracking .csv file in case it doesn't exist yet
         if not os.path.exists("/".join(summary_file_path.split("/")[:-1])):
             os.makedirs("/".join(summary_file_path.split("/")[:-1]))
         if not os.path.exists(summary_file_path):
-            header = ["test_point_idx", "datetime", "test_point_err", "in_sample_error_avg",
+            header = ["test_point_idx", "datetime", "test_point_pred", "test_point_err", "in_sample_error_avg",
                       "in_sample_error_var", "used_lags", "trained_model_file", "model_params"]
             with open(summary_file_path, mode='w', newline='') as file:
                 writer = csv.writer(file, delimiter=';')
@@ -84,22 +89,23 @@ class trainable_model:
         # Store the trained model that was used for the prediction of datapoint test_point_idx
         self.store_model_to_path(model, model_path)
         # Summarize some stats about the model that was used for the prediction
-        model_summary=[test_point_idx, str(datetime.datetime.now()), test_point_error[0], in_sample_error_avg,
+        model_summary=[test_point_idx, str(datetime.datetime.now()), test_point_pred, test_point_error, in_sample_error_avg,
                        in_sample_error_var, used_lags, model_path, model.get_params()]
         with open(summary_file_path, mode='a', newline='') as file:
             writer = csv.writer(file, delimiter=';')
             writer.writerow(model_summary)
-    
-    def experiment_already_finished(self, experiment_file_path):
-        if os.path.exists(self.RESTART_FILE_PATH):
-            with open(self.RESTART_FILE_PATH, "r") as file:
-                experiment = json.load(file)
-            if experiment_file_path in experiment.keys():
-                if experiment[experiment_file_path]["status_of_experiment"] == "FINISHED":
-                    return True
-        return False
 
     def track_progress(self, just_finished_idx: int, is_last_idx: bool):
+        '''
+        Takes care of tracking experiments that are/were done in a "restart file" (e.g. restart_file.json).
+        For each experiment (identified by "experiment_id") it stores information like if its "RUNNING"/"FINISHED",
+        what datapoint (idx) was processed last and where the corresponding experiment .csv 
+        (managed by self.manage_prediction_storing()) is stored. 
+
+        This "restart file" is used to track the current progress and after potential interruption at an
+        intermediate datapoint idx continue from that last processed idx - instead of having to iterated over
+        all datapoints from the beginning again.
+        '''
         mode = "r"
         if not os.path.exists("/".join(self.RESTART_FILE_PATH.split("/")[:-1])):
             os.makedirs("/".join(self.RESTART_FILE_PATH.split("/")[:-1]))
@@ -134,7 +140,32 @@ class trainable_model:
         with open(self.RESTART_FILE_PATH, "w") as file:
             json.dump(experiments, file)
 
+    def experiment_already_finished(self, experiment_file_path: str):
+        '''
+        Check if an experiment is marked as being "FINISHED" in the "restart file" managed
+        by self.track_progress().
+        '''
+        if os.path.exists(self.RESTART_FILE_PATH):
+            with open(self.RESTART_FILE_PATH, "r") as file:
+                experiment = json.load(file)
+            if experiment_file_path in experiment.keys():
+                if experiment[experiment_file_path]["status_of_experiment"] == "FINISHED":
+                    return True
+        return False
+    
     def does_experiment_exist(self) -> Tuple[bool, int]:
+        '''
+        Checks if an experiment is already contained in the "restart file" managed by self.track_progress().
+
+        The experiment that is check is the one thats identified by self.SUMMARY_FILE_PATH 
+        (e.g. "trained_models/XGBoost_experiments_summary_expid1_predvarid104.csv").
+
+        Returns:
+            exp_exists (bool): contains True if there is an entry in restart file
+                    for the experiment in question, else is False
+            last_handled_idx (int or None): if experiment is contained (exp_exists==True),
+                    gives the last idx that was handled during that experiment
+        '''
         last_handled_idx = None
         exp_exists = False
         if not os.path.exists(self.RESTART_FILE_PATH):
@@ -146,42 +177,19 @@ class trainable_model:
             exp_exists = True
             last_handled_idx = experiments[self.SUMMARY_FILE_PATH.split(".")[0]]["last_handled_idx"]
         return exp_exists, last_handled_idx
-
-    def reset_model_training(self):
+     
+    def add_extraXy_to_dataset(self):
         '''
-        HAS TO BE IMPLEMENTED BY CHILD CLASS
-
-        Resets the class to a state where it is like it hasn't done
-        any training so far (e.g. self.trained_model is deleted)
-        E.g. for BayerisanHyperOpt the optimizer is reset
+        Helperfunction for concatenating an INDIVIDUAL extra datapoint stored in self.extra_X, self.extra_y
+        to the dataset stored in self.lagless_X, self.lagless_y.
         '''
-        pass
+        if not (self.extra_X is None or self.extra_y is None):
+            self.lagless_X = np.concatenate([self.lagless_X, self.extra_X.reshape(1, self.extra_X.size)], axis=0)
+            self.lagless_y = np.concatenate([self.lagless_y, self.extra_y], axis=None)
+            self.extra_X = None
+            self.extra_y = None
+            assert self.lagless_y.shape[0] == self.lagless_X.shape[0]
 
-    def train_final_model(self):
-        '''
-        HAS TO BE IMPLEMENTED BY CHILD CLASS
-
-        Takes features X and labels y and returns a trained model 
-        that is saved to self.trained_model.
-        Also stores some in-sample stats into self.in_sample_stats.
-        '''
-        pass
-
-    def predict(self, X: np.ndarray, model) -> np.ndarray:
-        '''
-        HAS TO BE IMPLEMENTED BY CHILD CLASS
-
-        Takes the given model or the model in self.trained_model and
-        makes a prediction on the data given in X.
-        '''
-        pass
-    
-    def predict_with_trained_model(self, X: np.ndarray) -> np.ndarray:
-        model = self.trained_model
-        if model is None:
-            raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
-        return self.predict(X, model)
-    
     def add_lags(self, dataset: np.ndarray, lags: int) -> np.ndarray:
         '''
         For a time-series of datapoints, adds "lags"-many lags to each datapoint.
@@ -196,7 +204,7 @@ class trainable_model:
             lagged_dataset = np.concatenate([lagged_dataset, this_subset], axis=1)
         return lagged_dataset
 
-    def manage_lags(self, lag_to_add):
+    def manage_lags(self, lag_to_add: int=None):
         if lag_to_add is None:
             raise ValueError("There is no specification given regarding the lag size! Check if the search_space variable is correct.")
         self.X = self.add_lags(self.lagless_X, lag_to_add)
@@ -205,10 +213,25 @@ class trainable_model:
         assert self.X.shape[1] == self.lagless_X.shape[1] * (lag_to_add+1)
 
     def compute_performance_stats(self, list_of_errors: List[float]) -> dict:
+        '''
+        Computes some performance statistics over a given list of errors.
+        This is included in the experiment .csv that is managed by self.manage_prediction_storing().
+
+        Can easily be extended to compute and return more statistics!
+        '''
         average = sum(list_of_errors) / len(list_of_errors)
         variance = sum((x - average) ** 2 for x in list_of_errors) / len(list_of_errors)
         return {"average": average, "variance": variance}
 
+    def predict_with_trained_model(self, X: np.ndarray) -> np.ndarray:
+        '''
+        Takes the model stored in self.trained_model and uses it to make a prediction.
+        '''
+        model = self.trained_model
+        if model is None:
+            raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
+        return self.predict(X, model)
+    
     def expanding_window(self, lagless_data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
                     num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100, verbose: int = 0) -> np.ndarray:
 
@@ -272,7 +295,7 @@ class trainable_model:
             this_test_error = predictions - single_test_y
             error_list.extend(this_test_error)
             store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_predvarid{pred_var_id}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
-            self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, this_test_error, 
+            self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, predictions[0], this_test_error[0], 
                                            self.in_sample_stats["average"], self.in_sample_stats["variance"], 
                                            used_num_lags, self.SUMMARY_FILE_PATH)
             self.track_progress(new_testpoint_idx, min_last_window_idx+1 > max_last_window_idx)
@@ -294,7 +317,6 @@ class trainable_model:
 
                 # train the model using only the modified self.lagless_X, self.lagless_y
                 assert self.X is None and self.y is None
-                # CURRENTLY HERE
                 assert self.extra_X is None or (self.extra_X.ndim == 1 and self.extra_y.size == 1)
                 assert self.in_sample_stats is None
                 self.train_final_model()
@@ -315,10 +337,10 @@ class trainable_model:
                 this_test_error = predictions - single_test_y
                 error_list.extend(this_test_error)
                 store_model_path = f"{self.SUMMARY_FILE_PATH.split('.')[0]}_models/{self.model_name}_predvarid{pred_var_id}_testpointidx{new_testpoint_idx}_expid{self.experiment_id}_{datetime.date.today()}.json"
-                self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, this_test_error, 
+                self.manage_prediction_storing(new_testpoint_idx, self.trained_model, store_model_path, predictions[0], this_test_error[0], 
                                            self.in_sample_stats["average"], self.in_sample_stats["variance"], 
                                            used_num_lags, self.SUMMARY_FILE_PATH)
-                #print("Is last: ", new_testpoint_idx >= max_last_window_idx-1)
+                #print("Is last testpoint: ", new_testpoint_idx >= max_last_window_idx-1)
                 self.track_progress(new_testpoint_idx, new_testpoint_idx >= max_last_window_idx-1)
                 self.in_sample_stats = None
             error_list_per_var.append(error_list)
@@ -326,6 +348,40 @@ class trainable_model:
             self.y = None
         return error_list_per_var
 
+    def reset_model_training(self):
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+
+        Resets the class to a state where it is like it hasn't done
+        any training so far (e.g. self.trained_model is deleted)
+        E.g. for BayerisanHyperOpt the optimizer is reset
+        '''
+        pass
+
+    def train_final_model(self):
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+
+        Takes features self.lagless_X and labels self.lagless_y 
+        and saves a trained model to self.trained_model.
+
+        For self.expanding_window() it should also use the latest datapoint which is
+        stored in self.extra_X, self.extra_y. Can use self.add_extraXy_to_dataset()
+        to add that inidividual additional datapoint to the dataset in self.lagless_X, self.lagless_y.
+        
+        Has to store some in-sample stats into self.in_sample_stats
+        (use self.compute_performance_stats()).
+        '''
+        pass
+
+    def predict(self, X: np.ndarray, model) -> np.ndarray:
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+
+        Takes the given model or the model in self.trained_model and
+        makes a prediction on the data given in X.
+        '''
+        pass
 
 class Bayesian_Optimizer(trainable_model):
     '''
@@ -366,12 +422,6 @@ class Bayesian_Optimizer(trainable_model):
 
         # can decide to also include the nr of lags as a hyperparameter in the optimization
         self.optimize_lag = optimize_lag
-        '''if self.optimize_lag and not lagless_X.shape[0] > 1:
-            raise ValueError("Make sure to properly set the lagless_X and lagless_y variable with the available clean (non-lagged) data.")
-        if lagless_X.shape[0] != lagless_y.shape[0]:
-            raise ValueError("X and y don't have the same amount of datapoints.")
-        self.lagless_X = lagless_X
-        self.lagless_y = lagless_y'''
 
         # Track the performance at different choices of hyperparameters
         self.model_history = {}
@@ -420,12 +470,11 @@ class Bayesian_Optimizer(trainable_model):
             print("Train optimal model...")
             print("--------------------------------------")
         trained_model = self.train_optimal_model()
-
         return trained_model
 
     def predict(self, X: np.ndarray, model=None) -> np.ndarray:
         '''
-        Usese the optimal_model to make a prediction on given data.
+        Usese the given model to make a prediction on given data.
         '''
         assert X.shape[1] == self.X.shape[1]
         return model.predict(X)
@@ -436,13 +485,13 @@ class Bayesian_Optimizer(trainable_model):
 
     def add_to_model_history(self, trained_model, para_dict: dict, perf_score: float):
         '''
-        Keeps track of tried params and the resulting performances.
+        Keeps track of parameters that have already been tested; and the resulting performances.
         '''
         self.model_history[len(self.model_history)] = {"model": trained_model, "params": para_dict, "perf": perf_score}
 
     def check_para_already_tested(self, para_dict: dict) -> Tuple[bool, float]:
         '''
-        Tests if para dict was already tested.
+        Tests if a model instantiated with the given parameter dictionary has already been tested.
         '''
         for dict_id in self.model_history:
             stored_dict = self.model_history[dict_id]
@@ -499,13 +548,18 @@ class Bayesian_Optimizer(trainable_model):
         self.optimizer.maximize(init_points = init_points, n_iter = n_iter)
         # print(self.optimizer.max["params"])
         self.optimal_params = self.transform_params(self.optimizer.max["params"])
-        
-    def black_box_function_adapter(self):
+    
+    def instantiate_model(self, cor_params: dict):
         '''
         HAS TO BE IMPLEMENTED BY CHILD CLASS
-        
-        A function that takes the exact parameter names as the to train ML algo.
-        These are put into a dictionary and handed over to black_box_function().
+        '''
+        pass
+
+    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
+        '''
+        HAS TO BE IMPLEMENTED BY CHILD CLASS
+    
+        Takes parameters, passes them to the individual ML model and returns the trained ML model.
         '''
         pass
     
@@ -521,22 +575,21 @@ class Bayesian_Optimizer(trainable_model):
         Has to modify the value stored under key "lag_to_add" to be of type int.
         '''
         pass
-    
-    def instantiate_model(self, cor_params: dict):
-        '''
-        HAS TO BE IMPLEMENTED BY CHILD CLASS
-        '''
-        pass
 
-    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
+    def black_box_function_adapter(self):
         '''
         HAS TO BE IMPLEMENTED BY CHILD CLASS
-    
-        Takes parameters, passes them to the individual ML model and returns the trained ML model.
+        
+        A function that takes the exact parameter names as the to train ML algo.
+        These are put into a dictionary and handed over to black_box_function().
         '''
         pass
 
     def train_new_model(self, params: dict, X: np.ndarray, y: np.ndarray):
+        '''
+        Instantiates a model using the given params dictionary.
+        Then trains it on the given X, y data.
+        '''
         #cor_params = self.transform_params(params)
         model = self.instantiate_model(params)
         return self.train_model(model, X, y)
@@ -548,7 +601,6 @@ class Bayesian_Optimizer(trainable_model):
         Transform params to be accaptable hyperparameters for the Classifier.
         Since for pbounds it is not possible to specify that some parameters are integers.
         '''
-        
         was_tested, perf_was = self.check_para_already_tested(cor_params)
         if was_tested:
             return perf_was
@@ -690,6 +742,20 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
                          init_points=init_points, n_iter=n_iter, device=device, 
                          optimize_lag=optimize_lag, summary_file_path=summary_file_path,
                          incrementally_trainable=False, train_incrementally=False)
+
+    def instantiate_model(self, cor_params: dict):
+        if self.is_reg_task:
+            model = cat.CatBoostRegressor(**cor_params, verbose=0, task_type=self.device, loss_function=self.pred_perf_metric)
+        else:
+            model = cat.CatBoostClassifier(**cor_params, verbose=0, task_type=self.device, loss_function=self.pred_perf_metric)
+        return model
+
+    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
+        '''
+        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
+        '''
+        model.fit(extra_X, extra_y)
+        return model
         
     def transform_params(self, input_params: dict) -> dict:
         '''
@@ -707,20 +773,6 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
         ret_params["border_count"] = int(ret_params["border_count"])
         ret_params["l2_leaf_reg"] = int(ret_params["l2_leaf_reg"])
         return ret_params
-
-    def instantiate_model(self, cor_params: dict):
-        if self.is_reg_task:
-            model = cat.CatBoostRegressor(**cor_params, verbose=0, task_type=self.device, loss_function=self.pred_perf_metric)
-        else:
-            model = cat.CatBoostClassifier(**cor_params, verbose=0, task_type=self.device, loss_function=self.pred_perf_metric)
-        return model
-
-    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
-        '''
-        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
-        '''
-        model.fit(extra_X, extra_y)
-        return model
     
     def black_box_function_adapter(self, lag_to_add, iterations, depth, learning_rate, random_strength, bagging_temperature, border_count, l2_leaf_reg):
         '''
@@ -759,6 +811,20 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
                          optimize_lag=optimize_lag, summary_file_path=summary_file_path,
                          incrementally_trainable=False, train_incrementally=False)
 
+    def instantiate_model(self, cor_params: dict):
+        if self.is_reg_task:
+            model = lgb.LGBMRegressor(**cor_params, verbose=0)
+        else:
+            model = lgb.LGBMClassifier(**cor_params, verbose=0)
+        return model
+    
+    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
+        '''
+        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
+        '''
+        model.fit(extra_X, extra_y)
+        return model
+
     def transform_params(self, input_params: dict) -> dict:
         '''
         Makes sure that the parameters passed to the actual ML algorithm are valid inputs.
@@ -776,20 +842,6 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
         ret_params["lambda_l1"] = int(ret_params["lambda_l1"])
         ret_params["lambda_l2"] = int(ret_params["lambda_l2"])
         return ret_params
-
-    def instantiate_model(self, cor_params: dict):
-        if self.is_reg_task:
-            model = lgb.LGBMRegressor(**cor_params, verbose=0)
-        else:
-            model = lgb.LGBMClassifier(**cor_params, verbose=0)
-        return model
-    
-    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
-        '''
-        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
-        '''
-        model.fit(extra_X, extra_y)
-        return model
 
     def black_box_function_adapter(self, lag_to_add, learning_rate, num_leaves, max_depth, min_data_in_leaf,
                                    lambda_l1, lambda_l2, min_gain_to_split, bagging_fraction, feature_fraction):
@@ -813,7 +865,6 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
         perf_score = self.black_box_function(cor_params)
         return perf_score
 
-
 class XGBoost_HyperOpt(Bayesian_Optimizer):
     '''
     A class that inherits from the Bayesian_Optimizer class and implements the bayesian hyperparameter
@@ -831,6 +882,23 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
                          is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="XGBoost",
                          init_points=init_points, n_iter=n_iter, device=device, summary_file_path=summary_file_path,
                          optimize_lag=optimize_lag, incrementally_trainable=False, train_incrementally=False)
+  
+    def instantiate_model(self, cor_params: dict):
+        tree_method = "hist"
+        if self.device == "GPU":
+            tree_method = "gpu_hist"
+        if self.is_reg_task:
+            model = xgb.XGBRegressor(**cor_params, tree_method=tree_method)
+        else:
+            model = xgb.XGBClassifier(**cor_params, tree_method=tree_method)
+        return model
+
+    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
+        '''
+        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
+        '''
+        model.fit(extra_X, extra_y)
+        return model
 
     def transform_params(self, input_params: dict) -> dict:
         '''
@@ -863,23 +931,6 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
                  }
         '''
         return ret_params
-  
-    def instantiate_model(self, cor_params: dict):
-        tree_method = "hist"
-        if self.device == "GPU":
-            tree_method = "gpu_hist"
-        if self.is_reg_task:
-            model = xgb.XGBRegressor(**cor_params, tree_method=tree_method)
-        else:
-            model = xgb.XGBClassifier(**cor_params, tree_method=tree_method)
-        return model
-
-    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
-        '''
-        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
-        '''
-        model.fit(extra_X, extra_y)
-        return model
 
     def black_box_function_adapter(self, lag_to_add, lambda_, alpha, max_depth, eta, gamma):
         '''
