@@ -17,8 +17,13 @@ if __name__ == "__main__":
 
     # Create an instance of the class that contains the ML model that should be optimized
     
-
     ### BaggedTree
+    trainabale_model_bagged = bho.BaggedTree(experiment_id=69, n_estimators=5)
+    errors_bagged = trainabale_model_bagged.expanding_window(lagless_data=dataset, ind_f_vars=[104, 105], col_names=[""],
+                           num_factors=4, num_lags=2, opt=opt, min_window_size=570, verbose=0)
+
+
+    ### BaggedTree HyperOpt
     search_space_bagged = {'lag_to_add': (0, 6),
                            'n_estimators': (3, 10),
                            'max_features': (0.1, 0.7),  # max nr of features to train each estimator on (in percent)
@@ -30,7 +35,7 @@ if __name__ == "__main__":
                                              num_factors=4, num_lags=2, opt=opt, min_window_size=565, verbose=0)
 
 
-    ### XGBoost
+    ### XGBoost HyperOpt
     search_space_xgb = {'lag_to_add': (0, 6),
                         "lambda_": (1e-9, 1.0),
                         "alpha": (1e-9, 1.0),
@@ -48,7 +53,7 @@ if __name__ == "__main__":
     print("Sum of squared errors - XGBoost: ", sum([e*e for e in errors_xgb[0]]))
 
 
-    ### CatBoost
+    ### CatBoost HyperOpt
     search_space_cat = {'lag_to_add': (0, 6),
                         'iterations': (100, 1000),
                         'depth': (2, 9),
@@ -70,7 +75,7 @@ if __name__ == "__main__":
     print("Sum of squared errors - cat: ", sum([e*e for e in errors_cat[0]]))
 
 
-    # LightGBM
+    # LightGBM HyperOpt
     search_space_lgbm = {
         #"n_estimators": trial.suggest_categorical("n_estimators", [10000]),
         'lag_to_add': (0, 6),
@@ -89,15 +94,10 @@ if __name__ == "__main__":
                          is_reg_task = "True", perf_metric = "RMSE", max_or_min = "min",
                          init_points=2, n_iter=4, device="CPU")
 
-
-    # BaggedTree
-    trainabale_model_bagged = bho.BaggedTree(n_estimators=5)
-
     #pred_some_stuff = utils.add_lags(dataset, 2)
     #print(trainabale_model_cat.predict_with_trained_model(pred_some_stuff))
 
     # Next up:
-    # TODO: write a hyper opt version of BaggedTree
     # TODO: create a procedure for evaluating and comparing performance
             # -> show actual development and predictions in the same graph.
     # TODO: check if data flow is correct (self.extra_X, self.test_X, self.lagless_X, self.X)
@@ -105,4 +105,7 @@ if __name__ == "__main__":
     # TODO: visualize the optimization process during hyper-opt (use hyp-opt library)
     # TODO: check more in detail if the implementation of BaggedTree is as in Matlab
     # TODO: check correctness of expanding_window() - did not understand Matlab code fully
-    
+    # TODO: consider using e.g. XGBoost_HyperOpt to find the optimal parameters for a tree algo. 
+        # -> then use these paras and that model and train a Bagged version of multiple of these 
+        # on different parameter and datapoint subsets. Should be better than a straight forward bagged regressor.
+        # -> alternatively: Every Regressor in the BaggedRegressor is optimized on that individual subset (HyperOpt)

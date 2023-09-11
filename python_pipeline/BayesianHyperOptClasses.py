@@ -5,24 +5,27 @@ import copy
 import time
 from typing import Tuple, List
 import numpy as np
-from utils import opt, add_lags
+from utils import opt
 from tqdm import tqdm
 import csv
 import json
-import os
 import datetime
+import os
+import warnings
 
-# Models that are hyper-para optimized
+# Models for which child-classes are created
 import xgboost as xgb
 import catboost as cat
 import lightgbm as lgb
 from sklearn.ensemble import BaggingRegressor
+from sklearn.ensemble import BaggingClassifier
+from sklearn.tree import DecisionTreeRegressor   
+from sklearn.tree import DecisionTreeClassifier
 
 #pip install bayesian-optimization
 from bayes_opt import BayesianOptimization
 from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.model_selection import train_test_split
-import warnings
 
 
 class trainable_model:
@@ -722,9 +725,11 @@ class Bayesian_Optimizer(trainable_model):
 
             # compute and store some stats over the training data
             predictions_in_sample = trained_model.predict(train_features)
+            ## HEREEE
             in_sample_errors = list(predictions_in_sample - train_labels)
             self.in_sample_stats = self.compute_performance_stats(in_sample_errors)
             return trained_model
+
 
 class CatBoost_HyperOpt(Bayesian_Optimizer):
     '''
@@ -740,7 +745,7 @@ class CatBoost_HyperOpt(Bayesian_Optimizer):
         self.is_reg_task = is_reg_task
         super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc,
                          search_space=search_space, is_reg_task=self.is_reg_task, 
-                         pred_perf_metric=perf_metric, max_or_min=max_or_min, name="CatBoost",
+                         pred_perf_metric=perf_metric, max_or_min=max_or_min, name="CatBoost_HyperOpt",
                          init_points=init_points, n_iter=n_iter, device=device, 
                          optimize_lag=optimize_lag, summary_file_path=summary_file_path,
                          incrementally_trainable=False, train_incrementally=False)
@@ -808,7 +813,7 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
                 ):
         self.is_reg_task = is_reg_task
         super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc, search_space=search_space,
-                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="LightGBM",
+                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="LightGBM_HyperOpt",
                          init_points=init_points, n_iter=n_iter, device=device,
                          optimize_lag=optimize_lag, summary_file_path=summary_file_path,
                          incrementally_trainable=False, train_incrementally=False)
@@ -867,6 +872,7 @@ class LightGBM_HyperOpt(Bayesian_Optimizer):
         perf_score = self.black_box_function(cor_params)
         return perf_score
 
+
 class XGBoost_HyperOpt(Bayesian_Optimizer):
     '''
     A class that inherits from the Bayesian_Optimizer class and implements the bayesian hyperparameter
@@ -881,7 +887,7 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
                 ):
         self.is_reg_task = is_reg_task
         super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc, search_space=search_space,
-                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="XGBoost",
+                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="XGBoost_HyperOpt",
                          init_points=init_points, n_iter=n_iter, device=device, summary_file_path=summary_file_path,
                          optimize_lag=optimize_lag, incrementally_trainable=False, train_incrementally=False)
   
@@ -953,10 +959,6 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
         return perf_score
 
 
-from sklearn.ensemble import BaggingRegressor
-from sklearn.ensemble import BaggingClassifier
-from sklearn.tree import DecisionTreeRegressor   
-from sklearn.tree import DecisionTreeClassifier   
 class BaggedTree_HyperOpt(Bayesian_Optimizer):
     '''
     A class that inherits from the Bayesian_Optimizer class and implements the bayesian hyperparameter
@@ -965,11 +967,11 @@ class BaggedTree_HyperOpt(Bayesian_Optimizer):
     def __init__(self,  experiment_id: int, train_test_split_perc: float, search_space: dict, 
                  is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
                  init_points: int = 2, n_iter: int = 20, device: str="CPU",
-                 optimize_lag: bool=False, summary_file_path: str="trained_models/BaggedTree_experiments_summary.csv"
+                 optimize_lag: bool=False, summary_file_path: str="trained_models/BaggedTree_HyperOpt_experiments_summary.csv"
                 ):
         self.is_reg_task = is_reg_task
         super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc, search_space=search_space,
-                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="BaggedTree",
+                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="BaggedTree_HyperOpt",
                          init_points=init_points, n_iter=n_iter, device=device, summary_file_path=summary_file_path,
                          optimize_lag=optimize_lag, incrementally_trainable=False, train_incrementally=False)
   
@@ -1027,22 +1029,27 @@ class BaggedTree_HyperOpt(Bayesian_Optimizer):
     def store_model_to_path(self, model, path: str):
         if not os.path.exists("/".join(path.split("/")[:-1])):
             os.makedirs("/".join(path.split("/")[:-1]))
-        warnings.warn("Model saving for BaggedRegressor/BaggedClassifier has not been implemented yet.")
+        warnings.warn("Model saving for BaggedTree_HyperOpt has not been implemented yet.")
         #model.save_model(path)
     
+
 class BaggedTree(trainable_model):
     '''
     A simple BaggedTree class that has no parameters that are optimized. Thus, less costly to run.
     '''
-    def __init__(self, n_estimators: int = 500):
+    def __init__(self, experiment_id: int, n_estimators: int = 500,
+                 summary_file_path: str=f"trained_models/BaggedTree_experiments_summary.csv"):
         self.n_estimators = n_estimators
-        super().__init__(device="CPU", incrementally_trainable=False, train_incrementally=False)
+        self.num_lags = None
+        super().__init__(experiment_id=experiment_id, device="CPU", model_name="BaggedTree",                         
+                         incrementally_trainable=False, train_incrementally=False,
+                         summary_file_path=summary_file_path)
 
     def reset_model_training(self):
         self.trained_model = None
 
     def train_final_model(self):
-        if self.X.shape[0] != self.y.shape[0]:
+        if self.lagless_X.shape[0] != self.lagless_y.shape[0]:
             raise ValueError("X and y don't have the same amount of datapoints.")
         
         if self.train_incrementally:
@@ -1053,9 +1060,20 @@ class BaggedTree(trainable_model):
         else:
             self.reset_model_training()
             self.add_extraXy_to_dataset()
+            self.manage_lags(lag_to_add=self.num_lags) # -> set: self.X, self.y
             model = BaggingRegressor(estimator=DecisionTreeRegressor(), n_estimators=self.n_estimators, random_state=0)
             model.fit(self.X, self.y)
+            predictions_in_sample = model.predict(self.X)
+            in_sample_errors = list(predictions_in_sample - self.y)
+            self.in_sample_stats = self.compute_performance_stats(in_sample_errors)
         self.trained_model=model
 
     def predict(self, X: np.ndarray, model) -> np.ndarray:
         return model.predict(X)
+    
+    def store_model_to_path(self, model, path: str):
+        if not os.path.exists("/".join(path.split("/")[:-1])):
+            os.makedirs("/".join(path.split("/")[:-1]))
+        warnings.warn("Model saving for BaggedTree has not been implemented yet.")
+        #model.save_model(path)
+        
