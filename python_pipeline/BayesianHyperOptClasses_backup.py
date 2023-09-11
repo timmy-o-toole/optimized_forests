@@ -79,10 +79,6 @@ class trainable_model:
             raise ValueError(f"There is no optimal_model stored that can be used to make a prediction.")
         return self.predict(X, model)
 
-    def expanding_window_optimize_lag(self, data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
-                    num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
-        pass
-
     def expanding_window(self, data: np.ndarray, ind_f_vars: List[int], col_names: List[str],
                     num_factors: int, num_lags: int, opt: opt, min_window_size: int = 100) -> np.ndarray:
         # ind_f_vars - Indices of variables to forecast
