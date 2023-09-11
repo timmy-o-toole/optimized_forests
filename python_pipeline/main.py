@@ -3,7 +3,6 @@ import numpy as np
 import utils
 import BayesianHyperOptClasses as bho
 import warnings
-warnings.filterwarnings("error")
 
 if __name__ == "__main__":
 
@@ -18,7 +17,19 @@ if __name__ == "__main__":
 
     # Create an instance of the class that contains the ML model that should be optimized
     
-    
+
+    ### BaggedTree
+    search_space_bagged = {'lag_to_add': (0, 6),
+                           'n_estimators': (3, 10),
+                           'max_features': (0.1, 0.7),  # max nr of features to train each estimator on (in percent)
+                           'max_samples': (0.1, 1.0),   # max nr of samples to train each estimator on (in percent)
+                           }
+    trainabale_model_bagged = bho.BaggedTree_HyperOpt(experiment_id=99, train_test_split_perc=0.8,
+                                                      search_space=search_space_bagged)
+    trainabale_model_bagged.expanding_window(lagless_data=dataset, ind_f_vars=[104, 105], col_names=[""],
+                                             num_factors=4, num_lags=2, opt=opt, min_window_size=565, verbose=0)
+
+
     ### XGBoost
     search_space_xgb = {'lag_to_add': (0, 6),
                         "lambda_": (1e-9, 1.0),

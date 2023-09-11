@@ -22,6 +22,8 @@ from sklearn.ensemble import BaggingRegressor
 from bayes_opt import BayesianOptimization
 from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.model_selection import train_test_split
+import warnings
+
 
 class trainable_model:
     def __init__(self, experiment_id: int, model_name: str, device: str="CPU", incrementally_trainable: bool=False, train_incrementally: bool=False,
@@ -112,7 +114,7 @@ class trainable_model:
         if not os.path.exists(self.RESTART_FILE_PATH):
             experiments = {}
             with open(self.RESTART_FILE_PATH, "w") as file:
-                json.dump(experiments, file)
+                json.dump(experiments, file, indent=4)
         else:
             with open(self.RESTART_FILE_PATH, mode) as file:
                 experiments = json.load(file)
@@ -138,7 +140,7 @@ class trainable_model:
         experiments[self.SUMMARY_FILE_PATH.split(".")[0]] = this_experiment
         # save the updated .json 
         with open(self.RESTART_FILE_PATH, "w") as file:
-            json.dump(experiments, file)
+            json.dump(experiments, file, indent=4)
 
     def experiment_already_finished(self, experiment_file_path: str):
         '''
@@ -324,7 +326,7 @@ class trainable_model:
                 # set a new test point
                 used_num_lags = self.num_lags
                 assert used_num_lags >= 0 and used_num_lags+1 <= new_testpoint_idx
-                # load new datapoint that will be given into self.extra_X, self.extra_y
+                # load new datapoint that will be tested
                 single_test_X = self.lagless_data[new_testpoint_idx, :]
                 single_test_y = self.lagless_data[new_testpoint_idx, pred_var_id]
                 # create a test datapoint with the lag used by the model
@@ -950,10 +952,88 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
         perf_score = self.black_box_function(cor_params)
         return perf_score
 
-from sklearn.ensemble import BaggingRegressor 
+
+from sklearn.ensemble import BaggingRegressor
+from sklearn.ensemble import BaggingClassifier
 from sklearn.tree import DecisionTreeRegressor   
+from sklearn.tree import DecisionTreeClassifier   
+class BaggedTree_HyperOpt(Bayesian_Optimizer):
+    '''
+    A class that inherits from the Bayesian_Optimizer class and implements the bayesian hyperparameter
+    optimization of bagged decision trees.
+    '''
+    def __init__(self,  experiment_id: int, train_test_split_perc: float, search_space: dict, 
+                 is_reg_task: bool = "True", perf_metric: str = "RMSE", max_or_min: str = "min",
+                 init_points: int = 2, n_iter: int = 20, device: str="CPU",
+                 optimize_lag: bool=False, summary_file_path: str="trained_models/BaggedTree_experiments_summary.csv"
+                ):
+        self.is_reg_task = is_reg_task
+        super().__init__(experiment_id=experiment_id, train_test_split_perc=train_test_split_perc, search_space=search_space,
+                         is_reg_task=self.is_reg_task, pred_perf_metric=perf_metric, max_or_min=max_or_min, name="BaggedTree",
+                         init_points=init_points, n_iter=n_iter, device=device, summary_file_path=summary_file_path,
+                         optimize_lag=optimize_lag, incrementally_trainable=False, train_incrementally=False)
+  
+    def instantiate_model(self, cor_params: dict):
+        '''
+        No hyperparameters that are necessary when creating BaggedTrees.
+        Could extend to optimize hyperparameters of the "DecisionTreeRegressor/Classifier".
+
+        Still need to formaly receive the cor_params dictionary due to function definition in parent class.
+        '''
+        if self.is_reg_task:
+            model = BaggingRegressor(estimator=DecisionTreeRegressor(), **cor_params, random_state=0)
+        else:
+            model = BaggingClassifier(estimator=DecisionTreeClassifier(), **cor_params, random_state=0)
+        return model
+
+    def train_model(self, model, extra_X: np.ndarray, extra_y: np.ndarray):
+        '''
+        This trains the deployed ML algorithm, given a set of parameters and train data (features, labels).
+        '''
+        model.fit(extra_X, extra_y)
+        return model
+
+    def transform_params(self, input_params: dict) -> dict:
+        '''
+        Makes sure that the parameters passed to the actual ML algorithm are valid inputs.
+        This includes for example turning floats into integers, and possible translating that integer
+        as a categorical variable.
+
+        In the case of BaggedTrees we might only optimize the used lag.
+        TODO: if only optimizing over lag, might as well try all reasonable lags and not use HyperOpt.
+        '''
+        ret_params = copy.deepcopy(input_params)
+        # make sure the lag is set to an integer
+        ret_params["lag_to_add"] = int(ret_params["lag_to_add"])
+        ret_params["n_estimators"] = int(ret_params["n_estimators"])
+        return ret_params
+
+    def black_box_function_adapter(self, lag_to_add, n_estimators, max_features, max_samples):
+        '''
+        Implement an adapter that summarizes and transforms the parameters
+        and hands them to the real black_box_function() that is inherited
+        from the parent class (Bayesian_Optimizer).
+        '''
+        # put all given parameters into a dictionary
+        wrong_params_dict = {'lag_to_add': lag_to_add,
+                             'n_estimators': n_estimators,
+                             'max_features': max_features,
+                             'max_samples': max_samples,
+                             }
+        cor_params = self.transform_params(wrong_params_dict)
+        perf_score = self.black_box_function(cor_params)
+        return perf_score
+    
+    def store_model_to_path(self, model, path: str):
+        if not os.path.exists("/".join(path.split("/")[:-1])):
+            os.makedirs("/".join(path.split("/")[:-1]))
+        warnings.warn("Model saving for BaggedRegressor/BaggedClassifier has not been implemented yet.")
+        #model.save_model(path)
+    
 class BaggedTree(trainable_model):
-    # TODO: make child-class of hyper opt so can optimize lag
+    '''
+    A simple BaggedTree class that has no parameters that are optimized. Thus, less costly to run.
+    '''
     def __init__(self, n_estimators: int = 500):
         self.n_estimators = n_estimators
         super().__init__(device="CPU", incrementally_trainable=False, train_incrementally=False)
