@@ -67,29 +67,77 @@ def mse_from_error_vec(error_vec: List[float], plot: bool = False, verbose: bool
     return mse
 
 import copy
+from scipy.fft import fft
+from statsmodels.tsa.seasonal import STL
+import pandas as pd
 def enrich_dataset(dataset: np.ndarray, 
                    dataset_col_names: List[str],
                    nr_pca_factors: int=0,
-                   nr_umap_dim: int=0):
+                   nr_umap_dim: int=0,
+                   min_mean_max_idx: int=-1,
+                   fft_idx: int=-1,
+                   ema_idx: int=-1,
+                   stl_idx: int=-1):
+    
     assert dataset.ndim == 2
-    print(dataset.shape)
-
     modified_data = copy.deepcopy(dataset)
-    transformers = []
+    dataset_col_names_enriched = copy.deepcopy(dataset_col_names)
+    #dataset_col_names_enriched = ["CPI"]
+
     if nr_pca_factors > 0:
         # do pca of data 
-        dataset_pca = compute_pca(dataset, nr_pca_factors)
-        modified_data, transformer_pca = np.concatenate([modified_data, dataset_pca], axis=1)
-        dataset_col_names.extend([f"PCA_{i}" for i in range(nr_pca_factors)])
-        transformers.append(transformer_pca)
-    if nr_umap_dim > 0:
-        dataset_umap = compute_umap(dataset, nr_umap_dim)
-        modified_data, transformer_umap = np.concatenate([modified_data, dataset_umap], axis=1)
-        dataset_col_names.extend([f"UMAP_{i}" for i in range(nr_umap_dim)])
-        transformers.append(transformer_umap)
+        dataset_pca, transformer_pca = compute_pca(dataset, nr_pca_factors)
+        modified_data = np.concatenate([modified_data, dataset_pca], axis=1) #modified_data[:, 103:104]
+        dataset_col_names_enriched.extend([f"PCA_{i}" for i in range(nr_pca_factors)])
 
-    assert modified_data.shape[1] == len(dataset_col_names)
-    return modified_data, dataset_col_names, transformers
+    if nr_umap_dim > 0:
+        # do umap of data 
+        dataset_umap, transformer_umap = compute_umap(dataset, nr_umap_dim)
+        modified_data = np.concatenate([modified_data, dataset_umap], axis=1)
+        dataset_col_names_enriched.extend([f"UMAP_{i}" for i in range(nr_umap_dim)])
+
+    if ema_idx > -1:
+        # do exponential moving average for idx ema_idx
+        ema_df = pd.DataFrame(dataset[:, ema_idx], columns=["idx_data"])
+        ema_df["EMA"] = ema_df['idx_data'].ewm(alpha=0.2, adjust=False).mean()
+        ema_for_idx = ema_df["EMA"].to_numpy()
+        modified_data = np.concatenate([modified_data, ema_for_idx.reshape(-1, 1)], axis=1)
+        dataset_col_names_enriched.extend(["EMA_alpha0.2"])
+
+    results = []
+    for last_idx in range(5, dataset.shape[0]):
+        subset = dataset[:last_idx, :]
+        this_step = []
+        if min_mean_max_idx > -1:
+            ts_min = np.min(subset[:, min_mean_max_idx])
+            ts_mean = np.mean(subset)
+            ts_max = np.max(subset)
+            this_step.extend([ts_min, ts_mean, ts_max])
+        if fft_idx > -1:
+            fourier_factors = fft(subset[:, fft_idx])
+            this_step.extend(list(np.abs(fourier_factors[:5])))
+        if stl_idx > -1:
+            stl = STL(subset[:, stl_idx], period=31)
+            stl_results = stl.fit()
+            this_step.extend([stl_results.trend[-1], stl_results.seasonal[-1], stl_results.resid[-1]])
+        results.append(this_step)
+    
+    if min_mean_max_idx > -1:
+        dataset_col_names_enriched.extend(["min", "mean", "max"])
+    if fft_idx > -1:
+        dataset_col_names_enriched.extend([f"FF_idx{fft_idx}_fac{i}" for i in range(5)])
+    if stl_idx > -1:
+        dataset_col_names_enriched.extend(["STL_trend", "STL_seasonal", "STL_resid"])
+
+    results = np.array(results)
+    #first_rows = np.full((1, results.shape[1]), np.nan)
+    first_rows = np.zeros((1, results.shape[1]))
+    for _ in range(5):
+        results = np.concatenate([first_rows, results], axis=0)
+    modified_data = np.concatenate([modified_data, np.array(results)], axis=1)
+
+    assert modified_data.shape[1] == len(dataset_col_names_enriched)
+    return modified_data, dataset_col_names_enriched, None
 
 
 from sklearn.decomposition import PCA
@@ -114,3 +162,19 @@ def apply_transformers_to_data(dataset: np.ndarray, transformers: List[callable]
         extra_data = transform(dataset)
         modified_data = np.concatenate([modified_data, extra_data], axis=1)
     return modified_data
+
+import shap
+def show_shap_importance(model, dataset, overall_plot:bool=True, datapoint_idx:int=-1):
+    explainer = shap.Explainer(model)
+    if datapoint_idx > -1:
+        sample_data = dataset[datapoint_idx, :]
+        shap_values_idx = explainer.shap_values(sample_data)
+        shap.plots.force(explainer.expected_value[0], shap_values_idx, sample_data, matplotlib=True)
+        #shap.initjs()
+        #shap.force_plot(explainer.expected_value[0], shap_values_idx, sample_data)
+        plt.show()
+    
+    if overall_plot:
+        shap_values = explainer.shap_values(dataset)
+        shap.summary_plot(shap_values, dataset, plot_type="dot")
+        plt.show()

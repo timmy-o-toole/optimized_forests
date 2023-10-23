@@ -7,10 +7,12 @@ import warnings
 if __name__ == "__main__":
 
     # load the data
-    data_file_path = os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\data_out.csv")
+    data_file_path = os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\data_out.csv")  # Inflation idx: 103
+    #data_file_path = os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\data_trans_outlier_and_na_removed.csv")    # Inflation idx: 104
     dataset = np.loadtxt(data_file_path, delimiter=";", encoding='utf-8-sig')
     # TODO: need to reverse the time series (letzte reihe ist der neuste datenpunkt!)
     col_names = [str(i) for i in range(dataset.shape[1])]
+
     print("Data points:\t", dataset.shape[0])
     print("Data dimensions:", dataset.shape[1])
     print("--------------------------------------")
@@ -20,16 +22,21 @@ if __name__ == "__main__":
     
     opt = utils.opt()
 
-
-    # Create an instance of the class that contains the ML model that should be optimized
+    enrich_dataset_settings = {"nr_pca_factors": 4,
+                               "nr_umap_dim": 0,
+                               "min_mean_max_idx": 103,
+                               "fft_idx": -1,
+                               "ema_idx": 103,
+                               "stl_idx": 103}
     
-    
+    '''
     ### BaggedTree
-    trainabale_model_bagged = bho.BaggedTree(experiment_id=1, n_estimators=500)
+    trainabale_model_bagged = bho.BaggedTree(experiment_id=434, n_estimators=500)
     errors_bagged = trainabale_model_bagged.expanding_window(lagless_data=dataset, ind_f_vars=[103], col_names=col_names,
-                           num_factors=4, num_lags=2, opt=opt, min_window_size=376, verbose=0)
-    
+                           num_lags=4, opt=opt, min_window_size=383, verbose=0, enrich_dataset_settings=enrich_dataset_settings)
     exit()
+    '''
+
     '''
     ### BaggedTree HyperOpt
     search_space_bagged = {'lag_to_add': (0, 6),
@@ -44,21 +51,26 @@ if __name__ == "__main__":
     '''
 
     ### XGBoost HyperOpt
-    search_space_xgb = {'lag_to_add': (0, 5),
-                        "lambda_": (1e-9, 1.0),
-                        "alpha": (1e-9, 1.0),
-                        "max_depth": (2, 7),
-                        "eta": (1e-9, 1.0),
-                        "gamma": (1e-8, 1.0)
+    search_space_xgb = {'lag_to_add': (1, 5),
+                        "lambda_": (1e-5, 100), # L2 reg
+                        "alpha": (1e-5, 100),   # L1 reg
+                        "max_depth": (3, 11),
+                        "eta": (0.001, 0.1),     # learning rate
+                        "gamma": (0, 2),
+                        "min_child_weight": (5, 20),
+                        "subsample": (0.01, 0.4),
+                        "colsample_bytree": (0.01, 0.4)
                         }
-    trainabale_model_xgb = bho.XGBoost_HyperOpt(experiment_id=2, test_split_perc = 0.2, search_space = search_space_xgb,
-                            is_reg_task = True, perf_metric = "RMSE", max_or_min = "min",
-                            init_points=1, n_iter=2, device="CPU", optimize_lag=True)
+    trainabale_model_xgb = bho.XGBoost_HyperOpt(experiment_id=204, test_split_perc = 0.1, search_space = search_space_xgb,
+                            is_reg_task = True, perf_metric = "AIC", max_or_min = "min",
+                            init_points=12, n_iter=100, device="CPU", optimize_lag=False)
     ###### testing XGBoost
-    errors_xgb = trainabale_model_xgb.expanding_window(lagless_data=enriched_dataset, ind_f_vars=[104], col_names=col_names,
-                                                       num_factors=4, num_lags=2, opt=opt, min_window_size=565, verbose=0)
+    errors_xgb = trainabale_model_xgb.expanding_window(lagless_data=dataset, ind_f_vars=[103], col_names=col_names,
+                                                       num_lags=4, opt=opt, min_window_size=383, verbose=0,
+                                                       enrich_dataset_settings=enrich_dataset_settings)
     print("Sum of squared errors - XGBoost: ", [sum([e*e for e in errors_per_var]) for errors_per_var in errors_xgb])
 
+    exit()
     '''
     # LightGBM HyperOpt
     search_space_lgbm = {
@@ -86,6 +98,7 @@ if __name__ == "__main__":
     print("Sum of squared errors - LightGBM: ", [sum([e*e for e in errors_per_var]) for errors_per_var in errors_xgb])
     '''
 
+    ''''''
     ### CatBoost HyperOpt
     search_space_cat = {'lag_to_add': (0, 6),
                         'iterations': (100, 1000),
