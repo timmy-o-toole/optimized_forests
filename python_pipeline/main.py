@@ -24,10 +24,11 @@ if __name__ == "__main__":
 
     enrich_dataset_settings = {"nr_pca_factors": 4,
                                "nr_umap_dim": 0,
-                               "min_mean_max_idx": 103,
+                               "min_mean_max_idx":-1, #103,
                                "fft_idx": -1,
-                               "ema_idx": 103,
-                               "stl_idx": 103}
+                               "ema_idx": -1, # 103,
+                               "stl_idx": -1, #103
+                               }
     
     '''
     ### BaggedTree
@@ -51,22 +52,22 @@ if __name__ == "__main__":
     '''
 
     ### XGBoost HyperOpt
-    search_space_xgb = {'lag_to_add': (1, 5),
-                        "lambda_": (1e-5, 100), # L2 reg
-                        "alpha": (1e-5, 100),   # L1 reg
-                        "max_depth": (3, 11),
-                        "eta": (0.001, 0.1),     # learning rate
-                        "gamma": (0, 2),
-                        "min_child_weight": (5, 20),
-                        "subsample": (0.01, 0.4),
-                        "colsample_bytree": (0.01, 0.4)
+    search_space_xgb = {'lag_to_add': (3, 5),
+                        "lambda_": (1e-6, 100), # L2 reg
+                        "alpha": (1e-6, 100),   # L1 reg
+                        "max_depth": (2, 8),
+                        "eta": (0.1, 0.5),     # learning rate: step size shrinkage used in update to prevent overfitting. (typically: 0.01-0.2)
+                        "gamma": (0.3, 2.5),      # the larger, the less overfitting
+                        "min_child_weight": (8, 24),        # the higher, the less overfitting. Too small will leed to underfitting
+                        "subsample": (0.4, 1.),         # how much of the data each tree is trained on
+                        "colsample_bytree": (0.1, 1.)
                         }
-    trainabale_model_xgb = bho.XGBoost_HyperOpt(experiment_id=204, test_split_perc = 0.1, search_space = search_space_xgb,
-                            is_reg_task = True, perf_metric = "AIC", max_or_min = "min",
-                            init_points=12, n_iter=100, device="CPU", optimize_lag=False)
+    trainabale_model_xgb = bho.XGBoost_HyperOpt(experiment_id=270, test_split_perc = 24, search_space = search_space_xgb,
+                            is_reg_task = True, perf_metric = "MSE", max_or_min = "min",
+                            init_points=4, n_iter=20, device="CPU", optimize_lag=False)
     ###### testing XGBoost
     errors_xgb = trainabale_model_xgb.expanding_window(lagless_data=dataset, ind_f_vars=[103], col_names=col_names,
-                                                       num_lags=4, opt=opt, min_window_size=383, verbose=0,
+                                                       num_lags=4, opt=opt, min_window_size=399, verbose=0,     # 383
                                                        enrich_dataset_settings=enrich_dataset_settings)
     print("Sum of squared errors - XGBoost: ", [sum([e*e for e in errors_per_var]) for errors_per_var in errors_xgb])
 

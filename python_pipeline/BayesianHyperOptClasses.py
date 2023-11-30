@@ -30,7 +30,7 @@ import statsmodels.api as sm
 from scipy.stats import pearsonr
 
 
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, TimeSeriesSplit
 
 
 class trainable_model:
@@ -426,7 +426,7 @@ class Bayesian_Optimizer(trainable_model):
         # how much for the following performance evaluation -> better than single train set
         self.test_percentage = test_split_perc
         # Over how many different train-test splits the performance of a set of params should be evaluated
-        self.amt_train_per_params = 1
+        self.amt_train_per_params = 5
         # TODO: make this k-fold cross val instead of random draws
         # TODO: does this even make sense for time-series data? How is cross-val done in TS data?
 
@@ -481,6 +481,7 @@ class Bayesian_Optimizer(trainable_model):
         if self.verbose > 0:
             print("Train optimal model...")
             print("--------------------------------------")
+        print("Optimal Paras: ", self.optimal_params)
         trained_model = self.train_optimal_model()
         return trained_model
 
@@ -615,7 +616,11 @@ class Bayesian_Optimizer(trainable_model):
         sum_perf_score = 0
         model_params = copy.deepcopy(cor_params)
         model_params.pop("lag_to_add")
-        for _ in range(self.amt_train_per_params):
+        
+        tscv = TimeSeriesSplit(n_splits=self.amt_train_per_params)
+
+        for  train_index, test_index in tscv.split(self.X):
+            #_ in range(self.amt_train_per_params):
             # 1. draw a random test, train split from the given data
             '''
             train_X, test_X, train_y, test_y = train_test_split(self.X, self.y,
@@ -628,19 +633,28 @@ class Bayesian_Optimizer(trainable_model):
             perf_score = self.prediction_performance_score(test_y, model_pred)
             '''
 
-            train_X = self.X[:-int(self.test_percentage*(self.X.shape[0])), :]
-            train_y = self.y[:-int(self.test_percentage*(self.X.shape[0]))]
-            test_X = self.X[-int(self.test_percentage*(self.X.shape[0])):, :]
-            test_y = self.y[-int(self.test_percentage*(self.X.shape[0])):]
+            train_X, test_X = self.X[train_index], self.X[test_index]
+            train_y, test_y = self.y[train_index], self.y[test_index]
+
+            ''' if isinstance(self.test_percentage, float):
+                train_X = self.X[:-int(self.test_percentage*(self.X.shape[0])), :]
+                train_y = self.y[:-int(self.test_percentage*(self.X.shape[0]))]
+                test_X = self.X[-int(self.test_percentage*(self.X.shape[0])):, :]
+                test_y = self.y[-int(self.test_percentage*(self.X.shape[0])):]
+            else: # int
+                train_X = self.X[:-self.test_percentage, :]
+                train_y = self.y[:-self.test_percentage]
+                test_X = self.X[-self.test_percentage:, :]
+                test_y = self.y[-self.test_percentage:]'''
+
             trained_model = self.train_new_model(params = model_params, X = train_X, y = train_y)
 
             # 3. make it predict unseen test data
-            model_pred = trained_model.predict(test_X)
+            model_pred_is = trained_model.predict(train_X)
+            model_pred_oos = trained_model.predict(test_X)
 
             # 4. evaluate the performance of the prediction
-            perf_score = self.prediction_performance_score(test_y, model_pred)
-            if perf_score < -500:
-                print(perf_score)
+            perf_score = self.prediction_performance_score(test_y, model_pred_oos, train_y, model_pred_is)
             # since library only can maximize scores, in case we want to minimize we negate the performance metric
             if self.max_or_min == "min":
                 perf_score = -perf_score
@@ -655,7 +669,7 @@ class Bayesian_Optimizer(trainable_model):
         self.add_to_model_history(trained_model, cor_params, ret_perf_score)
         return ret_perf_score
     
-    def prediction_performance_score(self, true_y, pred_y):
+    def prediction_performance_score(self, true_test_y, pred_test_y, true_train_y, pred_train_y):
         '''
         This function evalutes the performance of a model that is used to evaluate which hyperparameters
         are the best.
@@ -671,31 +685,36 @@ class Bayesian_Optimizer(trainable_model):
             Chosen performance metric rounded to 8 digits
         '''
 
+        if self.pred_perf_metric == "IS/OOS":   #(min)
+            is_mse = mean_squared_error(true_test_y, pred_test_y, squared=True)
+            oos_mse = mean_squared_error(true_train_y, pred_train_y, squared=True)
+            perf_score = oos_mse/is_mse #1->generalizes perfectly, #>1->oos error is larger
+            return round(perf_score, 8)
         # Possible stats to look at for the performance of the evaluated model
         if self.is_reg_task:
             if self.pred_perf_metric == "RMSE":
-                perf_score = mean_squared_error(true_y, pred_y, squared=False)
+                perf_score = mean_squared_error(true_test_y, pred_test_y, squared=False)
             elif self.pred_perf_metric == "MSE":
-                perf_score = mean_squared_error(true_y, pred_y, squared=True)
+                perf_score = mean_squared_error(true_test_y, pred_test_y, squared=True)
             elif self.pred_perf_metric == "MedAE":
-                perf_score = median_absolute_error(true_y, pred_y)
+                perf_score = median_absolute_error(true_test_y, pred_test_y)
             elif self.pred_perf_metric == "MAPE":   # (min): works well -> what is this magnitude of the values???
-                perf_score = mean_absolute_percentage_error(true_y, pred_y)
+                perf_score = mean_absolute_percentage_error(true_test_y, pred_test_y)
             elif self.pred_perf_metric == "SMAPE":  # (min): better for small values close to 0
-                perf_score = self.compute_SMAPE(true_y, pred_y)
-            elif self.pred_perf_metric == "AIC":    # (min): < -500 is good
-                model = sm.OLS(pred_y, true_y).fit()
-                perf_score = model.aic
-            elif self.pred_perf_metric == "BIC":    # (min): Works well. < -500 is good. Very negative BIC compared to other models means overfitting! 
-                model = sm.OLS(pred_y, true_y).fit()
-                perf_score = model.bic
+                perf_score = self.compute_SMAPE(true_test_y, pred_test_y)
+                '''elif self.pred_perf_metric == "AIC":    # (min): < -500 is good
+                    model = sm.OLS(pred_y, true_y).fit()
+                    perf_score = model.aic
+                elif self.pred_perf_metric == "BIC":    # (min): Works well. < -500 is good. Very negative BIC compared to other models means overfitting! 
+                    model = sm.OLS(pred_y, true_y).fit()
+                    perf_score = model.bic'''
             elif self.pred_perf_metric == "PearsonCorr":   # DOESNT WORK YET: NAN ERRORS, (max): the close to (-)1 the better
-                pearson_corr, p_value = pearsonr(pred_y, true_y)
+                pearson_corr, p_value = pearsonr(pred_test_y, true_test_y)
                 # can also check via p_value if corr is stat significant
                 perf_score = abs(pearson_corr)
             elif self.pred_perf_metric == "fit":
                 lin_reg = LinearRegression()
-                lin_reg.fit(true_y.reshape(-1, 1), pred_y.reshape(-1, 1))
+                lin_reg.fit(true_test_y.reshape(-1, 1), pred_test_y.reshape(-1, 1))
                 slope = lin_reg.coef_[0]
                 perf_score = 1-slope[0]
                 # regression between the predictions and true values
@@ -705,7 +724,7 @@ class Bayesian_Optimizer(trainable_model):
                 raise ValueError("Entered '"+self.pred_perf_metric+"' as performance metric. See Bayesian_Optimizer.prediction_performance_score() for available metrics")
         else:
             if self.pred_perf_metric == "accuracy":
-                perf_score = accuracy_score(true_y, pred_y)
+                perf_score = accuracy_score(true_test_y, pred_test_y)
             else:
                 raise ValueError("Entered "+self.pred_perf_metric+"as performance metric. See Bayesian_Optimizer.prediction_performance_score() for available metrics")
         return round(perf_score, 8)
@@ -954,7 +973,7 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
         if self.device == "GPU":
             tree_method = "gpu_hist"
         if self.is_reg_task:
-            model = xgb.XGBRegressor(**cor_params, tree_method=tree_method) #, objective='reg:pseudohubererror')#, n_estimators=50)
+            model = xgb.XGBRegressor(**cor_params, tree_method=tree_method)#, objective="reg:absoluteerror") #, objective='reg:pseudohubererror')#, n_estimators=50)
         else:
             model = xgb.XGBClassifier(**cor_params, tree_method=tree_method)
         return model
@@ -978,8 +997,8 @@ class XGBoost_HyperOpt(Bayesian_Optimizer):
 
         # model params        
         # TODO: "objective"???
-        ret_params["eval_metric"] = "aucpr" # TODO
-        ret_params["booster"] = "gbtree"    # TODO
+        #ret_params["eval_metric"] = "rmse" # TODO
+        ret_params["booster"] = "gbtree" #"gbtree"    # TODO
         ret_params["max_depth"] = int(ret_params["max_depth"])
         ret_params["min_child_weight"] = int(ret_params["min_child_weight"])
         if "lambda_" in ret_params.keys():
