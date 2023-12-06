@@ -1,0 +1,4 @@
+- h1, h3, h6, h12
+- "INDPRO" "PAYEMS""UNRATE" "CPIAUCSL""DPCERA3M086SBEA"
+- Values = error
+- m = 192 (out of sample results)
