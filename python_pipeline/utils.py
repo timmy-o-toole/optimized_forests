@@ -178,3 +178,124 @@ def show_shap_importance(model, dataset, overall_plot:bool=True, datapoint_idx:i
         shap_values = explainer.shap_values(dataset)
         shap.summary_plot(shap_values, dataset, plot_type="dot")
         plt.show()
+
+
+def transition_to_tim_csvformat(prediction_errors, model_name, model_label, target_var, horizon, filename, start=75, date_crisis_list=None):
+    '''
+    Make sure the values in prediction_errors are the ERRORS of the models predictions!
+    '''
+    if date_crisis_list is None:
+        date_crisis_list = get_date_crisis_list()
+    
+    column_names = ["filename", "model_name", "start", "horizon", "target_var", "model_label", "date", "crisis", "values"]
+    df = pd.DataFrame(columns=column_names)
+
+    for i in range(len(prediction_errors)):
+        new_data_point = [filename, model_name, start, horizon, target_var, model_label, date_crisis_list[i, 0], date_crisis_list[i, 1], prediction_errors[i]]
+        df.loc[i] = new_data_point
+
+    return df
+
+
+import os
+def get_date_crisis_list(reference_path=None):
+
+    if reference_path is None:
+        model_preds_file = "sdfm_fred_192.csv"
+        model_preds_path = os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\model_prediction_errors\\", model_preds_file)
+    else:
+        model_preds_path = reference_path
+    df = pd.read_csv(model_preds_path, delimiter=",")
+    date_crisis_list = df[["date", "crisis"]].sort_values(ascending=True, by="date").drop_duplicates().to_numpy()
+    return date_crisis_list
+
+
+def store_array_as_csv(prediction_errors, file_name, csv_path=None, verbose=True):
+    if csv_path is None:
+        csv_path = os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\model_prediction_errors\\", file_name)
+
+    if os.path.exists(csv_path):
+        raise ValueError(f"File in path {csv_path} already exists! Choose a different file name or path.")
+    
+    np.savetxt(csv_path, prediction_errors, delimiter=",")
+    if verbose:
+        print(f"Stored the given model prediction errors in {csv_path}.")
+
+
+def update_model_pred_summary(additional_predictions_df, path_model_pred_summary=None, verbose=True):
+    if path_model_pred_summary is None:
+        file_model_pred_summary = "sdfm_fred_192_modified.csv"
+        path_model_pred_summary = os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\model_prediction_errors\\", file_model_pred_summary)
+
+    if not os.path.exists(path_model_pred_summary):
+        original_file =  os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\model_prediction_errors\\sdfm_fred_192.csv")
+        predictions_so_far_df = pd.read_csv(original_file, delimiter=",")
+    else:
+        predictions_so_far_df = pd.read_csv(path_model_pred_summary, delimiter=",")
+
+    assert set(predictions_so_far_df.columns) == set(additional_predictions_df.columns)
+    predictions_extended_df = pd.concat([predictions_so_far_df, additional_predictions_df], sort=True, ignore_index=True)
+
+    predictions_extended_df.to_csv(path_model_pred_summary, index=False)
+    if verbose:
+        print(f"Updated the file in path {path_model_pred_summary} with the provided predictions.")
+
+
+def store_model_errors(error_list, model_errors_file_name, model_name, model_label, target_var, horizon, store_indiv=True, add_to_collection=True, verbose=True):
+    if not isinstance(error_list, list):
+        error_list = list(error_list)
+
+    if store_indiv:
+        store_array_as_csv(error_list, model_errors_file_name, verbose=verbose)
+    if add_to_collection:
+        tim_formatted_df = transition_to_tim_csvformat(error_list, model_name, model_label, target_var, horizon, model_errors_file_name)
+        update_model_pred_summary(tim_formatted_df, path_model_pred_summary=None, verbose=verbose)
+
+
+def create_model_preds_dataset(path_errors_per_model, truth, target_var="CPIAUCSL", horizon="h1", model_label="standard data", store_path=None):
+    '''
+    dataset_df = create_model_preds_dataset("optimized_forests/python_pipeline/model_prediction_errors/sdfm_fred_192.csv", [1 for _ in range(192)])
+    '''
+    
+    # "model_label" -> "standard data", "fixedset30", "fixedset60"
+    # "target_var" -> "INDPRO", "PAYEMS", "UNRATE", "CPIAUCSL", "DPCERA3M086SBEA"
+    # "horizon" -> "h1", "h3", "h6", "h12
+    # "start" -> "75"
+    # "crisis" -> "No Crisis", "Great Recession", "COVID-19"
+    # "values" -> errors of predictions of the model listed in "model_name"
+    
+    dates = get_date_crisis_list()[:, 0]
+
+    if isinstance(truth, int):
+        # if truth is an int, it gives the index of the target variable in the data_out.csv file
+        train_dataset_df = pd.read_csv(os.path.join(os.getcwd(), "optimized_forests\\python_pipeline\\data_out.csv"), delimiter=";")
+        truth = list(train_dataset_df.to_numpy()[:, truth])[-len(dates):]
+
+    # getting model_names for which the requested specifics are available
+    model_preds_df = pd.read_csv(path_errors_per_model)
+    model_names = model_preds_df
+    cond1 = model_preds_df['target_var'] == target_var
+    cond2 = model_preds_df['horizon'] == horizon
+    cond3 = model_preds_df['model_label'] == model_label
+    cond4 = model_preds_df['start'] == 75
+    filtered_df = model_preds_df[cond1 & cond2 & cond3 & cond4].drop(columns=["target_var", "horizon", "model_label", "start", "filename", "crisis"])
+    model_names = filtered_df["model_name"].drop_duplicates().to_numpy()
+
+    dataset_df = pd.DataFrame({"dates": dates, "truth": truth})
+    for model_name in model_names:
+        model_predictions = []
+        for idx, date in enumerate(dates):
+            set_date = filtered_df["date"] == date
+            set_model_name = filtered_df["model_name"] == model_name
+            
+            this_error = filtered_df[set_date & set_model_name]["values"]
+            if this_error.size > 1:
+                raise ValueError(f"There exist more than two results for the chosen settings. It appears that multiple results have been stored for: {[target_var, horizon, model_label, 75, model_name, date]}")
+            this_prediction = truth[idx] - this_error.values[0]
+            model_predictions.append(this_prediction)
+        dataset_df[model_name] = model_predictions
+
+    if not store_path is None:
+        dataset_df.to_csv(store_path)
+
+    return dataset_df
